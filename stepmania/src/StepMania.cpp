@@ -85,7 +85,6 @@ extern "C" {
 	#include <switch/runtime/devices/socket.h>
 	#include <switch/runtime/nxlink.h>
 	#include <switch/services/applet.h>
-	#include <switch/services/fs.h>
 
 	void userAppInit(void) {
 		socketInitializeDefault();
@@ -95,7 +94,6 @@ extern "C" {
 
 	void userAppExit(void) {
 		socketExit();
-		appletUnlockExit();
 	}
 }
 #endif

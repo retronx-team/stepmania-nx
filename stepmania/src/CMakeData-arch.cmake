@@ -192,8 +192,17 @@ if(WIN32)
   list(
     APPEND SMDATA_ARCH_LOADING_HPP "arch/LoadingWindow/LoadingWindow_Win32.h")
 else()
-  list(APPEND SMDATA_ARCH_LOADING_HPP "arch/LoadingWindow/LoadingWindow_Null.h")
-  if(APPLE)
+  list(APPEND SMDATA_ARCH_LOADING_HPP
+    "arch/LoadingWindow/LoadingWindow_Null.h"
+  )
+  if(SWITCH_LIBNX)
+    list(APPEND SMDATA_ARCH_LOADING_SRC
+      "arch/LoadingWindow/LoadingWindow_NX.cpp"
+    )
+    list(APPEND SMDATA_ARCH_LOADING_HPP
+      "arch/LoadingWindow/LoadingWindow_NX.h"
+    )
+  elseif(APPLE)
     list(APPEND SMDATA_ARCH_LOADING_SRC
                 "arch/LoadingWindow/LoadingWindow_MacOSX.mm")
     list(APPEND SMDATA_ARCH_LOADING_HPP

@@ -24,6 +24,7 @@
 #elif defined(__SWITCH__)
 #include "ArchHooks/ArchHooks_Unix.h"
 #include "LowLevelWindow/LowLevelWindow_SDL.h"
+#include "LoadingWindow/LoadingWindow_NX.h"
 #define DEFAULT_INPUT_DRIVER_LIST "SDL"
 #define DEFAULT_MOVIE_DRIVER_LIST "Null"
 #define DEFAULT_SOUND_DRIVER_LIST "NX,Null"

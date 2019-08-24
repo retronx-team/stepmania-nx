@@ -8,6 +8,11 @@ LoadingWindow *LoadingWindow::Create()
 {
 	if( !PREFSMAN->m_bShowLoadingWindow )
 		return new LoadingWindow_Null;
+#if defined(__SWITCH__)
+	LoadingWindow *w = new LoadingWindow_NX;
+	w->Init();
+	return w;
+#endif
 #if defined(UNIX) && !defined(HAVE_GTK)
 	return new LoadingWindow_Null;
 #endif

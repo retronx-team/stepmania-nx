@@ -617,8 +617,11 @@ endif()
 if(SWITCH_LIBNX)
   list(APPEND SMDATA_LINK_LIB
     "${CMAKE_BINARY_DIR}/nxshim/libnxshim.a"
-    "png"
     "SDL2"
+    "SDL2_ttf"
+    "freetype"
+    "bz2"
+    "png"
     "EGL"
     "glapi"
     "drm_nouveau"
