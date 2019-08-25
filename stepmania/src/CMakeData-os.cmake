@@ -86,7 +86,6 @@ else()
                 "archutils/Unix/EmergencyShutdown.cpp"
                 "archutils/Unix/GetSysInfo.cpp"
                 "archutils/Unix/RunningUnderValgrind.cpp"
-                "archutils/Unix/SignalHandler.cpp"
                 "archutils/Unix/SpecialDirs.cpp"
                 "archutils/Unix/StackCheck.cpp")
     list(APPEND SMDATA_OS_HPP
@@ -95,9 +94,13 @@ else()
                 "archutils/Unix/EmergencyShutdown.h"
                 "archutils/Unix/GetSysInfo.h"
                 "archutils/Unix/RunningUnderValgrind.h"
-                "archutils/Unix/SignalHandler.h"
                 "archutils/Unix/SpecialDirs.h"
                 "archutils/Common/gcc_byte_swaps.h")
+    if(NOT SWITCH_LIBNX)
+      list(APPEND SMDATA_OS_SRC "archutils/Unix/SignalHandler.cpp")
+      list(APPEND SMDATA_OS_HPP "archutils/Unix/SignalHandler.h")
+    endif()
+
     if(X11_FOUND)
       list(APPEND SMDATA_OS_SRC "archutils/Unix/X11Helper.cpp")
       list(APPEND SMDATA_OS_HPP "archutils/Unix/X11Helper.h")

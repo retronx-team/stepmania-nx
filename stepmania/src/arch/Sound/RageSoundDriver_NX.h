@@ -1,62 +1,49 @@
-#ifndef RAGE_DISPLAY_OGL_HELPERS_H
-#define RAGE_DISPLAY_OGL_HELPERS_H
+#ifndef RAGE_SOUND_NX_H
+#define RAGE_SOUND_NX_H
 
-#if defined(WIN32)
-#include <windows.h>
-#endif
+extern "C" {
+	#include <switch/audio/driver.h>
+	#include <switch/arm/cache.h>
+}
 
-#if defined(__SWITCH__)
-#include <glsym/switch/nx_gl.h>
-#include <GL/glext.h>
-#else
-#include <GL/glew.h>
-#endif
+#include "RageSoundDriver.h"
+#include "RageThreads.h"
 
-
-/* Import RageDisplay, for types.  Do not include RageDisplay_Legacy.h. */
-#include "RageDisplay.h"
-
-/* Windows defines GL_EXT_paletted_texture incompletely: */
-#ifndef GL_TEXTURE_INDEX_SIZE_EXT
-#define GL_TEXTURE_INDEX_SIZE_EXT         0x80ED
-#endif
-
-/** @brief Utilities for working with the RageDisplay. */
-namespace RageDisplay_Legacy_Helpers
-{
-	void Init();
-	RString GLToString( GLenum e );
-};
-
-class RenderTarget
+class RageSoundDriver_NX: public RageSoundDriver
 {
 public:
-	virtual ~RenderTarget() { }
-	virtual void Create( const RenderTargetParam &param, int &iTextureWidthOut, int &iTextureHeightOut ) = 0;
+	RageSoundDriver_NX();
+	~RageSoundDriver_NX();
+	RString Init();
 
-	virtual unsigned GetTexture() const = 0;
+	int64_t GetPosition() const;
+	float GetPlayLatency() const;
+	int GetSampleRate() const { return m_iSampleRate; }
 
-	/* Render to this RenderTarget. */
-	virtual void StartRenderingTo() = 0;
 
-	/* Stop rendering to this RenderTarget.  Update the texture, if necessary, and
-	 * make it available. */
-	virtual void FinishRenderingTo() = 0;
+private:
+	static int MixerThread_start( void *p );
+	void MixerThread();
+	RageThread MixingThread;
+	bool GetData();
+	void SetupDecodingThread();
 
-	virtual bool InvertY() const { return false; }
+	int m_iSampleRate;
+	bool m_bShutdown;
+	int m_iLastCursorPos;
 
-	const RenderTargetParam &GetParam() const { return m_Param; }
-
-protected:
-	RenderTargetParam m_Param;
+	AudioDriver* m_pDrv;
+	char* m_pMempool;
+	AudioDriverWaveBuf* m_pWavebufs;
 };
 
 #endif
 
 /*
- * Copyright (c) 2001-2011 Chris Danford, Glenn Maynard, Colby Klein
+ * (c) 2019 p-sam
+ * (c) 2002-2004 Glenn Maynard
  * All rights reserved.
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the
  * "Software"), to deal in the Software without restriction, including
@@ -66,7 +53,7 @@ protected:
  * copyright notice(s) and this permission notice appear in all copies of
  * the Software and that both the above copyright notice(s) and this
  * permission notice appear in supporting documentation.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
  * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF

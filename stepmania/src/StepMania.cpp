@@ -80,6 +80,26 @@ void HandleInputEvents(float fDeltaTime);
 
 static Preference<bool> g_bAllowMultipleInstances( "AllowMultipleInstances", false );
 
+#if defined(__SWITCH__)
+extern "C" {
+	#include <switch/runtime/devices/socket.h>
+	#include <switch/runtime/nxlink.h>
+	#include <switch/services/applet.h>
+	#include <switch/services/fs.h>
+
+	void userAppInit(void) {
+		socketInitializeDefault();
+		nxlinkStdio();
+		appletSetGamePlayRecordingState(1);
+	}
+
+	void userAppExit(void) {
+		socketExit();
+		appletUnlockExit();
+	}
+}
+#endif
+
 void StepMania::GetPreferredVideoModeParams( VideoModeParams &paramsOut )
 {
 	// resolution handling code that probably needs fixing
@@ -993,9 +1013,11 @@ int sm_main(int argc, char* argv[])
 	FILEMAN = new RageFileManager( argv[0] );
 	FILEMAN->MountInitialFilesystems();
 
+#if !defined(__SWITCH__)
 	bool bPortable = DoesFileExist("Portable.ini");
 	if( !bPortable )
 		FILEMAN->MountUserFilesystems();
+#endif
 
 	// Set this up next. Do this early, since it's needed for RageException::Throw.
 	LOG		= new RageLog;

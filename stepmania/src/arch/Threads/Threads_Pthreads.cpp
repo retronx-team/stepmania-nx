@@ -117,7 +117,7 @@ ThreadImpl *MakeThread( int (*pFunc)(void *pData), void *pData, uint64_t *piThre
 	// Ensure there is always a terminating NUL character.
 	thread->name[maxNameLen - 1] = '\0';
 
-#ifndef MACOSX
+#if !defined(MACOSX) && !defined(__SWITCH__)
 	// macOS/BSD can only set the name of the calling thread
 	ret = pthread_setname_np(thread->thread, thread->name);
 	if (ret != 0 && LOG) {
@@ -242,7 +242,9 @@ MutexImpl *MakeMutex( RageMutex *pParent )
 /* Check if condattr_setclock is supported, and supports the clock that
  * RageTimer selected. */
 #if defined(UNIX)
+#if !defined(__SWITCH__)
 #include <dlfcn.h>
+#endif
 #include "arch/ArchHooks/ArchHooks_Unix.h"
 #endif // On MinGW clockid_t is defined in pthread.h
 namespace
@@ -251,7 +253,10 @@ namespace
 	CONDATTR_SET_CLOCK g_CondattrSetclock = nullptr;
 	bool bInitialized = false;
 
-#if defined(UNIX)
+#if defined(__SWITCH__)
+	void InitMonotonic() { bInitialized = true; }
+	clockid_t GetClock() { return CLOCK_MONOTONIC; }
+#elif defined(UNIX)
 	clockid_t GetClock()
 	{
 		return ArchHooks_Unix::GetClock();

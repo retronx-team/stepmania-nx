@@ -187,7 +187,7 @@ static RString ExtractDirectory( RString sPath )
 
 static RString ReadlinkRecursive( RString sPath )
 {
-#if defined(UNIX) || defined(MACOSX)
+#if (defined(UNIX) || defined(MACOSX)) && !defined(__SWITCH__)
 	// unices support symbolic links; dereference them
 	RString dereferenced = sPath;
 	do
@@ -241,6 +241,7 @@ static RString GetDirOfExecutable( RString argv0 )
 #if defined(UNIX) || defined(MACOSX)
 		if( sPath.empty() )
 		{
+#if !defined(__SWITCH__)
 			// This is in our path so look for it.
 			const char *path = getenv( "PATH" );
 
@@ -256,6 +257,7 @@ static RString GetDirOfExecutable( RString argv0 )
 				sPath = ExtractDirectory(ReadlinkRecursive(i + "/" + argv0));
 				break;
 			}
+#endif
 			if( sPath.empty() )
 				sPath = GetCwd(); // What?
 			else if( sPath[0] != '/' ) // For example, if . is in $PATH.
@@ -277,6 +279,9 @@ static RString GetDirOfExecutable( RString argv0 )
 static void ChangeToDirOfExecutable( const RString &argv0 )
 {
 	RageFileManagerUtil::sInitialWorkingDirectory = GetCwd();
+#ifdef __SWITCH__
+	RageFileManagerUtil::sDirOfExecutable = GetCwd();
+#else
 	RageFileManagerUtil::sDirOfExecutable = GetDirOfExecutable( argv0 );
 
 	/* Set the CWD.  Any effects of this is platform-specific; most files are read and
@@ -296,6 +301,7 @@ static void ChangeToDirOfExecutable( const RString &argv0 )
 		LOG->Warn("Can't set current working directory to %s", RageFileManagerUtil::sDirOfExecutable.c_str());
 		return;
 	}
+#endif
 }
 
 RageFileManager::RageFileManager( const RString &argv0 )

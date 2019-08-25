@@ -6,7 +6,9 @@
 #include "RageThreads.h"
 #include "LocalizedString.h"
 #include "SpecialFiles.h"
+#if !defined(__SWITCH__)
 #include "archutils/Unix/SignalHandler.h"
+#endif
 #include "archutils/Unix/GetSysInfo.h"
 #include "archutils/Common/PthreadHelpers.h"
 #include "archutils/Unix/EmergencyShutdown.h"
@@ -32,12 +34,18 @@ extern "C"
 }
 #endif
 
-#if defined(HAVE_X11)
+#if defined(__SWITCH__)
+extern "C"
+{
+	#include <switch/arm/counter.h>
+}
+#elif defined(HAVE_X11)
 #include "archutils/Unix/X11Helper.h"
 #include <X11/Xlib.h>
 #include <X11/Xatom.h>
 #endif
 
+#if !defined(__SWITCH__)
 static bool IsFatalSignal( int signal )
 {
 	switch( signal )
@@ -88,7 +96,8 @@ static bool EmergencyShutdown( int signal, siginfo_t *si, const ucontext_t *uc )
 	/* We didn't run the crash handler.  Run the default handler, so we can dump core. */
 	return false;
 }
-	
+#endif
+
 #if defined(HAVE_TLS)
 static thread_local int g_iTestTLS = 0;
 
@@ -118,7 +127,17 @@ static void TestTLS()
 }
 #endif
 
-#if 1
+#if defined(__SWITCH__)
+clockid_t ArchHooks_Unix::GetClock()
+{
+	return CLOCK_MONOTONIC;
+}
+
+int64_t ArchHooks::GetMicrosecondsSinceStart( bool bAccurate )
+{
+	return armTicksToNs(armGetSystemTick()) / 1000;
+}
+#elif 1
 /* If librt is available, use CLOCK_MONOTONIC to implement GetMicrosecondsSinceStart,
  * if supported, so changes to the system clock don't cause problems. */
 namespace
@@ -192,6 +211,7 @@ RString ArchHooks::GetPreferredLanguage()
 
 void ArchHooks_Unix::Init()
 {
+#if !defined(__SWITCH__)
 	/* First, handle non-fatal termination signals. */
 	SignalHandler::OnClose( DoCleanShutdown );
 
@@ -204,6 +224,7 @@ void ArchHooks_Unix::Init()
 	/* Set up EmergencyShutdown, to try to shut down the window if we crash.
 	 * This might blow up, so be sure to do it after the crash handler. */
 	SignalHandler::OnClose( EmergencyShutdown );
+#endif
 
 	InstallExceptionHandler();
 	
@@ -214,6 +235,10 @@ void ArchHooks_Unix::Init()
 
 bool ArchHooks_Unix::GoToURL( RString sUrl )
 {
+#if defined(__SWITCH__)
+	printf("%s: %s\n", __func__, sUrl.c_str());
+	return false;
+#else
 	int status;
 	pid_t p = fork();
 	if ( p == -1 )
@@ -235,6 +260,7 @@ bool ArchHooks_Unix::GoToURL( RString sUrl )
 		waitpid( p, &status, 0 );
 		return WEXITSTATUS( status ) == 0;
 	}
+#endif
 }
 
 #ifndef _CS_GNU_LIBC_VERSION
@@ -242,11 +268,14 @@ bool ArchHooks_Unix::GoToURL( RString sUrl )
 #endif
 
 static RString LibcVersion()
-{	
+{
 	char buf[1024] = "(error)";
+
+#if !defined(__SWITCH__)
 	int ret = confstr( _CS_GNU_LIBC_VERSION, buf, sizeof(buf) );
 	if( ret == -1 )
 		return "(unknown)";
+#endif
 
 	return buf;
 }
@@ -370,7 +399,7 @@ RString ArchHooks_Unix::GetClipboard()
 static LocalizedString COULDNT_FIND_SONGS( "ArchHooks_Unix", "Couldn't find 'Songs'" );
 void ArchHooks::MountInitialFilesystems( const RString &sDirOfExecutable )
 {
-#if defined(UNIX)
+#if defined(UNIX) && !defined(__SWITCH__)
 	/* Mount the root filesystem, so we can read files in /proc, /etc, and so on.
 	 * This is /rootfs, not /root, to avoid confusion with root's home directory. */
 	FILEMAN->Mount( "dir", "/", "/rootfs" );
@@ -381,6 +410,9 @@ void ArchHooks::MountInitialFilesystems( const RString &sDirOfExecutable )
 #endif
 
 	RString Root;
+#if defined(__SWITCH__)
+	Root = RageFileManagerUtil::sInitialWorkingDirectory;
+#else
 	struct stat st;
 	if( !stat(sDirOfExecutable + "/Packages", &st) && st.st_mode&S_IFDIR )
 		Root = sDirOfExecutable;
@@ -390,6 +422,7 @@ void ArchHooks::MountInitialFilesystems( const RString &sDirOfExecutable )
 		Root = RageFileManagerUtil::sInitialWorkingDirectory;
 	else
 		RageException::Throw( "%s", COULDNT_FIND_SONGS.GetValue().c_str() );
+#endif
 
 	FILEMAN->Mount( "dir", Root, "/" );
 }

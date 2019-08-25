@@ -34,6 +34,10 @@ using namespace RageDisplay_Legacy_Helpers;
 #define glFlush()
 #endif
 
+#if defined(__SWITCH__)
+#include <GL/glew.h>
+#endif
+
 //
 // Globals
 //
@@ -683,16 +687,16 @@ static void CheckReversePackedPixels()
 
 void SetupExtensions()
 {
+#ifndef HAVE_X11 // LLW_X11 needs to init GLEW early for GLX exts
+	glewInit();
+#endif
+
 	const float fGLVersion = StringToFloat( (const char *) glGetString(GL_VERSION) );
 	g_glVersion = lrintf( fGLVersion * 10 );
 
 	const float fGLUVersion = StringToFloat( (const char *) gluGetString(GLU_VERSION) );
 	g_gluVersion = lrintf( fGLUVersion * 10 );
 
-#ifndef HAVE_X11 // LLW_X11 needs to init GLEW early for GLX exts
-	glewInit();
-#endif
-	
 	g_iMaxTextureUnits = 1;
 	if (GLEW_ARB_multitexture)
 		glGetIntegerv( GL_MAX_TEXTURE_UNITS_ARB, (GLint *) &g_iMaxTextureUnits );
@@ -2285,7 +2289,7 @@ unsigned RageDisplay_Legacy::CreateTexture(
 		GLToString(glImageType).c_str(), pixfmt, SurfacePixFmt );
 
 	DebugFlushGLErrors();
-
+	
 	if (bGenerateMipMaps)
 	{
 		GLenum error = gluBuild2DMipmaps(

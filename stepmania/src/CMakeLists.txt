@@ -354,6 +354,9 @@ else() # Linux
            OR CMAKE_SYSTEM_PROCESSOR MATCHES "i686")
       message("Host processor is 32bit")
       sm_add_compile_definition("${SM_EXE_NAME}" CPU_X86)
+    elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64")
+      message("Host processor is aarch64")
+      sm_add_compile_definition("${SM_EXE_NAME}" CPU_AARCH64)
     else()
       message("Unrecognized host processor type")
     endif()
@@ -412,7 +415,7 @@ endif()
 if(WITH_SYSTEM_GLEW)
   list(APPEND SMDATA_LINK_LIB ${GLEW_LIBRARIES} ${GLEW_LIBRARY_RELEASE})
   list(APPEND SM_INCLUDE_DIRS ${GLEW_INCLUDE_DIRS})
-else()
+elseif(NOT SWITCH_LIBNX)
   list(APPEND SMDATA_LINK_LIB "glew")
 endif()
 
@@ -604,12 +607,32 @@ else() # Unix / Linux TODO: Remember to find and locate the zip archive files.
     list(APPEND SMDATA_LINK_LIB ${PCRE_LIBRARY})
   endif()
 
+if(NOT SWITCH_LIBNX)
   list(APPEND SMDATA_LINK_LIB ${XRANDR_LIBRARIES} ${XINERAMA_LIBRARIES})
+endif()
 
   list(REMOVE_DUPLICATES SMDATA_LINK_LIB)
 endif()
 
+if(SWITCH_LIBNX)
+  list(APPEND SMDATA_LINK_LIB
+    "${CMAKE_BINARY_DIR}/nxshim/libnxshim.a"
+    "png"
+    "SDL2"
+    "EGL"
+    "glapi"
+    "drm_nouveau"
+    "nx"
+  )
+endif()
+
 target_link_libraries("${SM_EXE_NAME}" ${SMDATA_LINK_LIB})
+
+if (WITH_SDL)
+  list(APPEND SM_INCLUDE_DIRS
+    ${SDL2_INCLUDE_DIR}
+  )
+endif()
 
 list(APPEND SM_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}
             "${SM_SRC_DIR}/generated")

@@ -49,6 +49,17 @@ static unsigned long rng_nix(unsigned char *buf, unsigned long len,
 
 #endif /* DEVRANDOM */
 
+#if defined(__SWITCH__)
+#include <switch/kernel/random.h>
+
+static unsigned long _rng_nx(unsigned char *buf, unsigned long len,
+                               void (*callback)(void))
+{
+   randomGet(buf, len);
+   return len;
+}
+#endif
+
 /* on ANSI C platforms with 100 < CLOCKS_PER_SEC < 10000 */
 #if defined(CLOCKS_PER_SEC) && !defined(WINCE)
 
@@ -138,7 +149,9 @@ unsigned long rng_get_bytes(unsigned char *out, unsigned long outlen,
 
    LTC_ARGCHK(out != NULL);
 
-#if defined(DEVRANDOM)
+#if defined (__SWITCH__)
+   x = _rng_nx(out, outlen, callback); if (x != 0) { return x; }
+#elif defined(DEVRANDOM)
    x = rng_nix(out, outlen, callback);   if (x != 0) { return x; }
 #endif
 #ifdef WIN32

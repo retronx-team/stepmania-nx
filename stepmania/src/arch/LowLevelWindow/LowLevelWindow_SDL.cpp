@@ -24,7 +24,9 @@ using namespace RageDisplay_Legacy_Helpers;
 #include <stack>
 #include <math.h>	// ceil()
 #include <SDL.h>
+#if !defined(__SWITCH__)
 #include <SDL_opengl.h>
+#endif
 #include <SDL_syswm.h>
 
 
@@ -72,7 +74,7 @@ int LowLevelWindow_SDL::GetSDLDisplayNum( const std::string displayId ) const
 }
 
 
-std::string LowLevelWindow_SDL::TryVideoMode( const VideoModeParams &p, bool &bNewDeviceOut )
+RString LowLevelWindow_SDL::TryVideoMode( const VideoModeParams &p, bool &bNewDeviceOut )
 {
 	LOG->Trace("%s called", __FUNCTION__);
 
@@ -83,6 +85,11 @@ std::string LowLevelWindow_SDL::TryVideoMode( const VideoModeParams &p, bool &bN
 
 	if (g_DisplayWindow == nullptr) // If there is no Window yet create one first.
 	{
+#if defined(__SWITCH__)
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, 0);
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 0);
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+#endif
 
 		//Create window
 		g_DisplayWindow = SDL_CreateWindow( p.sWindowTitle.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, g_DisplayMode.w, g_DisplayMode.h, SDL_WINDOW_OPENGL );
@@ -143,7 +150,7 @@ std::string LowLevelWindow_SDL::TryVideoMode( const VideoModeParams &p, bool &bN
 			g_DisplayMode.w = cur_mode.w;
 			g_DisplayMode.h = cur_mode.h;
 			if (SDL_SetWindowFullscreen( g_DisplayWindow, SDL_WINDOW_FULLSCREEN_DESKTOP ) != 0)
-				return fmt::sprintf( "Failed to set borderless fullscreen mode: %s", SDL_GetError());
+				return ssprintf( "Failed to set borderless fullscreen mode: %s", SDL_GetError());
 		}
 		else // Fullscreen exclusive
 		{
@@ -151,7 +158,7 @@ std::string LowLevelWindow_SDL::TryVideoMode( const VideoModeParams &p, bool &bN
 			if (SDL_SetWindowDisplayMode( g_DisplayWindow, &g_DisplayMode ) != 0)
 				LOG->Warn( "Error setting DisplayMode %s", SDL_GetError());
 			if (SDL_SetWindowFullscreen( g_DisplayWindow, SDL_WINDOW_FULLSCREEN ) != 0)
-				return fmt::sprintf( "Failed to set display mode: %s", SDL_GetError() );
+				return ssprintf( "Failed to set display mode: %s", SDL_GetError() );
 		}
 	}
 	CurrentParams = p;
@@ -179,7 +186,7 @@ std::string LowLevelWindow_SDL::TryVideoMode( const VideoModeParams &p, bool &bN
 	return ""; // Success
 }
 
-bool LowLevelWindow_SDL::IsSoftwareRenderer( std::string &sError )
+bool LowLevelWindow_SDL::IsSoftwareRenderer( RString &sError )
 {
 	return false;
 }

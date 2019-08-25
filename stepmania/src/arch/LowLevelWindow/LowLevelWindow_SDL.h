@@ -12,9 +12,9 @@ public:
 	LowLevelWindow_SDL();
 	~LowLevelWindow_SDL();
 
-	void *GetProcAddress(std::string s){ return nullptr; } // TODO: Windows
-	std::string TryVideoMode(const VideoModeParams &p, bool &bNewDeviceOut);
-	bool IsSoftwareRenderer( std::string &sError );
+	void *GetProcAddress(RString s){ return nullptr; } // TODO: Windows
+	RString TryVideoMode(const VideoModeParams &p, bool &bNewDeviceOut);
+	bool IsSoftwareRenderer( RString &sError );
 	void SwapBuffers();
 
 	const ActualVideoModeParams GetActualVideoModeParams() const { return CurrentParams; }

@@ -7,6 +7,10 @@
 
 void GetKernel( RString &sys, int &iVersion )
 {
+#if defined(__SWITCH__)
+	sys = "Horizon";
+	iVersion = 0;
+#else
 	struct utsname uts;
 	uname( &uts );
 
@@ -16,6 +20,7 @@ void GetKernel( RString &sys, int &iVersion )
 	int iMajor = 0, iMinor = 0, iRevision = 0;
 	if( sscanf( uts.release, "%d.%d.%d", &iMajor, &iMinor, &iRevision ) >= 2 )
 		iVersion = (iMajor * 10000) + (iMinor * 100) + (iRevision);
+#endif
 }
 
 /*

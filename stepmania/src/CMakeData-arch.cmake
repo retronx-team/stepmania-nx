@@ -46,6 +46,13 @@ if(WIN32)
 elseif(APPLE)
   list(APPEND SMDATA_ARCH_SOUND_SRC "arch/Sound/RageSoundDriver_AU.cpp")
   list(APPEND SMDATA_ARCH_SOUND_HPP "arch/Sound/RageSoundDriver_AU.h")
+elseif(SWITCH_LIBNX)
+  list(APPEND SMDATA_ARCH_SOUND_SRC
+    "arch/Sound/RageSoundDriver_NX.cpp"
+  )
+  list(APPEND SMDATA_ARCH_SOUND_HPP
+    "arch/Sound/RageSoundDriver_NX.h"
+  )
 else() # Unix
   if(HAS_PULSE)
     list(APPEND SMDATA_ARCH_SOUND_SRC
@@ -130,7 +137,7 @@ elseif(APPLE)
               "arch/MemoryCard/MemoryCardDriverThreaded_MacOSX.cpp")
   list(APPEND SMDATA_ARCH_MEMORY_HPP
               "arch/MemoryCard/MemoryCardDriverThreaded_MacOSX.h")
-elseif(LINUX)
+elseif(LINUX AND NOT SWITCH_LIBNX)
   list(APPEND SMDATA_ARCH_MEMORY_SRC
               "arch/MemoryCard/MemoryCardDriverThreaded_Linux.cpp")
   list(APPEND SMDATA_ARCH_MEMORY_HPP
@@ -169,7 +176,7 @@ else(UNIX)
     list(APPEND SMDATA_ARCH_LOWLEVEL_HPP
                 "arch/LowLevelWindow/LowLevelWindow_X11.h")
   endif()
-endif(WIN32)
+endif()
 
 source_group("Arch Specific\\\\Low Level Window"
              FILES
@@ -233,7 +240,7 @@ if(NOT APPLE)
                   "arch/Lights/LightsDriver_Win32Minimaid.h")
     endif()
   else() # Unix/Linux TODO: Linux HAVE_PARALLEL_PORT
-    if(LINUX)
+    if(LINUX AND NOT SWITCH_LIBNX)
       list(APPEND SMDATA_ARCH_LIGHTS_SRC
                   "arch/Lights/LightsDriver_Linux_PIUIO.cpp"
                   "arch/Lights/LightsDriver_Linux_PIUIO_Leds.cpp"
@@ -304,7 +311,7 @@ elseif(APPLE)
   list(APPEND SMDATA_ARCH_INPUT_HPP
               "arch/InputHandler/InputHandler_MacOSX_HID.h")
 else() # Unix/Linux
-  if(LINUX)
+  if(LINUX AND NOT SWITCH_LIBNX)
     list(APPEND SMDATA_ARCH_INPUT_SRC
                 "arch/InputHandler/LinuxInputManager.cpp"
                 "arch/InputHandler/InputHandler_Linux_Joystick.cpp"

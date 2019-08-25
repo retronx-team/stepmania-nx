@@ -46,9 +46,11 @@ static bool g_bUsingNPTL = false;
 RString ThreadsVersion()
 {
 	char buf[1024] = "(error)";
+#if defined(__SWITCH__)
 	int ret = confstr( _CS_GNU_LIBPTHREAD_VERSION, buf, sizeof(buf) );
 	if( ret == -1 )
 		return "(unknown)";
+#endif
 
 	return buf;
 }
@@ -57,11 +59,15 @@ RString ThreadsVersion()
 bool UsingNPTL()
 {
 	char buf[1024] = "";
+#if defined(__SWITCH__)
+	return false;
+#else
 	int ret = confstr( _CS_GNU_LIBPTHREAD_VERSION, buf, sizeof(buf) );
 	if( ret == -1 )
 		return false;
 
 	return !strncmp( buf, "NPTL", 4 );
+#endif
 }
 /* Crash-conditions-safe: */
 void InitializePidThreadHelpers()
@@ -268,12 +274,20 @@ uint64_t GetCurrentThreadId()
 
 int SuspendThread( uint64_t id )
 {
+#if defined(__SWITCH__)
+	return -1;
+#else
 	return pthread_kill( pthread_t(id), SIGSTOP );
+#endif
 }
 
 int ResumeThread( uint64_t id )
 {
+#if defined(__SWITCH__)
+	return -1;
+#else
 	return pthread_kill( pthread_t(id), SIGCONT );
+#endif
 }
 #endif
 

@@ -20,7 +20,7 @@ set(SM_ROOT_DIR "${CMAKE_CURRENT_LIST_DIR}")
 set(SM_EXE_NAME "StepMania")
 
 # Some OS specific helpers.
-if(CMAKE_SYSTEM_NAME MATCHES "Linux")
+if(CMAKE_SYSTEM_NAME MATCHES "Linux" OR SWITCH_LIBNX)
   set(LINUX TRUE)
   set(SM_CPP_STANDARD "gnu++11")
 else()
@@ -367,6 +367,7 @@ elseif(LINUX)
   find_package("ZLIB" REQUIRED)
   find_package("JPEG" REQUIRED)
 
+if(NOT SWITCH_LIBNX)
   find_package(Dl)
 
   set(HAS_XRANDR FALSE)
@@ -416,6 +417,7 @@ elseif(LINUX)
         "-- At least one sound library was found. Do not worry if any were not found at this stage."
       )
   endif()
+endif()
 
   if(WITH_FFMPEG AND NOT YASM_FOUND AND NOT NASM_FOUND)
     message(
@@ -450,8 +452,10 @@ elseif(LINUX)
     set(HAS_FFMPEG FALSE)
   endif()
 
+if(NOT SWITCH_LIBNX)
   find_package(OpenGL REQUIRED)
   find_package(GLEW REQUIRED)
+endif()
 endif(WIN32) # LINUX, APPLE
 
 configure_file("${SM_SRC_DIR}/config.in.hpp"

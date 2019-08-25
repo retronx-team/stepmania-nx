@@ -235,7 +235,7 @@ RageFileObjDirect::RageFileObjDirect( const RString &sPath, int iFD, int iMode )
 
 namespace
 {
-#if !defined(WIN32)
+#if !defined(WIN32) && !defined(__SWITCH__)
 	bool FlushDir( RString sPath, RString &sError )
 	{
 		/* Wait for the directory to be flushed. */
@@ -342,6 +342,10 @@ RageFileObjDirect::~RageFileObjDirect()
 		SetError( error );
 		break;
 #else
+#if defined(__SWITCH__)
+		unlink(sNewPath.c_str());
+#endif
+
 		if( rename( sOldPath, sNewPath ) == -1 )
 		{
 			WARN( ssprintf("Error renaming \"%s\" to \"%s\": %s", 

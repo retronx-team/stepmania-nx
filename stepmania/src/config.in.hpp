@@ -190,7 +190,7 @@ typedef long ssize_t;
 #endif
 
 /* Ensure we have a function that can create a directory on the file system. */
-#if defined(HAVE__MKDIR)
+#if defined(HAVE__MKDIR) && !defined(__SWITCH__)
 #include <direct.h>
 #define mkdir(path, mode) _mkdir(path)
 #else

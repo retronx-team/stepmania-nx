@@ -8,12 +8,14 @@
 
 #include "arch/ArchHooks/ArchHooks.h"
 
-#include "SDL.h"
-#include "SDL_joystick.h"
+#include <SDL.h>
+#include <SDL_joystick.h>
 
 bool has_sdl_input = false;
 
 REGISTER_INPUT_HANDLER_CLASS2(SDL, SDL);
+
+//#define SCALE(x, l1, h1, l2, h2)	(((x) - (l1)) * ((h2) - (l2)) / ((h1) - (l1)) + (l2))
 
 InputHandler_SDL::InputHandler_SDL()
 {
@@ -65,6 +67,7 @@ bool InputHandler_SDL::RegisterJoystick(int i) {
 		SDL_JoystickNumButtons(joystick) );
 
 	m_joysticks.push_back(joystick);
+	return true;
 }
 
 static DeviceButton SDLKeycodeToDeviceButton(SDL_Keycode key)
@@ -280,7 +283,7 @@ void InputHandler_SDL::Update()
 			InputDevice device = SDLJoystickIDToInputDevice(m_joysticks, event.jbutton.which);
 			DeviceButton neg = enum_add2(JOY_LEFT, 2*event.jaxis.axis);
 			DeviceButton pos = enum_add2(JOY_RIGHT, 2*event.jaxis.axis);
-			auto l = Rage::scale((int)event.jaxis.value, 0, 32768, 0, 1);
+			auto l = SCALE((int)event.jaxis.value, 0, 32768, 0, 1);
 			ButtonPressed(DeviceInput(device, neg, std::max(-l, 0)));
 			ButtonPressed(DeviceInput(device, pos, std::max(+l, 0)));
 			continue;
