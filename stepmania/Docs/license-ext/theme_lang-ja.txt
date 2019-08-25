@@ -1,0 +1,51 @@
+Stepmania 5系本体用　日本語化セット16(2015/04/11)
+作者：ナイラー
+-----------
+Stepmania5系本体では従来の日本語テーマ、および日本語ランゲージファイルが使用できなくなっています。
+個人的に日本語が見えているほうが安心できるので、とりあえずファイルを製作してみました。
+-----------
+以下のファイルが同梱されています。
+・fallback20150411.ini(_fallbackテーマ用日本語ランゲージファイルVer 2)
+・default20141002.ini(デフォルトテーマ用日本語ランゲージファイルVer 2)
+-----------
+今回の更新点
+・5.0.7での追加分に対応。
+・Editのバックグラウンド関連はもう少しお待ちください。
+・その他、一部のおかしかった部分を修正したり。
+
+-----------
+それぞれのファイルは、次の場所に配置してください。
+・fallbackja.iniは、「Theme」フォルダの「_fallback」フォルダ内の「Language」フォルダに、
+　「ja.ini」にリネームして配置。
+・themeja.iniは、「Theme」フォルダの「Default」フォルダ内の「Language」フォルダに
+　「ja.ini」にリネームして配置。
+　　☆(重要)デフォルトテーマ以外では日本語化しきれなくなる部分があります。
+　　　　　　そのことの報告は控えていただければ。
+これでオプションから日本語が設定できるようになります。
+操作の手順は、標準テーマなら
+「起動→Option→More Option→Appearance Options→Languageで日本語を選択」です。
+----------
+誤訳、および訳さないほうがいい部分もありますが、そこは勘弁してください。
+----------
+日本語化ファイル2つ(fallbackja.iniとthemeja.ini)は特に使用制限を設けていません。
+改変と再配布(テーマファイルやStepmania、および互換プログラムへの同梱含む)を自由に行うことができます。
+また少しでも改変した場合は改変者がその改変ファイルの改変・再配布条件を自由に設定することができます。
+純粋な再配布の場合、改変・再配布条件は元のファイル通り「改変・再配布は自由」としてください。
+
+----------
+For international Stepmania distributors and players:
+
+My Japanese language pack (means "fallbackja.ini" and "themeja.ini") has no interception for your use.
+You can redistribute these or remake from these two file(Included in Themes or Stepmania(s) is also OK).
+If you made a bit change at least,you can redistribute them fixed files on your own license(s).
+If not,you must keep their original license(redistributable,remakable) when you redistribute.
+
+Sorry for my POOR English X(
+
+----------
+何かありましたらhttp://alumivision.blog.shinobi.jp/
+またはniler_jpn@live.jpまで。
+
+You can contact me on http://alumivision.blog.shinobi.jp/,
+or my mail-address:niler_jpn@live.jp.
+

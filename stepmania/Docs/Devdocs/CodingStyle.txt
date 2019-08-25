@@ -1,0 +1,95 @@
+StepMania 5 Code Style Guidelines
+--------------------------------------------------------------------------------
+The StepMania 5 code style guidelines are as follows:
+
+1) Follow the current coding conventions set forth in the source code.
+This means use tabs. AJ prefers tabs have a width of 4. Visual Studio and web
+browsers assume tabs to be 8 by default.
+Use of the tab character means you can define however wide you want it to be
+within your editor's settings.
+
+Use of the space character is allowed for complex alignment. There are many
+examples of this in the code.
+
+If it can be done in one line (and it's in a header), do so:
+int xTwenty(int factor){ return factor*20; }
+
+Otherwise, follow what's in the code, namely...
+
+for single line ifs :
+if( someCondition )
+	dosomethingelse();
+
+though lately, there has been a shift to
+if( someCondition )
+{
+	dosomethingelse();
+}
+for clarity and ease of expansion.
+
+for multi-lines:
+if( anotherCondition )
+{
+	omg();
+	lotsofstuff();
+}
+
+Variable naming conventions are largely Hungarian, with m_ being used for
+class member variables. Some newer code is forgoing the use of Hungarian
+prefixes.
+
+2) Remove any unnecessary whitespace. "Unnecessary" whitespace includes tabs
+at the end of } characters, tabs that lead nowhere, like this one:
+	
+and keep in mind that this can be done with spaces too:
+    
+so watch yourself. Remove 'em all.
+
+With that in mind, it's best to use a space around () for clarity, as in the
+examples in #1 above.
+
+3) When making LOG->Trace()s in code, it's best to include the name of the Class
+and Function in [], like so:
+LOG->Info( "[NetworkSyncManager::Listen] Initializing socket..." );
+You may not always need to do this, but it's a good idea if you're logging a
+function with the same name in multiple classes.
+
+4) Comment style. (This is a preferred suggestion. You may use whatever style
+you like, but it is recommended to follow this style when submitting code for
+inclusion.)
+// is preferred for one-liners
+// and also blocks of text where the comment isn't too long.
+
+/* when making a new line in a long form comment, it's preferred to start
+ * from the top line and also try to put the end mark as close to the end of
+ * the text as possible. */
+
+/*
+ * doing this (first line blank) is discouraged, but is allowed in certain places.
+ * Copyright notices use this style and should remain doing so; don't clean it up
+ * in that instance. All new copyright notices should follow this style as well,
+ * for consistency's sake.
+ */
+
+/* use of long comments for one line is discouraged (with exceptions) */
+// usually, it will will get cleaned up into this style, but there are exceptions:
+
+// exception #1: function arguments
+void SomeFunction(size_t /*ACTUAL DATA TYPE*/)
+// where you need to have it be /* */ or else it'll mess up.
+
+// exception #2: #defines
+#define /* you must use long form in defines, */ \
+ // otherwise it won't parse the newline correctly (this will cause an error) \
+
+// (loose) exception #3: .h files
+/* ScreenTypicalExample - this always shows up like this. It usually is always one line, even when it extends past column 80. This is acceptible; Most people don't write novels here like I just did. */
+
+// on comment length:
+/* typically total 80 characters is the preferred width per line, like this one.
+ * Sometimes, you can get away with sentences where a word or phrase hangs over the edge,
+ * especially if you can guess the context without needing to scroll.
+ * Pre-existing comments are usually trimmed to meet the 80-column width if they
+ * go way overboard. */
+
+5) There are no other rules (yet).

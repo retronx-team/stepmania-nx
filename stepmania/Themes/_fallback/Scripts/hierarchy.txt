@@ -1,0 +1,39 @@
+StepMania 5 fallback Scripts Directory: Introduction 
+--------------------------------------------------------------------------------
+Hello, and welcome to the StepMania 5 fallback Scripts directory. You'll notice
+that all of our Lua scripts have numbers at the beginning of them. This is to
+control the order of execution.
+
+In SM5, scripts in subdirectories of Scripts/ (e.g. Scripts/01/somescript.lua)
+are loaded before scripts in the root of Scripts/ (e.g. Scripts/01 base.lua).
+This is important to know when making a theme. It's also important to know that
+previous StepMania versions will not read scripts in subdirectories.
+
+There are five rings of script execution:
+
+00 - Initialization
+The only file in this ring is "00 init.lua", which sets up various aliases and
+functions, including StepMania's uppercase/lowercase functions.
+________________________________________________________________________________
+01 - Base
+There are three base scripts:
+
+"01 base.lua" is taken from StepMania 4's default theme and sets up very
+important function overrides and the "Var" alias (for lua.GetThreadVariable).
+
+"01 alias.lua" contains various aliases for commands.
+
+"01 IniFile.lua" is an .ini file parser, which is used in vyhd's ThemePrefs.
+________________________________________________________________________________
+02 - Defaults
+The "02" scripts are pretty much the same scripts you'd find in StepMania 4's
+default theme, with some additions.
+________________________________________________________________________________
+03 - Extensions
+Scripts that extend normal (StepMania 4 default theme) functionality belong
+in the fourth ring. A number of these scripts come from KKI Labs (EnvUtils2,
+CustomSpeedMods, UserPreferences2), while others are from other themes (HSV)
+or written for sm-ssc (DateTime, Gameplay).
+________________________________________________________________________________
+04 - ?
+Scoring is the only file in the fifth ring.

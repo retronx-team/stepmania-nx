@@ -1,0 +1,2863 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet type="text/xsl" href="Lua.xsl"?>
+
+<Lua xmlns='http://www.stepmania.com' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.stepmania.com Lua.xsd'>
+	<GlobalFunctions>
+		<Function name='AllowOptionsMenu'/>
+		<Function name='Alpha'/>
+		<Function name='ArbitrarySpeedMods'/>
+		<Function name='AreStagePlayerModsForced'/>
+		<Function name='AreStageSongModsForced'/>
+		<Function name='ArgsIfPlayerJoinedOrNil'/>
+		<Function name='Basename'/>
+		<Function name='BoostColor'/>
+		<Function name='Brightness'/>
+		<Function name='Center1Player'/>
+		<Function name='CloseConnection'/>
+		<Function name='ColorDarkTone'/>
+		<Function name='ColorLightTone'/>
+		<Function name='ColorMidTone'/>
+		<Function name='ColorToHSV'/>
+		<Function name='ColorToHex'/>
+		<Function name='ComboContinue'/>
+		<Function name='ComboMaintain'/>
+		<Function name='ComboPerRow'/>
+		<Function name='ComboTransformCommand'/>
+		<Function name='ComboUnderField'/>
+		<Function name='ConnectToServer'/>
+		<Function name='CourseDifficultyToLocalizedString'/>
+		<Function name='CourseTypeToLocalizedString'/>
+		<Function name='CustomDifficultyToColor'/>
+		<Function name='CustomDifficultyToDarkColor'/>
+		<Function name='CustomDifficultyToLightColor'/>
+		<Function name='CustomDifficultyToLocalizedString'/>
+		<Function name='DayOfMonth'/>
+		<Function name='DayOfYear'/>
+		<Function name='DeepCopy'/>
+		<Function name='EvalUsesCheckpointsWithJudgments'/>
+		<Function name='FailCombo'/>
+		<Function name='FindSelection'/>
+		<Function name='FindValue'/>
+		<Function name='FormatNumSongsPlayed'/>
+		<Function name='FormatNumberAndSuffix'/>
+		<Function name='FormatPercentScore'/>
+		<Function name='GameCompatibleModes'/>
+		<Function name='GamePrefDefaultFail'/>
+		<Function name='GetCodeForGame'/>
+		<Function name='GetCoursesToShowRanking'/>
+		<Function name='GetCustomDifficulty'/>
+		<Function name='GetDefaultOptionLines'/>
+		<Function name='GetEditModeSubScreens'/>
+		<Function name='GetExtraColorThreshold'/>
+		<Function name='GetGamePref'/>
+		<Function name='GetGamePrefB'/>
+		<Function name='GetGamePrefC'/>
+		<Function name='GetGamePrefN'/>
+		<Function name='GetGradeFromPercent'/>
+		<Function name='GetLifeDifficulty'/>
+		<Function name='GetPlayerOrMachineProfile'/>
+		<Function name='GetProTiming'/>
+		<Function name='GetRandomSongBackground'/>
+		<Function name='GetReal'/>
+		<Function name='GetRealInverse'/>
+		<Function name='GetScreenAspectRatio'/>
+		<Function name='GetServerName'/>
+		<Function name='GetSongBackground'/>
+		<Function name='GetTapPosition'/>
+		<Function name='GetThemeAspectRatio'/>
+		<Function name='GetThemePref'/>
+		<Function name='GetTimeSinceStart'/>
+		<Function name='GetTimingDifficulty'/>
+		<Function name='GetTitleSafeH'/>
+		<Function name='GetTitleSafeV'/>
+		<Function name='GetUnlockEntryIndexToCelebrate'/>
+		<Function name='GetUserPref'/>
+		<Function name='GetUserPrefB'/>
+		<Function name='GetUserPrefC'/>
+		<Function name='GetUserPrefN'/>
+		<Function name='HSV'/>
+		<Function name='HSVA'/>
+		<Function name='HSVToColor'/>
+		<Function name='HSVToHex'/>
+		<Function name='HasAlpha'/>
+		<Function name='HitCombo'/>
+		<Function name='HoldTiming'/>
+		<Function name='Hour'/>
+		<Function name='Hue'/>
+		<Function name='InitGamePrefs'/>
+		<Function name='InitUserPrefs'/>
+		<Function name='IsArcade'/>
+		<Function name='IsFreePlay'/>
+		<Function name='IsGame'/>
+		<Function name='IsHome'/>
+		<Function name='IsNetConnected'/>
+		<Function name='IsNetSMOnline'/>
+		<Function name='IsRoutine'/>
+		<Function name='IsSMOnlineLoggedIn'/>
+		<Function name='IsUsingWideScreen'/>
+		<Function name='JudgmentLineToColor'/>
+		<Function name='JudgmentLineToLocalizedString'/>
+		<Function name='JudgmentLineToStrokeColor'/>
+		<Function name='JudgmentTransformCommand'/>
+		<Function name='JudgmentTransformSharedCommand'/>
+		<Function name='LoadActor'/>
+		<Function name='LoadActorFunc'/>
+		<Function name='LoadActorWithParams'/>
+		<Function name='LoadFallbackB'/>
+		<Function name='LoadFont'/>
+		<Function name='LoadProfileCustom'/>
+		<Function name='LoadSongBackground'/>
+		<Function name='LocalizeOptionItem'/>
+		<Function name='Minute'/>
+		<Function name='MissCombo'/>
+		<Function name='MonthOfYear'/>
+		<Function name='MonthToLocalizedString'/>
+		<Function name='MonthToString'/>
+		<Function name='MultiPlayerToLocalizedString'/>
+		<Function name='MultiPlayerToString'/>
+		<Function name='OldStyleStringToDifficulty'/>
+		<Function name='OptionRowProTiming'/>
+		<Function name='OptionRowScreenFilter'/>
+		<Function name='OptionsRandomJukebox'/>
+		<Function name='OptionsRowTest'/>
+		<Function name='OptionsWeight'/>
+		<Function name='PeakComboAwardToLocalizedString'/>
+		<Function name='PlayModeToLocalizedString'/>
+		<Function name='PlayerColor'/>
+		<Function name='PlayerNumberToLocalizedString'/>
+		<Function name='PlayerNumberToString'/>
+		<Function name='PlayerScoreColor'/>
+		<Function name='PositionPerPlayer'/>
+		<Function name='PrettyPercent'/>
+		<Function name='PrintTable'/>
+		<Function name='ProductFamily'/>
+		<Function name='ProductID'/>
+		<Function name='ProductVersion'/>
+		<Function name='RadarCategoryToLocalizedString'/>
+		<Function name='ReadGamePrefFromFile'/>
+		<Function name='ReadPrefFromFile'/>
+		<Function name='ReportStyle'/>
+		<Function name='ResetDefaultFail'/>
+		<Function name='ResolveRelativePath'/>
+		<Function name='RoutineSkinP1'/>
+		<Function name='RoutineSkinP2'/>
+		<Function name='SMOnlineScreen'/>
+		<Function name='Saturation'/>
+		<Function name='SaveProfileCustom'/>
+		<Function name='SaveScreenshot'/>
+		<Function name='ScoreKeeperClass'/>
+		<Function name='ScreenMetric'/>
+		<Function name='ScreenString'/>
+		<Function name='Second'/>
+		<Function name='SecondsToHHMMSS'/>
+		<Function name='SecondsToMMSS'/>
+		<Function name='SecondsToMMSSMsMs'/>
+		<Function name='SecondsToMMSSMsMsMs'/>
+		<Function name='SecondsToMSS'/>
+		<Function name='SecondsToMSSMsMs'/>
+		<Function name='SelectMusicOrCourse'/>
+		<Function name='SelectProfileKeys'/>
+		<Function name='Serialize'/>
+		<Function name='SetFail'/>
+		<Function name='SetGamePref'/>
+		<Function name='SetThemePref'/>
+		<Function name='SetUserPref'/>
+		<Function name='ShowHoldJudgments'/>
+		<Function name='ShowStandardDecoration'/>
+		<Function name='SongMeterDisplayCommand'/>
+		<Function name='SongMeterDisplayX'/>
+		<Function name='SongMeterDisplayY'/>
+		<Function name='SongPrefFail'/>
+		<Function name='SortOrderToLocalizedString'/>
+		<Function name='SpeedModIncMultiple'/>
+		<Function name='SpeedModIncSize'/>
+		<Function name='SpeedMods'/>
+		<Function name='StageAwardToLocalizedString'/>
+		<Function name='StageToColor'/>
+		<Function name='StageToLocalizedString'/>
+		<Function name='StageToStrokeColor'/>
+		<Function name='StandardDecorationFromFile'/>
+		<Function name='StandardDecorationFromFileOptional'/>
+		<Function name='StandardDecorationFromTable'/>
+		<Function name='StepsOrTrailToColor'/>
+		<Function name='StepsOrTrailToCustomDifficulty'/>
+		<Function name='StepsToCustomDifficulty'/>
+		<Function name='StringToBlend'/>
+		<Function name='TableStringLookup'/>
+		<Function name='TapNoteScoreToLocalizedString'/>
+		<Function name='TextBannerAfterSet'/>
+		<Function name='ThemePrefRow'/>
+		<Function name='ToEnumShortString'/>
+		<Function name='Trace'/>
+		<Function name='TrailToCustomDifficulty'/>
+		<Function name='URLEncode'/>
+		<Function name='UnlockRewardTypeToLocalizedString'/>
+		<Function name='update_centering'/>
+		<Function name='Var'/>
+		<Function name='VersionDate'/>
+		<Function name='VersionTime'/>
+		<Function name='Warn'/>
+		<Function name='Weekday'/>
+		<Function name='WideScale'/>
+		<Function name='WrapInActorFrame'/>
+		<Function name='WriteGamePrefToFile'/>
+		<Function name='WritePrefToFile'/>
+		<Function name='Year'/>
+		<Function name='approach'/>
+		<Function name='assert'/>
+		<Function name='clamp'/>
+		<Function name='class'/>
+		<Function name='collectgarbage'/>
+		<Function name='color'/>
+		<Function name='commify'/>
+		<Function name='convert_xml_bgs'/>
+		<Function name='dofile'/>
+		<Function name='error'/>
+		<Function name='fapproach'/>
+		<Function name='find_missing_strings_in_theme_translations'/>
+		<Function name='foreach_ordered'/>
+		<Function name='gcinfo'/>
+		<Function name='getenv'/>
+		<Function name='getfenv'/>
+		<Function name='getmetatable'/>
+		<Function name='get_music_file_length'/>
+		<Function name='get_sound_driver_list'/>
+		<Function name='ipairs'/>
+		<Function name='ivalues'/>
+		<Function name='join'/>
+		<Function name='lerp'/>
+		<Function name='lerp_color'/>
+		<Function name='load'/>
+		<Function name='loadfile'/>
+		<Function name='loadstring'/>
+		<Function name='mbstrlen'/>
+		<Function name='module'/>
+		<Function name='multiapproach'/>
+		<Function name='newproxy'/>
+		<Function name='next'/>
+		<Function name='pairs'/>
+		<Function name='pcall'/>
+		<Function name='pname'/>
+		<Function name='print'/>
+		<Function name='rawequal'/>
+		<Function name='rawget'/>
+		<Function name='rawset'/>
+		<Function name='rec_print_children'/>
+		<Function name='rec_print_table'/>
+		<Function name='require'/>
+		<Function name='round'/>
+		<Function name='scale'/>
+		<Function name='select'/>
+		<Function name='setenv'/>
+		<Function name='setfenv'/>
+		<Function name='setmetatable'/>
+		<Function name='split'/>
+		<Function name='tableshuffle'/>
+		<Function name='tableslice'/>
+		<Function name='tobool'/>
+		<Function name='tonumber'/>
+		<Function name='tostring'/>
+		<Function name='type'/>
+		<Function name='unpack'/>
+		<Function name='wrap'/>
+		<Function name='xpcall'/>
+	</GlobalFunctions>
+	<Classes>
+		<Class name='Actor'>
+			<Function name='AddWrapperState'/>
+			<Function name='Center'/>
+			<Function name='CenterX'/>
+			<Function name='CenterY'/>
+			<Function name='Draw'/>
+			<Function name='FullScreen'/>
+			<Function name='GetBaseZoomX'/>
+			<Function name='GetBaseZoomY'/>
+			<Function name='GetBaseZoomZ'/>
+			<Function name='GetCommand'/>
+			<Function name='GetDestX'/>
+			<Function name='GetDestY'/>
+			<Function name='GetDestZ'/>
+			<Function name='GetDiffuse'/>
+			<Function name='GetDiffuseAlpha'/>
+			<Function name='GetEffectDelta'/>
+			<Function name='GetFakeParent'/>
+			<Function name='GetGlow'/>
+			<Function name='GetHAlign'/>
+			<Function name='GetHeight'/>
+			<Function name='GetName'/>
+			<Function name='GetNumStates'/>
+			<Function name='GetNumWrapperStates'/>
+			<Function name='GetParent'/>
+			<Function name='GetRotationX'/>
+			<Function name='GetRotationY'/>
+			<Function name='GetRotationZ'/>
+			<Function name='GetSecsIntoEffect'/>
+			<Function name='GetTweenTimeLeft'/>
+			<Function name='GetVAlign'/>
+			<Function name='GetVisible'/>
+			<Function name='GetWidth'/>
+			<Function name='GetWrapperState'/>
+			<Function name='GetX'/>
+			<Function name='GetY'/>
+			<Function name='GetZ'/>
+			<Function name='GetZoom'/>
+			<Function name='GetZoomX'/>
+			<Function name='GetZoomY'/>
+			<Function name='GetZoomZ'/>
+			<Function name='GetZoomedHeight'/>
+			<Function name='GetZoomedWidth'/>
+			<Function name='LyricCommand'/>
+			<Function name='MaskDest'/>
+			<Function name='MaskSource'/>
+			<Function name='Real'/>
+			<Function name='RealInverse'/>
+			<Function name='RemoveWrapperState'/>
+			<Function name='RunCommandsRecursively'/>
+			<Function name='SetFakeParent'/>
+			<Function name='SetHeight'/>
+			<Function name='SetSize'/>
+			<Function name='SetTextureFiltering'/>
+			<Function name='SetWidth'/>
+			<Function name='accelerate'/>
+			<Function name='addcommand'/>
+			<Function name='addrotationx'/>
+			<Function name='addrotationy'/>
+			<Function name='addrotationz'/>
+			<Function name='addx'/>
+			<Function name='addy'/>
+			<Function name='addz'/>
+			<Function name='align'/>
+			<Function name='animate'/>
+			<Function name='aux'/>
+			<Function name='backfacecull'/>
+			<Function name='basealpha'/>
+			<Function name='baserotationx'/>
+			<Function name='baserotationy'/>
+			<Function name='baserotationz'/>
+			<Function name='basezoom'/>
+			<Function name='basezoomx'/>
+			<Function name='basezoomy'/>
+			<Function name='basezoomz'/>
+			<Function name='bezier'/>
+			<Function name='blend'/>
+			<Function name='bob'/>
+			<Function name='bounce'/>
+			<Function name='bouncebegin'/>
+			<Function name='bounceend'/>
+			<Function name='clearzbuffer'/>
+			<Function name='compound'/>
+			<Function name='cropbottom'/>
+			<Function name='cropleft'/>
+			<Function name='cropright'/>
+			<Function name='croptop'/>
+			<Function name='cullmode'/>
+			<Function name='decelerate'/>
+			<Function name='diffuse'/>
+			<Function name='diffusealpha'/>
+			<Function name='diffuseblink'/>
+			<Function name='diffusebottomedge'/>
+			<Function name='diffusecolor'/>
+			<Function name='diffuseleftedge'/>
+			<Function name='diffuselowerleft'/>
+			<Function name='diffuselowerright'/>
+			<Function name='diffuseramp'/>
+			<Function name='diffuserightedge'/>
+			<Function name='diffuseshift'/>
+			<Function name='diffusetopedge'/>
+			<Function name='diffuseupperleft'/>
+			<Function name='diffuseupperright'/>
+			<Function name='draworder'/>
+			<Function name='drop'/>
+			<Function name='ease'/>
+			<Function name='effectclock'/>
+			<Function name='effectcolor1'/>
+			<Function name='effectcolor2'/>
+			<Function name='effectmagnitude'/>
+			<Function name='effectoffset'/>
+			<Function name='effectperiod'/>
+			<Function name='effecttiming'/>
+			<Function name='effect_hold_at_full'/>
+			<Function name='fadebottom'/>
+			<Function name='fadeleft'/>
+			<Function name='faderight'/>
+			<Function name='fadetop'/>
+			<Function name='finishtweening'/>
+			<Function name='getaux'/>
+			<Function name='geteffectmagnitude'/>
+			<Function name='getrotation'/>
+			<Function name='get_tween_uses_effect_delta'/>
+			<Function name='glow'/>
+			<Function name='glowblink'/>
+			<Function name='glowramp'/>
+			<Function name='glowshift'/>
+			<Function name='halign'/>
+			<Function name='heading'/>
+			<Function name='heartbeat'/>
+			<Function name='hibernate'/>
+			<Function name='hidden'/>
+			<Function name='hide_if'/>
+			<Function name='horizalign'/>
+			<Function name='hurrytweening'/>
+			<Function name='linear'/>
+			<Function name='name'/>
+			<Function name='pause'/>
+			<Function name='pitch'/>
+			<Function name='play'/>
+			<Function name='playcommand'/>
+			<Function name='player'/>
+			<Function name='pulse'/>
+			<Function name='queuecommand'/>
+			<Function name='queuemessage'/>
+			<Function name='rainbow'/>
+			<Function name='roll'/>
+			<Function name='rotationx'/>
+			<Function name='rotationy'/>
+			<Function name='rotationz'/>
+			<Function name='scale_or_crop_background'/>
+			<Function name='scaletocover'/>
+			<Function name='scaletofit'/>
+			<Function name='setsize'/>
+			<Function name='setstate'/>
+			<Function name='set_tween_uses_effect_delta'/>
+			<Function name='shadowcolor'/>
+			<Function name='shadowlength'/>
+			<Function name='shadowlengthx'/>
+			<Function name='shadowlengthy'/>
+			<Function name='skewx'/>
+			<Function name='skewy'/>
+			<Function name='sleep'/>
+			<Function name='smooth'/>
+			<Function name='spin'/>
+			<Function name='spring'/>
+			<Function name='stopeffect'/>
+			<Function name='stoptweening'/>
+			<Function name='stretchto'/>
+			<Function name='texturetranslate'/>
+			<Function name='texturewrapping'/>
+			<Function name='thump'/>
+			<Function name='tween'/>
+			<Function name='valign'/>
+			<Function name='vertalign'/>
+			<Function name='vibrate'/>
+			<Function name='visible'/>
+			<Function name='wag'/>
+			<Function name='x'/>
+			<Function name='xy'/>
+			<Function name='y'/>
+			<Function name='z'/>
+			<Function name='zbias'/>
+			<Function name='zbuffer'/>
+			<Function name='zoom'/>
+			<Function name='zoomto'/>
+			<Function name='zoomtoheight'/>
+			<Function name='zoomtowidth'/>
+			<Function name='zoomx'/>
+			<Function name='zoomy'/>
+			<Function name='zoomz'/>
+			<Function name='ztest'/>
+			<Function name='ztestmode'/>
+			<Function name='zwrite'/>
+		</Class>
+		<Class base='Actor' name='ActorFrame'>
+			<Function name='AddChildFromPath'/>
+			<Function name='GetChild'/>
+			<Function name='GetChildren'/>
+			<Function name='GetDrawFunction'/>
+			<Function name='GetNumChildren'/>
+			<Function name='GetUpdateRate'/>
+			<Function name='RemoveAllChildren'/>
+			<Function name='RemoveChild'/>
+			<Function name='RunCommandsOnChildren'/>
+			<Function name='SetAmbientLightColor'/>
+			<Function name='SetDiffuseLightColor'/>
+			<Function name='SetDrawByZPosition'/>
+			<Function name='SetDrawFunction'/>
+			<Function name='SetFOV'/>
+			<Function name='SetLightDirection'/>
+			<Function name='SetSpecularLightColor'/>
+			<Function name='SetUpdateFunction'/>
+			<Function name='SetUpdateRate'/>
+			<Function name='SortByDrawOrder'/>
+			<Function name='fov'/>
+			<Function name='playcommandonchildren'/>
+			<Function name='playcommandonleaves'/>
+			<Function name='propagate'/>
+			<Function name='propagatecommand'/>
+			<Function name='runcommandsonleaves'/>
+			<Function name='vanishpoint'/>
+		</Class>
+		<Class base='ActorFrame' name='ActorFrameTexture'>
+			<Function name='Create'/>
+			<Function name='EnableAlphaBuffer'/>
+			<Function name='EnableDepthBuffer'/>
+			<Function name='EnableFloat'/>
+			<Function name='EnablePreserveTexture'/>
+			<Function name='GetTexture'/>
+			<Function name='SetTextureName'/>
+		</Class>
+		<Class base='Actor' name='ActorMultiTexture'>
+			<Function name='AddTexture'/>
+			<Function name='ClearTextures'/>
+			<Function name='SetEffectMode'/>
+			<Function name='SetSizeFromTexture'/>
+			<Function name='SetTextureCoords'/>
+			<Function name='SetTextureMode'/>
+		</Class>
+		<Class base='Actor' name='ActorMultiVertex'>
+			<Function name='AddState'/>
+			<Function name='AddQuadState'/>
+			<Function name='ForceStateUpdate'/>
+			<Function name='GetCurrDrawMode'/>
+			<Function name='GetCurrFirstToDraw'/>
+			<Function name='GetCurrNumToDraw'/>
+			<Function name='GetDecodeMovie'/>
+			<Function name='GetDestDrawMode'/>
+			<Function name='GetDestFirstToDraw'/>
+			<Function name='GetDestNumToDraw'/>
+			<Function name='GetNumStates'/>
+			<Function name='GetNumQuadStates'/>
+			<Function name='GetNumVertices'/>
+			<Function name='GetQuadState'/>
+			<Function name='GetSpline'/>
+			<Function name='GetState'/>
+			<Function name='GetStateData'/>
+			<Function name='GetTexture'/>
+			<Function name='GetUseAnimationState'/>
+			<Function name='LoadTexture'/>
+			<Function name='RemoveState'/>
+			<Function name='RemoveQuadState'/>
+			<Function name='SetAllStateDelays'/>
+			<Function name='SetDecodeMovie'/>
+			<Function name='SetDrawState'/>
+			<Function name='SetEffectMode'/>
+			<Function name='SetLineWidth'/>
+			<Function name='SetNumVertices'/>
+			<Function name='SetQuadState'/>
+			<Function name='SetSecondsIntoAnimation'/>
+			<Function name='SetState'/>
+			<Function name='SetStateData'/>
+			<Function name='SetStateProperties'/>
+			<Function name='SetTexture'/>
+			<Function name='SetTextureMode'/>
+			<Function name='SetUseAnimationState'/>
+			<Function name='SetVertex'/>
+			<Function name='SetVertices'/>
+			<Function name='SetVertsFromSplines'/>
+		</Class>
+		<Class base='Actor' name='ActorProxy'>
+			<Function name='GetTarget'/>
+			<Function name='SetTarget'/>
+		</Class>
+		<Class base='ActorFrame' name='ActorScroller'>
+			<Function name='GetCurrentItem'/>
+			<Function name='GetDestinationItem'/>
+			<Function name='GetFullScrollLengthSeconds'/>
+			<Function name='GetNumItems'/>
+			<Function name='GetSecondsPauseBetweenItems'/>
+			<Function name='GetSecondsToDestination'/>
+			<Function name='PositionItems'/>
+			<Function name='ScrollThroughAllItems'/>
+			<Function name='ScrollWithPadding'/>
+			<Function name='SetCurrentAndDestinationItem'/>
+			<Function name='SetDestinationItem'/>
+			<Function name='SetFastCatchup'/>
+			<Function name='SetLoop'/>
+			<Function name='SetMask'/>
+			<Function name='SetNumItemsToDraw'/>
+			<Function name='SetNumSubdivisions'/>
+			<Function name='SetPauseCountdownSeconds'/>
+			<Function name='SetSecondsPauseBetweenItems'/>
+			<Function name='SetSecondsPerItem'/>
+			<Function name='SetTransformFromFunction'/>
+			<Function name='SetTransformFromHeight'/>
+			<Function name='SetTransformFromWidth'/>
+			<Function name='getsecondtodestination'/>
+			<Function name='scrollthroughallitems'/>
+			<Function name='scrollwithpadding'/>
+			<Function name='setfastcatchup'/>
+			<Function name='setnumsubdivisions'/>
+			<Function name='setsecondsperitem'/>
+		</Class>
+		<Class base='Actor' name='ActorSound'>
+			<Function name='get'/>
+			<Function name='load'/>
+			<Function name='pause'/>
+			<Function name='play'/>
+			<Function name='playforplayer'/>
+			<Function name='stop'/>
+		</Class>
+		<Class name='AnnouncerManager'>
+			<Function name='DoesAnnouncerExist'/>
+			<Function name='GetAnnouncerNames'/>
+			<Function name='GetCurrentAnnouncer'/>
+			<Function name='SetCurrentAnnouncer'/>
+		</Class>
+		<Class name='ArchHooks'>
+			<Function name='AppHasFocus'/>
+			<Function name='GetArchName'/>
+		</Class>
+		<Class base='BitmapText' name='BPMDisplay'>
+			<Function name='GetText'/>
+			<Function name='SetFromCourse'/>
+			<Function name='SetFromGameState'/>
+			<Function name='SetFromSong'/>
+			<Function name='SetFromSteps'/>
+		</Class>
+		<Class base='Sprite' name='Banner'>
+			<Function name='GetDecodeMovie'/>
+			<Function name='GetPercentScrolling'/>
+			<Function name='GetScrolling'/>
+			<Function name='LoadBackgroundFromUnlockEntry'/>
+			<Function name='LoadBannerFromUnlockEntry'/>
+			<Function name='LoadCardFromCharacter'/>
+			<Function name='LoadFromCachedBanner'/>
+			<Function name='LoadFromCourse'/>
+			<Function name='LoadFromSong'/>
+			<Function name='LoadFromSongGroup'/>
+			<Function name='LoadFromSortOrder'/>
+			<Function name='LoadIconFromCharacter'/>
+			<Function name='ScaleToClipped'/>
+			<Function name='SetDecodeMovie'/>
+			<Function name='SetScrolling'/>
+			<Function name='scaletoclipped'/>
+		</Class>
+		<Class base='Actor' name='BitmapText'>
+			<Function name='AddAttribute'/>
+			<Function name='ClearAttributes'/>
+			<Function name='DiffuseAndStroke'/>
+			<Function name='GetText'/>
+			<Function name='NoStroke'/>
+			<Function name='PixelFont'/>
+			<Function name='Stroke'/>
+			<Function name='distort'/>
+			<Function name='get_mult_attrs_with_diffuse'/>
+			<Function name='jitter'/>
+			<Function name='max_dimension_use_zoom'/>
+			<Function name='maxheight'/>
+			<Function name='maxwidth'/>
+			<Function name='rainbowscroll'/>
+			<Function name='set_mult_attrs_with_diffuse'/>
+			<Function name='settext'/>
+			<Function name='settextf'/>
+			<Function name='strokecolor'/>
+			<Function name='textglowmode'/>
+			<Function name='undistort'/>
+			<Function name='uppercase'/>
+			<Function name='vertspacing'/>
+			<Function name='wrapwidthpixels'/>
+		</Class>
+		<Class name='Character'>
+			<Function name='GetCardPath'/>
+			<Function name='GetCharacterDir'/>
+			<Function name='GetCharacterID'/>
+			<Function name='GetDanceAnimationPath'/>
+			<Function name='GetDisplayName'/>
+			<Function name='GetIconPath'/>
+			<Function name='GetModelPath'/>
+			<Function name='GetRestAnimationPath'/>
+			<Function name='GetSongSelectIconPath'/>
+			<Function name='GetStageIconPath'/>
+			<Function name='GetWarmUpAnimationPath'/>
+		</Class>
+		<Class name='CharacterManager'>
+			<Function name='GetAllCharacters'/>
+			<Function name='GetCharacter'/>
+			<Function name='GetCharacterCount'/>
+			<Function name='GetRandomCharacter'/>
+		</Class>
+		<Class base='ActorFrame' name='ComboGraph'>
+			<Function name='Load'/>
+			<Function name='Set'/>
+		</Class>
+		<Class name='Course'>
+			<Function name='AllSongsAreFixed'/>
+			<Function name='GetAllTrails'/>
+			<Function name='GetBackgroundPath'/>
+			<Function name='GetBannerPath'/>
+			<Function name='GetCourseDir'/>
+			<Function name='GetCourseEntries'/>
+			<Function name='GetCourseEntry'/>
+			<Function name='GetCourseType'/>
+			<Function name='GetDescription'/>
+			<Function name='GetDisplayFullTitle'/>
+			<Function name='GetEstimatedNumStages'/>
+			<Function name='GetGoalSeconds'/>
+			<Function name='GetGroupName'/>
+			<Function name='GetPlayMode'/>
+			<Function name='GetScripter'/>
+			<Function name='GetTotalSeconds'/>
+			<Function name='GetTranslitFullTitle'/>
+			<Function name='HasBackground'/>
+			<Function name='HasBanner'/>
+			<Function name='HasMods'/>
+			<Function name='HasTimedMods'/>
+			<Function name='IsAnEdit'/>
+			<Function name='IsAutogen'/>
+			<Function name='IsEndless'/>
+			<Function name='IsNonstop'/>
+			<Function name='IsOni'/>
+			<Function name='IsPlayableIn'/>
+			<Function name='IsRanking'/>
+		</Class>
+		<Class base='ActorScroller' name='CourseContentsList'>
+			<Function name='SetFromGameState'/>
+		</Class>
+		<Class name='CourseEntry'>
+			<Function name='GetGainLives'/>
+			<Function name='GetGainSeconds'/>
+			<Function name='GetNormalModifiers'/>
+			<Function name='GetNumModChanges'/>
+			<Function name='GetSong'/>
+			<Function name='GetTextDescription'/>
+			<Function name='IsFixedSong'/>
+			<Function name='IsSecret'/>
+		</Class>
+		<Class name='CryptManager'>
+			<Function name='GenerateRandomUUID'/>
+			<Function name='MD5File'/>
+			<Function name='MD5String'/>
+			<Function name='SHA1File'/>
+			<Function name='SHA1String'/>
+		</Class>
+		<Class name='CubicSplineN'>
+			<Function name='solve'/>
+			<Function name='evaluate'/>
+			<Function name='evaluate_derivative'/>
+			<Function name='evaluate_second_derivative'/>
+			<Function name='evaluate_third_derivative'/>
+			<Function name='set_point'/>
+			<Function name='set_coefficients'/>
+			<Function name='get_coefficients'/>
+			<Function name='set_spatial_extent'/>
+			<Function name='get_spatial_extent'/>
+			<Function name='get_max_t'/>
+			<Function name='set_size'/>
+			<Function name='get_size'/>
+			<Function name='set_dimension'/>
+			<Function name='get_dimension'/>
+			<Function name='empty'/>
+			<Function name='set_loop'/>
+			<Function name='get_loop'/>
+			<Function name='set_polygonal'/>
+			<Function name='get_polygonal'/>
+			<Function name='set_dirty'/>
+			<Function name='get_dirty'/>
+			<Function name='destroy'/>
+		</Class>
+		<Class name='DisplayMode'>
+			<Function name='GetWidth'/>
+			<Function name='GetHeight'/>
+			<Function name='GetRefreshRate'/>
+		</Class>
+		<Class name='DisplaySpec'>
+			<Function name='GetId'/>
+			<Function name='GetName'/>
+			<Function name='GetCurrentMode'/>
+			<Function name='GetSupportedModes'/>
+			<Function name='IsVirtual'/>
+		</Class>
+		<Class name='DisplaySpecs'>
+			<Function name='__len'/>
+			<Function name='__index'/>
+			<Function name='__tostring'/>
+		</Class>
+		<Class base='Sprite' name='DifficultyIcon'>
+			<Function name='SetFromDifficulty'/>
+			<Function name='SetFromSteps'/>
+			<Function name='SetFromTrail'/>
+			<Function name='SetPlayer'/>
+			<Function name='Unset'/>
+		</Class>
+		<Class base='ActorFrame' name='FadingBanner'>
+			<Function name='GetLatestIndex'/>
+			<Function name='LoadCardFromCharacter'/>
+			<Function name='LoadCourseFallback'/>
+			<Function name='LoadFallback'/>
+			<Function name='LoadFromCourse'/>
+			<Function name='LoadFromSong'/>
+			<Function name='LoadFromSongGroup'/>
+			<Function name='LoadFromSortOrder'/>
+			<Function name='LoadIconFromCharacter'/>
+			<Function name='LoadRandom'/>
+			<Function name='LoadRoulette'/>
+			<Function name='ScaleToClipped'/>
+			<Function name='scaletoclipped'/>
+		</Class>
+		<Class name='Game'>
+			<Function name='CountNotesSeparately'/>
+			<Function name='GetMapJudgmentTo'/>
+			<Function name='GetName'/>
+			<Function name='GetSeparateStyles'/>
+		</Class>
+		<Class name='GameCommand'>
+			<Function name='GetAnnouncer'/>
+			<Function name='GetCharacter'/>
+			<Function name='GetCourse'/>
+			<Function name='GetCourseDifficulty'/>
+			<Function name='GetDifficulty'/>
+			<Function name='GetIndex'/>
+			<Function name='GetMultiPlayer'/>
+			<Function name='GetName'/>
+			<Function name='GetPlayMode'/>
+			<Function name='GetPreferredModifiers'/>
+			<Function name='GetProfileID'/>
+			<Function name='GetScreen'/>
+			<Function name='GetSong'/>
+			<Function name='GetSongGroup'/>
+			<Function name='GetSortOrder'/>
+			<Function name='GetStageModifiers'/>
+			<Function name='GetSteps'/>
+			<Function name='GetStyle'/>
+			<Function name='GetText'/>
+			<Function name='GetTrail'/>
+			<Function name='GetUrl'/>
+		</Class>
+		<Class name='GameManager'>
+			<Function name='GetFirstStepsTypeForGame'/>
+			<Function name='IsGameEnabled'/>
+			<Function name='StepsTypeToLocalizedString'/>
+			<Function name='SetGame'/>
+			<Function name='GetEnabledGames'/>
+			<Function name='GetStylesForGame'/>
+		</Class>
+		<Class name='GameSoundManager'>
+			<Function name='DimMusic'/>
+			<Function name='GetPlayerBalance'/>
+			<Function name='PlayAnnouncer'/>
+			<Function name='PlayMusicPart'/>
+			<Function name='PlayOnce'/>
+			<Function name='StopMusic'/>
+			<Function name='IsTimingDelayed'/>
+		</Class>
+		<Class name='GameState'>
+			<Function name='AddStageToPlayer'/>
+			<Function name='AnyPlayerHasRankingFeats'/>
+			<Function name='ApplyGameCommand'/>
+			<Function name='ApplyPreferredModifiers'/>
+			<Function name='ApplyPreferredSongOptionsToOtherLevels'/>
+			<Function name='ApplyStageModifiers'/>
+			<Function name='CanSafelyEnterGameplay'/>
+			<Function name='ClearStageModifiersIllegalForCourse'/>
+			<Function name='CurrentOptionsDisqualifyPlayer'/>
+			<Function name='Dopefish'/>
+			<Function name='EnoughCreditsToJoin'/>
+			<Function name='Env'/>
+			<Function name='GetCharacter'/>
+			<Function name='GetCoinMode'/>
+			<Function name='GetCoins'/>
+			<Function name='GetCoinsNeededToJoin'/>
+			<Function name='GetCourseSongIndex'/>
+			<Function name='GetCurMusicSeconds'/>
+			<Function name='GetCurrentCourse'/>
+			<Function name='GetCurrentGame'/>
+			<Function name='GetCurrentSong'/>
+			<Function name='GetCurrentStage'/>
+			<Function name='GetCurrentStageIndex'/>
+			<Function name='GetCurrentSteps'/>
+			<Function name='GetCurrentStepsCredits'/>
+			<Function name='GetCurrentStyle'/>
+			<Function name='GetCurrentTrail'/>
+			<Function name='GetDefaultSongOptions'/>
+			<Function name='GetEarnedExtraStage'/>
+			<Function name='GetEasiestStepsDifficulty'/>
+			<Function name='GetEditCourseEntryIndex'/>
+			<Function name='GetEditLocalProfile'/>
+			<Function name='GetEditLocalProfileID'/>
+			<Function name='GetEditSourceSteps'/>
+			<Function name='GetEnabledPlayers'/>
+			<Function name='GetExpandedSectionName'/>
+			<Function name='GetGameSeed'/>
+			<Function name='GetGameplayLeadIn'/>
+			<Function name='GetHardestStepsDifficulty'/>
+			<Function name='GetHumanPlayers'/>
+			<Function name='GetLoadingCourseSongIndex'/>
+			<Function name='GetMasterPlayerNumber'/>
+			<Function name='GetMultiPlayerState'/>
+			<Function name='GetMultiplayer'/>
+			<Function name='GetNumMultiplayerNoteFields'/>
+			<Function name='GetNumPlayersEnabled'/>
+			<Function name='GetNumSidesJoined'/>
+			<Function name='GetNumStagesForCurrentSongAndStepsOrCourse'/>
+			<Function name='GetNumStagesLeft'/>
+			<Function name='GetPlayMode'/>
+			<Function name='GetPlayerDisplayName'/>
+			<Function name='GetPlayerState'/>
+			<Function name='GetPreferredDifficulty'/>
+			<Function name='GetPreferredSong'/>
+			<Function name='GetPreferredSongGroup'/>
+			<Function name='GetPremium'/>
+			<Function name='GetSmallestNumStagesLeftForAnyHumanPlayer'/>
+			<Function name='GetSongBPS'/>
+			<Function name='GetSongBeat'/>
+			<Function name='GetSongBeatNoOffset'/>
+			<Function name='GetSongDelay'/>
+			<Function name='GetSongFreeze'/>
+			<Function name='GetSongOptions'/>
+			<Function name='GetSongOptionsObject'/>
+			<Function name='GetSongOptionsString'/>
+			<Function name='GetSongPercent'/>
+			<Function name='GetSongPosition'/>
+			<Function name='GetSortOrder'/>
+			<Function name='GetStageResult'/>
+			<Function name='GetStageSeed'/>
+			<Function name='GetWorkoutGoalComplete'/>
+			<Function name='HasEarnedExtraStage'/>
+			<Function name='HaveProfileToLoad'/>
+			<Function name='HaveProfileToSave'/>
+			<Function name='InsertCoin'/>
+			<Function name='InsertCredit'/>
+			<Function name='InStepEditor'/>
+			<Function name='IsAnExtraStage'/>
+			<Function name='IsAnyHumanPlayerUsingMemoryCard'/>
+			<Function name='IsBattleMode'/>
+			<Function name='IsCourseMode'/>
+			<Function name='IsDemonstration'/>
+			<Function name='IsDraw'/>
+			<Function name='IsEventMode'/>
+			<Function name='IsExtraStage'/>
+			<Function name='IsExtraStage2'/>
+			<Function name='IsGoalComplete'/>
+			<Function name='IsHumanPlayer'/>
+			<Function name='IsPlayerEnabled'/>
+			<Function name='IsSideJoined'/>
+			<Function name='IsWinner'/>
+			<Function name='JoinInput'/>
+			<Function name='JoinPlayer'/>
+			<Function name='LoadProfiles'/>
+			<Function name='PlayerIsUsingModifier'/>
+			<Function name='PlayersCanJoin'/>
+			<Function name='RefreshNoteSkinData'/>
+			<Function name='Reset'/>
+			<Function name='ResetPlayerOptions'/>
+			<Function name='SaveLocalData'/>
+			<Function name='SaveProfiles'/>
+			<Function name='SetCharacter'/>
+			<Function name='SetCurrentCourse'/>
+			<Function name='SetCurrentPlayMode'/>
+			<Function name='SetCurrentSong'/>
+			<Function name='SetCurrentSteps'/>
+			<Function name='SetCurrentStyle'/>
+			<Function name='SetCurrentTrail'/>
+			<Function name='SetFailTypeExplicitlySet'/>
+			<Function name='SetJukeboxUsesModifiers'/>
+			<Function name='SetMultiplayer'/>
+			<Function name='SetNumMultiplayerNoteFields'/>
+			<Function name='SetPreferredDifficulty'/>
+			<Function name='SetPreferredSong'/>
+			<Function name='SetPreferredSongGroup'/>
+			<Function name='SetSongOptions'/>
+			<Function name='SetTemporaryEventMode'/>
+			<Function name='ShowW1'/>
+			<Function name='StoreRankingName'/>
+			<Function name='UnjoinPlayer'/>
+		</Class>
+		<Class base='ActorFrame' name='GradeDisplay'>
+			<Function name='Load'/>
+			<Function name='SetGrade'/>
+		</Class>
+		<Class base='ActorFrame' name='GraphDisplay'>
+			<Function name='Load'/>
+			<Function name='Set'/>
+		</Class>
+		<Class base='ActorFrame' name='GrooveRadar'>
+			<Function name='SetEmpty'/>
+			<Function name='SetFromRadarValues'/>
+			<Function name='SetFromValues'/>
+		</Class>
+		<Class base='BitmapText' name='HelpDisplay'>
+			<Function name='SetSecsBetweenSwitches'/>
+			<Function name='SetTipsColonSeparated'/>
+			<Function name='gettips'/>
+			<Function name='setfromsongorcourse'/>
+			<Function name='settips'/>
+		</Class>
+		<Class name='HighScore'>
+			<Function name='GetDate'/>
+			<Function name='GetGrade'/>
+			<Function name='GetHoldNoteScore'/>
+			<Function name='GetMaxCombo'/>
+			<Function name='GetModifiers'/>
+			<Function name='GetName'/>
+			<Function name='GetPeakComboAward'/>
+			<Function name='GetPercentDP'/>
+			<Function name='GetRadarValues'/>
+			<Function name='GetScore'/>
+			<Function name='GetStageAward'/>
+			<Function name='GetSurvivalSeconds'/>
+			<Function name='GetTapNoteScore'/>
+			<Function name='IsFillInMarker'/>
+		</Class>
+		<Class name='HighScoreList'>
+			<Function name='GetHighScores'/>
+			<Function name='GetHighestScoreOfName'/>
+			<Function name='GetRankOfName'/>
+		</Class>
+		<Class base='ActorFrame' name='HoldJudgment'>
+			<Function name='LoadFromMultiPlayer'/>
+		</Class>
+		<Class name='InputFilter'>
+			<Function name='GetMouseWheel'/>
+			<Function name='GetMouseX'/>
+			<Function name='GetMouseY'/>
+		</Class>
+		<Class base='ActorFrame' name='LifeMeter'>
+			<Function name='GetLife'/>
+			<Function name='IsFailing'/>
+			<Function name='IsHot'/>
+			<Function name='IsInDanger'/>
+		</Class>
+		<Class base='LifeMeter' name='LifeMeterBattery'>
+			<Function name='ChangeLives'/>
+			<Function name='GetLivesLeft'/>
+			<Function name='GetTotalLives'/>
+		</Class>
+		<Class name='MemoryCardManager'>
+			<Function name='GetCardState'/>
+			<Function name='GetName'/>
+		</Class>
+		<Class base='ActorFrame' name='MenuTimer'>
+			<Function name='GetSeconds'/>
+			<Function name='SetSeconds'/>
+			<Function name='disable'/>
+			<Function name='pause'/>
+			<Function name='setseconds'/>
+			<Function name='silent'/>
+			<Function name='start'/>
+			<Function name='stealth'/>
+			<Function name='stop'/>
+		</Class>
+		<Class name='MessageManager'>
+			<Function name='Broadcast'/>
+			<Function name='SetLogging'/>
+		</Class>
+		<Class base='ActorFrame' name='MeterDisplay'>
+			<Function name='SetStreamWidth'/>
+		</Class>
+		<Class base='ActorFrame' name='ModIconRow'>
+			<Function name='Load'/>
+		</Class>
+		<Class base='Actor' name='Model'>
+			<Function name='GetDefaultAnimation'/>
+			<Function name='GetNumStates'/>
+			<Function name='SetDefaultAnimation'/>
+			<Function name='loop'/>
+			<Function name='playanimation'/>
+			<Function name='position'/>
+			<Function name='rate'/>
+		</Class>
+		<Class base='WheelBase' name='MusicWheel'>
+			<Function name='ChangeSort'/>
+			<Function name='GetSelectedSection'/>
+			<Function name='IsRouletting'/>
+			<Function name='SelectCourse'/>
+			<Function name='SelectSong'/>
+		</Class>
+		<Class name='NCSplineHandler'>
+			<Function name='get_spline'/>
+			<Function name='get_beats_per_t'/>
+			<Function name='set_beats_per_t'/>
+			<Function name='get_receptor_t'/>
+			<Function name='set_receptor_t'/>
+			<Function name='get_spline_mode'/>
+			<Function name='set_spline_mode'/>
+			<Function name='get_subtract_song_beat'/>
+			<Function name='set_subtract_song_beat'/>
+		</Class>
+		<Class base='Actor' name='NoteColumnRenderer'>
+			<Function name='get_pos_handler'/>
+			<Function name='get_rot_handler'/>
+			<Function name='get_zoom_handler'/>
+		</Class>
+		<Class base='ActorFrame' name='NoteField'>
+			<Function name='did_hold_note'/>
+			<Function name='did_tap_note'/>
+			<Function name='get_column_actors'/>
+			<Function name='set_pressed'/>
+			<Function name='set_did_hold_note_callback'/>
+			<Function name='set_did_tap_note_callback'/>
+			<Function name='set_set_pressed_callback'/>
+			<Function name='set_step_callback'/>
+			<Function name='step'/>
+		</Class>
+		<Class name='NoteSkinManager'>
+			<Function name='DoesNoteSkinExist'/>
+			<Function name='GetMetric'/>
+			<Function name='GetMetricA'/>
+			<Function name='GetMetricAForNoteSkin'/>
+			<Function name='GetMetricB'/>
+			<Function name='GetMetricBForNoteSkin'/>
+			<Function name='GetMetricF'/>
+			<Function name='GetMetricFForNoteSkin'/>
+			<Function name='GetMetricForNoteSkin'/>
+			<Function name='GetMetricI'/>
+			<Function name='GetMetricIForNoteSkin'/>
+			<Function name='GetNoteSkinNames'/>
+			<Function name='GetPath'/>
+			<Function name='GetPathForNoteSkin'/>
+			<Function name='LoadActor'/>
+			<Function name='LoadActorForNoteSkin'/>
+		</Class>
+		<Class base='ActorFrame' name='OptionRow'>
+			<Function name='FirstItemGoesDown'/>
+			<Function name='GetChoiceInRowWithFocus'/>
+			<Function name='GetLayoutType'/>
+			<Function name='GetName'/>
+			<Function name='GetNumChoices'/>
+			<Function name='GetRowTitle'/>
+			<Function name='GetSelectType'/>
+			<Function name='HasFocus'/>
+			<Function name='OneChoiceForAllPlayers'/>
+		</Class>
+		<Class base='ActorFrame' name='PaneDisplay'>
+			<Function name='SetFromGameState'/>
+		</Class>
+		<Class base='ActorFrame' name='PercentageDisplay'>
+			<Function name='LoadFromStats'/>
+		</Class>
+		<Class base='ActorFrame' name='Player'>
+			<Function name='ChangeLife'/>
+			<Function name='SetLife'/>
+			<Function name='GetPlayerTimingData'/>
+			<Function name='SetActorWithComboPosition'/>
+			<Function name='SetActorWithJudgmentPosition'/>
+		</Class>
+		<Class name='PlayerInfo'>
+			<Function name='GetLifeMeter'/>
+			<Function name='GetStepsQueueWrapped'/>
+		</Class>
+		<Class name='PlayerOptions'>
+			<Function name='Alternate'/>
+			<Function name='AttackMines'/>
+			<Function name='AttenuateX'/>
+			<Function name='AttenuateY'/>
+			<Function name='AttenuateZ'/>
+			<Function name='Backwards'/>
+			<Function name='BatteryLives'/>
+			<Function name='Beat'/>
+			<Function name='BeatMult'/>
+			<Function name='BeatOffset'/>
+			<Function name='BeatPeriod'/>
+			<Function name='BeatY'/>
+			<Function name='BeatYMult'/>
+			<Function name='BeatYOffset'/>
+			<Function name='BeatYPeriod'/>
+			<Function name='BeatZ'/>
+			<Function name='BeatZMult'/>
+			<Function name='BeatZOffset'/>
+			<Function name='BeatZPeriod'/>
+			<Function name='Big'/>
+			<Function name='Blind'/>
+			<Function name='Blink'/>
+			<Function name='Boomerang'/>
+			<Function name='Boost'/>
+			<Function name='Bounce'/>
+			<Function name='BouncePeriod'/>
+			<Function name='BounceOffset'/>
+			<Function name='BounceZ'/>
+			<Function name='BounceZPeriod'/>
+			<Function name='BounceZOffset'/>
+			<Function name='BMRize'/>
+			<Function name='Brake'/>
+			<Function name='Bumpy'/>
+			<Function name='Bumpyn'/>
+			<Function name='BumpyOffset'/>
+			<Function name='BumpyPeriod'/>
+			<Function name='BumpyX'/>
+			<Function name='BumpyXOffset'/>
+			<Function name='BumpyXPeriod'/>
+			<Function name='Centered'/>
+			<Function name='CMod'/>
+			<Function name='Confusion'/>
+			<Function name='ConfusionOffset'/>
+			<Function name='ConfusionOffsetn'/>
+			<Function name='ConfusionX'/>
+			<Function name='ConfusionXOffset'/>
+			<Function name='ConfusionXOffsetn'/>
+			<Function name='ConfusionY'/>
+			<Function name='ConfusionYOffset'/>
+			<Function name='ConfusionYOffsetn'/>
+			<Function name='Cosecant'/>
+			<Function name='Cover'/>
+			<Function name='Cross'/>
+			<Function name='Dark'/>
+			<Function name='Darkn'/>
+			<Function name='Digital'/>
+			<Function name='DigitalOffset'/>
+			<Function name='DigitalPeriod'/>
+			<Function name='DigitalSteps'/>
+			<Function name='DigitalZ'/>
+			<Function name='DigitalZOffset'/>
+			<Function name='DigitalZPeriod'/>
+			<Function name='DigitalZSteps'/>
+			<Function name='Dizzy'/>
+			<Function name='DizzyHolds'/>
+			<Function name='Distant'/>
+			<Function name='DrainSetting'/>
+			<Function name='DrawSize'/>
+			<Function name='DrawSizeBack'/>
+			<Function name='Drunk'/>
+			<Function name='DrunkOffset'/>
+			<Function name='DrunkPeriod'/>
+			<Function name='DrunkSpeed'/>
+			<Function name='DrunkZ'/>
+			<Function name='DrunkZOffset'/>
+			<Function name='DrunkZPeriod'/>
+			<Function name='DrunkZSpeed'/>
+			<Function name='Echo'/>
+			<Function name='Expand'/>
+			<Function name='ExpandPeriod'/>
+			<Function name='FailSetting'/>
+			<Function name='Flip'/>
+			<Function name='Floored'/>
+			<Function name='GetReversePercentForColumn'/>
+			<Function name='GetStepAttacks'/>
+			<Function name='IsEasierForSongAndSteps'/>
+			<Function name='IsEasierForCourseAndTrail'/>
+			<Function name='Incoming'/>
+			<Function name='Hallway'/>
+			<Function name='Hidden'/>
+			<Function name='HiddenOffset'/>
+			<Function name='HoldRolls'/>
+			<Function name='Invert'/>
+			<Function name='Left'/>
+			<Function name='LifeSetting'/>
+			<Function name='Little'/>
+			<Function name='ModTimerSetting'/>
+			<Function name='ModTimerMult'/>
+			<Function name='ModTimerOffset'/>
+			<Function name='MaxScrollBPM'/>
+			<Function name='Mines'/>
+			<Function name='Mini'/>
+			<Function name='MinTNSToHideNotes' />
+			<Function name='Mirror'/>
+			<Function name='MMod'/>
+			<Function name='MoveXn'/>
+			<Function name='MoveYn'/>
+			<Function name='MoveZn'/>
+			<Function name='MuteOnError'/>
+			<Function name='NoAttack'/>
+			<Function name='NoFakes'/>
+			<Function name='NoHands'/>
+			<Function name='NoHolds'/>
+			<Function name='NoJumps'/>
+			<Function name='NoLifts'/>
+			<Function name='NoMines'/>
+			<Function name='NoQuads'/>
+			<Function name='NoRolls'/>
+			<Function name='NoStretch'/>
+			<Function name='NoteSkin'/>
+			<Function name='Overhead'/>
+			<Function name='ParabolaX'/>
+			<Function name='ParabolaY'/>
+			<Function name='ParabolaZ'/>
+			<Function name='Passmark'/>
+			<Function name='Planted'/>
+			<Function name='PlayerAutoPlay'/>
+			<Function name='PulseInner'/>
+			<Function name='PulseOffset'/>
+			<Function name='PulseOuter'/>
+			<Function name='PulsePeriod'/>
+			<Function name='Quick'/>
+			<Function name='RandAttack'/>
+			<Function name='RandomSpeed'/>
+			<Function name='RandomVanish'/>
+			<Function name='Reverse'/>
+			<Function name='Reversen'/>
+			<Function name='Right'/>
+			<Function name='Roll'/>
+			<Function name='Sawtooth'/>
+			<Function name='SawtoothPeriod'/>
+			<Function name='SawtoothZ'/>
+			<Function name='SawtoothZPeriod'/>
+			<Function name='ScrollBPM'/>
+			<Function name='ScrollSpeed'/>
+			<Function name='ShrinkLinear'/>
+			<Function name='ShrinkMult'/>
+			<Function name='Shuffle'/>
+			<Function name='Skew'/>
+			<Function name='Skippy'/>
+			<Function name='SoftShuffle'/>
+			<Function name='Space'/>
+			<Function name='Split'/>
+			<Function name='Square'/>
+			<Function name='SquareOffset'/>
+			<Function name='SquarePeriod'/>
+			<Function name='SquareZ'/>
+			<Function name='SquareZOffset'/>
+			<Function name='SquareZPeriod'/>
+			<Function name='Stealth'/>
+			<Function name='Stealthn'/>
+			<Function name='StealthPastReceptors'/>
+			<Function name='StealthType'/>
+			<Function name='Stomp'/>
+			<Function name='Sudden'/>
+			<Function name='SuddenOffset'/>
+			<Function name='SuperShuffle'/>
+			<Function name='TimeSpacing'/>
+			<Function name='Tilt'/>
+			<Function name='Tiny'/>
+			<Function name='Tinyn'/>
+			<Function name='Tipsy'/>
+			<Function name='TipsyOffset'/>
+			<Function name='TipsySpeed'/>
+			<Function name='Tornado'/>
+			<Function name='TornadoOffset'/>
+			<Function name='TornadoPeriod'/>
+			<Function name='TornadoZ'/>
+			<Function name='TornadoZOffset'/>
+			<Function name='TornadoZPeriod'/>
+			<Function name='TurnNone'/>
+			<Function name='Twirl'/>
+			<Function name='Twister'/>
+			<Function name='UsingReverse'/>
+			<Function name='Wave'/>
+			<Function name='WavePeriod'/>
+			<Function name='Wide'/>
+			<Function name='XMod'/>
+			<Function name='Xmode'/>
+			<Function name='ZBuffer'/>
+			<Function name='Zigzag'/>
+			<Function name='ZigzagOffset'/>
+			<Function name='ZigzagPeriod'/>
+			<Function name='ZigzagZ'/>
+			<Function name='ZigzagZOffset'/>
+			<Function name='ZigzagZPeriod'/>
+		</Class>
+		<Class name='PlayerStageStats'>
+			<Function name='FailPlayer'/>
+			<Function name='FullCombo'/>
+			<Function name='FullComboOfScore'/>
+			<Function name='GetActualDancePoints'/>
+			<Function name='GetAliveSeconds'/>
+			<Function name='GetBestFullComboTapNoteScore'/>
+			<Function name='GetCaloriesBurned'/>
+			<Function name='GetComboList'/>
+			<Function name='GetCurMaxScore'/>
+			<Function name='GetCurrentCombo'/>
+			<Function name='GetCurrentLife'/>
+			<Function name='GetCurrentMissCombo'/>
+			<Function name='GetCurrentPossibleDancePoints'/>
+			<Function name='GetCurrentScoreMultiplier'/>
+			<Function name='GetFailed'/>
+			<Function name='GetGrade'/>
+			<Function name='GetHighScore'/>
+			<Function name='GetHoldNoteScores'/>
+			<Function name='GetLessonScoreActual'/>
+			<Function name='GetLessonScoreNeeded'/>
+			<Function name='GetLifeRecord'/>
+			<Function name='GetLifeRemainingSeconds'/>
+			<Function name='GetMachineHighScoreIndex'/>
+			<Function name='GetNumControllerSteps'/>
+			<Function name='GetPeakComboAward'/>
+			<Function name='GetPercentDancePoints'/>
+			<Function name='GetPercentageOfTaps'/>
+			<Function name='GetPersonalHighScoreIndex'/>
+			<Function name='GetPlayedSteps'/>
+			<Function name='GetPossibleDancePoints'/>
+			<Function name='GetPossibleSteps'/>
+			<Function name='GetRadarActual'/>
+			<Function name='GetRadarPossible'/>
+			<Function name='GetScore'/>
+			<Function name='GetSongsPassed'/>
+			<Function name='GetSongsPlayed'/>
+			<Function name='GetStageAward'/>
+			<Function name='GetSurvivalSeconds'/>
+			<Function name='GetTapNoteScores'/>
+			<Function name='IsDisqualified'/>
+			<Function name='MaxCombo'/>
+			<Function name='SetCurMaxScore'/>
+			<Function name='SetDancePointLimits'/>
+			<Function name='SetScore'/>
+		</Class>
+		<Class name='PlayerState'>
+			<Function name='ApplyPreferredOptionsToOtherLevels'/>
+			<Function name='GetCurrentPlayerOptions'/>
+			<Function name='GetHealthState'/>
+			<Function name='GetMultiPlayerNumber'/>
+			<Function name='GetPlayerController'/>
+			<Function name='GetPlayerNumber'/>
+			<Function name='GetPlayerOptions'/>
+			<Function name='GetPlayerOptionsArray'/>
+			<Function name='GetPlayerOptionsString'/>
+			<Function name='GetSongPosition'/>
+			<Function name='GetSuperMeterLevel'/>
+			<Function name='SetPlayerOptions'/>
+		</Class>
+		<Class name='PrefsManager'>
+			<Function name='GetPreference'/>
+			<Function name='PreferenceExists'/>
+			<Function name='SetPreference'/>
+			<Function name='SetPreferenceToDefault'/>
+			<Function name='SavePreferences'/>
+		</Class>
+		<Class name='Profile'>
+			<Function name='AddCaloriesToDailyTotal'/>
+			<Function name='AddScreenshot'/>
+			<Function name='CalculateCaloriesFromHeartRate'/>
+			<Function name='GetAge'/>
+			<Function name='GetAllUsedHighScoreNames'/>
+			<Function name='GetBirthYear'/>
+			<Function name='GetCaloriesBurnedToday'/>
+			<Function name='GetCategoryHighScoreList'/>
+			<Function name='GetCharacter'/>
+			<Function name='GetCoursesActual'/>
+			<Function name='GetCoursesPercentComplete'/>
+			<Function name='GetCoursesPossible'/>
+			<Function name='GetDisplayName'/>
+			<Function name='GetDisplayTotalCaloriesBurned'/>
+			<Function name='GetGUID'/>
+			<Function name='GetGoalCalories'/>
+			<Function name='GetGoalSeconds'/>
+			<Function name='GetGoalType'/>
+			<Function name='GetHighScoreList'/>
+			<Function name='GetHighScoreListIfExists'/>
+			<Function name='GetIgnoreStepCountCalories'/>
+			<Function name='GetIsMale'/>
+			<Function name='GetLastPlayedCourse'/>
+			<Function name='GetLastPlayedSong'/>
+			<Function name='GetLastUsedHighScoreName'/>
+			<Function name='GetMostPopularCourse'/>
+			<Function name='GetMostPopularSong'/>
+			<Function name='GetNumToasties'/>
+			<Function name='GetNumTotalSongsPlayed'/>
+			<Function name='GetPriority'/>
+			<Function name='GetSongNumTimesPlayed'/>
+			<Function name='GetSongsActual'/>
+			<Function name='GetSongsAndCoursesPercentCompleteAllDifficulties'/>
+			<Function name='GetSongsPercentComplete'/>
+			<Function name='GetSongsPossible'/>
+			<Function name='GetTotalCaloriesBurned'/>
+			<Function name='GetTotalDancePoints'/>
+			<Function name='GetTotalGameplaySeconds'/>
+			<Function name='GetTotalHands'/>
+			<Function name='GetTotalHolds'/>
+			<Function name='GetTotalJumps'/>
+			<Function name='GetTotalLifts'/>
+			<Function name='GetTotalMines'/>
+			<Function name='GetTotalNumSongsPlayed'/>
+			<Function name='GetTotalRolls'/>
+			<Function name='GetTotalSessionSeconds'/>
+			<Function name='GetTotalSessions'/>
+			<Function name='GetTotalStepsWithTopGrade'/>
+			<Function name='GetTotalTapsAndHolds'/>
+			<Function name='GetTotalTrailsWithTopGrade'/>
+			<Function name='GetType'/>
+			<Function name='GetUserTable'/>
+			<Function name='GetVoomax'/>
+			<Function name='GetWeightPounds'/>
+			<Function name='HasPassedAnyStepsInSong'/>
+			<Function name='IsCodeUnlocked'/>
+			<Function name='SetBirthYear'/>
+			<Function name='SetCharacter'/>
+			<Function name='SetDisplayName'/>
+			<Function name='SetGoalCalories'/>
+			<Function name='SetGoalSeconds'/>
+			<Function name='SetGoalType'/>
+			<Function name='SetIgnoreStepCountCalories'/>
+			<Function name='SetIsMale'/>
+			<Function name='SetLastUsedHighScoreName'/>
+			<Function name='SetWeightPounds'/>
+			<Function name='SetVoomax'/>
+		</Class>
+		<Class name='ProfileManager'>
+			<Function name='GetLocalProfile'/>
+			<Function name='GetLocalProfileDisplayNames'/>
+			<Function name='GetLocalProfileFromIndex'/>
+			<Function name='GetLocalProfileIDFromIndex'/>
+			<Function name='GetLocalProfileIDs'/>
+			<Function name='GetLocalProfileIndexFromID'/>
+			<Function name='GetMachineProfile'/>
+			<Function name='GetNumLocalProfiles'/>
+			<Function name='GetPlayerName'/>
+			<Function name='GetProfile'/>
+			<Function name='GetProfileDir'/>
+			<Function name='GetSongNumTimesPlayed'/>
+			<Function name='GetStatsPrefix'/>
+			<Function name='IsPersistentProfile'/>
+			<Function name='IsSongNew'/>
+			<Function name='LastLoadWasTamperedOrCorrupt'/>
+			<Function name='LocalProfileIDToDir'/>
+			<Function name='ProfileFromMemoryCardIsNew'/>
+			<Function name='ProfileWasLoadedFromMemoryCard'/>
+			<Function name='SaveLocalProfile'/>
+			<Function name='SaveMachineProfile'/>
+			<Function name='SaveProfile'/>
+			<Function name='SetStatsPrefix'/>
+		</Class>
+		<Class name='RadarValues'>
+			<Function name='GetValue'/>
+		</Class>
+		<Class name='RageBezier2D'>
+			<Function name='destroy'/>
+			<Function name='evaluate'/>
+			<Function name='evaluate_y_from_x'/>
+			<Function name='get_x'/>
+			<Function name='get_y'/>
+			<Function name='set_from_bezier'/>
+		</Class>
+		<Class name='RageDisplay'>
+			<Function name='GetCumFPS'/>
+			<Function name='GetDisplayHeight'/>
+			<Function name='GetDisplayWidth'/>
+			<Function name='GetDisplaySpecs'/>
+			<Function name='GetFPS'/>
+			<Function name='GetVPF'/>
+			<Function name='SupportsFullscreenBorderlessWindow'/>
+			<Function name='SupportsRenderToTexture'/>
+		</Class>
+		<Class name='RageFile'>
+			<Function name='AtEOF'/>
+			<Function name='ClearError'/>
+			<Function name='Close'/>
+			<Function name='Flush'/>
+			<Function name='GetError'/>
+			<Function name='GetLine'/>
+			<Function name='Open'/>
+			<Function name='PutLine'/>
+			<Function name='Read'/>
+			<Function name='ReadBytes'/>
+			<Function name='Seek'/>
+			<Function name='Tell'/>
+			<Function name='Write'/>
+			<Function name='destroy'/>
+		</Class>
+		<Class name='RageFileManager'>
+			<Function name='DoesFileExist'/>
+			<Function name='GetDirListing'/>
+			<Function name='GetFileSizeBytes'/>
+			<Function name='GetHashForFile'/>
+		</Class>
+		<Class name='RageInput'>
+			<Function name='GetDescriptions'/>
+		</Class>
+		<Class name='RageQuadratic'>
+			<Function name='evaluate'/>
+			<Function name='get_bezier'/>
+			<Function name='get_bezier_end'/>
+			<Function name='get_bezier_start'/>
+			<Function name='get_slope'/>
+			<Function name='set_from_bezier'/>
+			<Function name='set_from_cubic'/>
+		</Class>
+		<Class name='RageSound'>
+			<Function name='get_length'/>
+			<Function name='SetParam'/>
+			<Function name='SetProperty'/>
+			<Function name='pitch'/>
+			<Function name='speed'/>
+			<Function name='volume'/>
+		</Class>
+		<Class name='RageTexture'>
+			<Function name='GetSourceWidth'/>
+			<Function name='GetSourceHeight'/>
+			<Function name='GetTextureWidth'/>
+			<Function name='GetTextureHeight'/>
+			<Function name='GetImageWidth'/>
+			<Function name='GetImageHeight'/>
+			<Function name='GetPath'/>
+			<Function name='GetTextureCoordRect'/>
+			<Function name='loop'/>
+			<Function name='position'/>
+			<Function name='rate'/>
+			<Function name='Reload'/>
+		</Class>
+		<Class base='RageTexture' name='RageTextureRenderTarget'>
+			<Function name='BeginRenderingTo'/>
+			<Function name='FinishRenderingTo'/>
+		</Class>
+		<Class base='BitmapText' name='RollingNumbers'>
+			<Function name='Load'/>
+			<Function name='targetnumber'/>
+		</Class>
+		<Class base='BitmapText' name='ScoreDisplayAliveTime'/>
+		<Class base='BitmapText' name='ScoreDisplayCalories'/>
+		<Class base='ActorFrame' name='Screen'>
+			<Function name='AddInputCallback'/>
+			<Function name='GetNextScreenName'/>
+			<Function name='GetPrevScreenName'/>
+			<Function name='GetScreenType'/>
+			<Function name='Metric'/>
+			<Function name='PostScreenMessage'/>
+			<Function name='RemoveInputCallback'/>
+			<Function name='SetNextScreenName'/>
+			<Function name='SetPrevScreenName'/>
+			<Function name='String'/>
+			<Function name='lockinput'/>
+		</Class>
+		<Class base='ScreenWithMenuElements' name='ScreenAttract'/>
+		<Class base='ScreenWithMenuElements' name='ScreenEdit'>
+			<Function name='GetEditState'/>
+		</Class>
+		<Class base='ScreenWithMenuElements' name='ScreenEvaluation'>
+			<Function name='GetStageStats'/>
+		</Class>
+		<Class base='ScreenWithMenuElements' name='ScreenGameplay'>
+			<Function name='begin_backing_out'/>
+			<Function name='Center1Player'/>
+			<Function name='GetDummyPlayerInfo'/>
+			<Function name='GetHasteRate'/>
+			<Function name='GetLifeMeter'/>
+			<Function name='GetNextCourseSong'/>
+			<Function name='GetPlayerInfo'/>
+			<Function name='GetTrueBPS'/>
+			<Function name='HasteAddAmounts'/>
+			<Function name='HasteLifeSwitchPoint'/>
+			<Function name='HasteTimeBetweenUpdates'/>
+			<Function name='HasteTurningPoints'/>
+			<Function name='IsPaused'/>
+			<Function name='PauseGame'/>
+		</Class>
+		<Class base='ScreenAttract' name='ScreenHowToPlay'>
+			<Function name='GetLifeMeter'/>
+		</Class>
+		<Class name='ScreenManager'>
+			<Function name='AddNewScreenToTop'/>
+			<Function name='GetTopScreen'/>
+			<Function name='get_input_redirected'/>
+			<Function name='PlayInvalidSound'/>
+			<Function name='PlayStartSound'/>
+			<Function name='PlayCoinSound'/>
+			<Function name='PlayCancelSound'/>
+			<Function name='PlayScreenshotSound'/>
+			<Function name='ReloadOverlayScreens'/>
+			<Function name='ScreenClassExists'/>
+			<Function name='ScreenIsPrepped'/>
+			<Function name='SetNewScreen'/>
+			<Function name='set_input_redirected'/>
+			<Function name='SystemMessage'/>
+		</Class>
+		<Class base='ScreenWithMenuElements' name='ScreenNameEntryTraditional'>
+			<Function name='Backspace'/>
+			<Function name='EnterKey'/>
+			<Function name='Finish'/>
+			<Function name='GetAnyEntering'/>
+			<Function name='GetAnyStillEntering'/>
+			<Function name='GetEnteringName'/>
+			<Function name='GetFinalized'/>
+			<Function name='GetSelection'/>
+		</Class>
+		<Class base='ScreenEvaluation' name='ScreenNetEvaluation'>
+			<Function name='GetNumActivePlayers'/>
+		</Class>
+		<Class base='ScreenWithMenuElements' name='ScreenOptions'>
+			<Function name='AllAreOnLastRow'/>
+			<Function name='FocusedItemEndsScreen'/>
+			<Function name='GetCurrentRowIndex'/>
+			<Function name='GetNumRows'/>
+			<Function name='GetOptionRow'/>
+		</Class>
+		<Class base='ScreenOptions' name='ScreenPlayerOptions'>
+			<Function name='GetGoToOptions'/>
+		</Class>
+		<Class base='ScreenWithMenuElements' name='ScreenProfileLoad'>
+			<Function name='Continue'/>
+			<Function name='HaveProfileToLoad'/>
+		</Class>
+		<Class base='ScreenWithMenuElements' name='ScreenProfileSave'>
+			<Function name='Continue'/>
+			<Function name='HaveProfileToSave'/>
+		</Class>
+		<Class base='ScreenWithMenuElements' name='ScreenSelectMaster'>
+			<Function name='GetSelectionIndex'/>
+		</Class>
+		<Class base='ScreenWithMenuElements' name='ScreenSelectMusic'>
+			<Function name='CanOpenOptionsList'/>
+			<Function name='GetGoToOptions'/>
+			<Function name='GetMusicWheel'/>
+			<Function name='OpenOptionsList'/>
+			<Function name='setupcoursestagemods'/>
+			<Function name='setupmusicstagemods'/>
+		</Class>
+		<Class base='ScreenWithMenuElements' name='ScreenSelectProfile'>
+			<Function name='Cancel'/>
+			<Function name='Finish'/>
+			<Function name='GetProfileIndex'/>
+			<Function name='SetProfileIndex'/>
+		</Class>
+		<Class base='ScreenWithMenuElements' name='ScreenTextEntry'>
+			<Function name='Load'/>
+		</Class>
+		<Class base='Screen' name='ScreenWithMenuElements'>
+			<Function name='Cancel'/>
+			<Function name='IsTransitioning'/>
+			<Function name='SetAllowLateJoin'/>
+			<Function name='StartTransitioningScreen'/>
+		</Class>
+		<Class base='ScreenWithMenuElements' name='ScreenWithMenuElementsSimple'/>
+		<Class name='Song'>
+			<Function name='GetAllSteps'/>
+			<Function name='GetBackgroundPath'/>
+			<Function name='GetBannerPath'/>
+			<Function name='GetBGChanges'/>
+			<Function name='GetCDImagePath'/>
+			<Function name='GetCDTitlePath'/>
+			<Function name='GetDiscPath'/>
+			<Function name='GetDisplayArtist'/>
+			<Function name='GetDisplayBpms'/>
+			<Function name='GetDisplayFullTitle'/>
+			<Function name='GetDisplayMainTitle'/>
+			<Function name='GetDisplaySubTitle'/>
+			<Function name='GetFirstBeat'/>
+			<Function name='GetFirstSecond'/>
+			<Function name='GetGenre'/>
+			<Function name='GetGroupName'/>
+			<Function name='GetJacketPath'/>
+			<Function name='GetLastBeat'/>
+			<Function name='GetLastSecond'/>
+			<Function name='GetLyricsPath'/>
+			<Function name='GetMainTitle'/>
+			<Function name='GetMusicPath'/>
+			<Function name='GetOneSteps'/>
+			<Function name='GetOrigin'/>
+			<Function name='GetPreviewMusicPath'/>
+			<Function name='GetPreviewVidPath'/>
+			<Function name='GetSampleLength'/>
+			<Function name='GetSampleStart'/>
+			<Function name='GetSongDir'/>
+			<Function name='GetSongFilePath'/>
+			<Function name='GetStageCost'/>
+			<Function name='GetStepsByStepsType'/>
+			<Function name='GetStepsSeconds'/>
+			<Function name='GetTimingData'/>
+			<Function name='GetTranslitArtist'/>
+			<Function name='GetTranslitFullTitle'/>
+			<Function name='GetTranslitMainTitle'/>
+			<Function name='GetTranslitSubTitle'/>
+			<Function name='HasAttacks'/>
+			<Function name='HasBGChanges'/>
+			<Function name='HasBackground'/>
+			<Function name='HasBanner'/>
+			<Function name='HasCDImage'/>
+			<Function name='HasCDTitle'/>
+			<Function name='HasDisc'/>
+			<Function name='HasEdits'/>
+			<Function name='HasJacket'/>
+			<Function name='HasLyrics'/>
+			<Function name='HasMusic'/>
+			<Function name='HasPreviewVid'/>
+			<Function name='HasSignificantBPMChangesOrStops'/>
+			<Function name='HasStepsType'/>
+			<Function name='HasStepsTypeAndDifficulty'/>
+			<Function name='IsDisplayBpmConstant'/>
+			<Function name='IsDisplayBpmRandom'/>
+			<Function name='IsDisplayBpmSecret'/>
+			<Function name='IsEasy'/>
+			<Function name='IsEnabled'/>
+			<Function name='IsLong'/>
+			<Function name='IsMarathon'/>
+			<Function name='IsStepsUsingDifferentTiming'/>
+			<Function name='IsTutorial'/>
+			<Function name='MusicLengthSeconds'/>
+			<Function name='NormallyDisplayed'/>
+			<Function name='ShowInDemonstrationAndRanking'/>
+		</Class>
+		<Class name='SongManager'>
+			<Function name='DoesCourseGroupExist'/>
+			<Function name='DoesSongGroupExist'/>
+			<Function name='FindCourse'/>
+			<Function name='FindSong'/>
+			<Function name='GetAllCourses'/>
+			<Function name='GetAllSongs'/>
+			<Function name='GetCourseColor'/>
+			<Function name='GetCourseGroupBannerPath'/>
+			<Function name='GetCourseGroupNames'/>
+			<Function name='GetCoursesInGroup'/>
+			<Function name='GetExtraStageInfo'/>
+			<Function name='GetNumAdditionalCourses'/>
+			<Function name='GetNumAdditionalSongs'/>
+			<Function name='GetNumCourseGroups'/>
+			<Function name='GetNumCourses'/>
+			<Function name='GetNumLockedSongs'/>
+			<Function name='GetNumSelectableAndUnlockedSongs'/>
+			<Function name='GetNumSongGroups'/>
+			<Function name='GetNumSongs'/>
+			<Function name='GetNumUnlockedSongs'/>
+			<Function name='GetPopularCourses'/>
+			<Function name='GetPopularSongs'/>
+			<Function name='GetPreferredSortCourses'/>
+			<Function name='GetPreferredSortSongs'/>
+			<Function name='GetRandomCourse'/>
+			<Function name='GetRandomSong'/>
+			<Function name='GetSongColor'/>
+			<Function name='GetSongFromSteps'/>
+			<Function name='GetSongGroupBannerPath'/>
+			<Function name='GetSongGroupColor'/>
+			<Function name='GetSongGroupNames'/>
+			<Function name='GetSongRank'/>
+			<Function name='GetSongsInGroup'/>
+			<Function name='SetPreferredCourses'/>
+			<Function name='SetPreferredSongs'/>
+			<Function name='ShortenGroupName'/>
+			<Function name='SongToPreferredSortSectionName'/>
+			<Function name='WasLoadedFromAdditionalCourses'/>
+			<Function name='WasLoadedFromAdditionalSongs'/>
+		</Class>
+		<Class name='SongOptions'>
+			<Function name='AssistClap'/>
+			<Function name='AssistMetronome'/>
+			<Function name='AutosyncSetting'/>
+			<Function name='Haste'/>
+			<Function name='MusicRate'/>
+			<Function name='RandomBGOnly'/>
+			<Function name='SaveReplay'/>
+			<Function name='SaveScore'/>
+			<Function name='StaticBackground'/>
+		</Class>
+		<Class name='SongPosition'>
+			<Function name='GetCurBPS'/>
+			<Function name='GetDelay'/>
+			<Function name='GetFreeze'/>
+			<Function name='GetMusicSeconds'/>
+			<Function name='GetMusicSecondsVisible'/>
+			<Function name='GetSongBeat'/>
+			<Function name='GetSongBeatNoOffset'/>
+			<Function name='GetSongBeatVisible'/>
+			<Function name='GetWarpBeginRow'/>
+			<Function name='GetWarpDestination'/>
+		</Class>
+		<Class base='Actor' name='Sprite'>
+			<Function name='CropTo'/>
+			<Function name='GetAnimationLengthSeconds'/>
+			<Function name='GetNumStates'/>
+			<Function name='GetState'/>
+			<Function name='GetTexture'/>
+			<Function name='LinearFrames'/>
+			<Function name='Load'/>
+			<Function name='LoadBackground'/>
+			<Function name='LoadBanner'/>
+			<Function name='LoadFromCached'/>
+			<Function name='LoadFromCurrentSongBackground'/>
+			<Function name='LoadFromSongBackground'/>
+			<Function name='LoadFromSongBanner'/>
+			<Function name='SetAllStateDelays'/>
+			<Function name='SetCustomImageRect'/>
+			<Function name='SetCustomPosCoords'/>
+			<Function name='SetEffectMode'/>
+			<Function name='SetSecondsIntoAnimation'/>
+			<Function name='SetStateProperties'/>
+			<Function name='SetTexture'/>
+			<Function name='StopUsingCustomPosCoords'/>
+			<Function name='addimagecoords'/>
+			<Function name='cropto'/>
+			<Function name='customtexturerect'/>
+			<Function name='get_use_effect_clock_for_texcoords'/>
+			<Function name='loop'/>
+			<Function name='position'/>
+			<Function name='rate'/>
+			<Function name='scaletoclipped'/>
+			<Function name='set_use_effect_clock_for_texcoords'/>
+			<Function name='setstate'/>
+			<Function name='stretchtexcoords'/>
+			<Function name='texcoordvelocity'/>
+		</Class>
+		<Class name='StageStats'>
+			<Function name='AllFailed'/>
+			<Function name='GetEarnedExtraStage'/>
+			<Function name='GetGameplaySeconds'/>
+			<Function name='GetMultiPlayerStageStats'/>
+			<Function name='GetPlayedSongs'/>
+			<Function name='GetPlayerStageStats'/>
+			<Function name='GetPossibleSongs'/>
+			<Function name='GetStage'/>
+			<Function name='GetStageIndex'/>
+			<Function name='GetStepsSeconds'/>
+			<Function name='OnePassed'/>
+			<Function name='PlayerHasHighScore'/>
+		</Class>
+		<Class name='StatsManager'>
+			<Function name='GetAccumPlayedStageStats'/>
+			<Function name='GetBestFinalGrade'/>
+			<Function name='GetBestGrade'/>
+			<Function name='GetCurStageStats'/>
+			<Function name='GetFinalEvalStageStats'/>
+			<Function name='GetFinalGrade'/>
+			<Function name='GetPlayedStageStats'/>
+			<Function name='GetStagesPlayed'/>
+			<Function name='GetWorstGrade'/>
+			<Function name='Reset'/>
+		</Class>
+		<Class name='Steps'>
+			<Function name='GetAuthorCredit'/>
+			<Function name='GetChartName'/>
+			<Function name='GetChartStyle'/>
+			<Function name='GetDescription'/>
+			<Function name='GetDifficulty'/>
+			<Function name='GetDisplayBPMType'/>
+			<Function name='GetDisplayBpms'/>
+			<Function name='GetFilename'/>
+			<Function name='GetHash'/>
+			<Function name='GetMeter'/>
+			<Function name='GetRadarValues'/>
+			<Function name='GetStepsType'/>
+			<Function name='GetTimingData'/>
+			<Function name='HasAttacks'/>
+			<Function name='HasSignificantTimingChanges'/>
+			<Function name='IsAPlayerEdit'/>
+			<Function name='IsAnEdit'/>
+			<Function name='IsAutogen'/>
+			<Function name='IsDisplayBpmConstant'/>
+			<Function name='IsDisplayBpmRandom'/>
+			<Function name='IsDisplayBpmSecret'/>
+			<Function name='PredictMeter'/>
+		</Class>
+		<Class base='ActorFrame' name='StepsDisplay'>
+			<Function name='Load'/>
+			<Function name='SetFromGameState'/>
+			<Function name='SetFromSteps'/>
+			<Function name='SetFromTrail'/>
+		</Class>
+		<Class base='ActorFrame' name='StepsDisplayList'>
+			<Function name='setfromgamestate'/>
+		</Class>
+		<Class name='Style'>
+			<Function name='ColumnsPerPlayer'/>
+			<Function name='GetColumnDrawOrder'/>
+			<Function name='GetColumnInfo'/>
+			<Function name='GetName'/>
+			<Function name='GetStepsType'/>
+			<Function name='GetStyleType'/>
+			<Function name='GetWidth'/>
+			<Function name='LockedDifficulty'/>
+			<Function name='NeedsZoomOutWith2Players'/>
+		</Class>
+		<Class name='TapNote'>
+			<Function name='GetTapNoteType'/>
+			<Function name='GetTapNoteSubType'/>
+			<Function name='GetTapNoteSource'/>
+			<Function name='GetTapNoteResult'/>
+			<Function name='GetPlayerNumber'/>
+			<Function name='GetAttackModifiers'/>
+			<Function name='GetAttackDuration'/>
+			<Function name='GetKeysoundIndex'/>
+			<Function name='GetHoldDuration'/>
+			<Function name='GetHoldNoteResult'/>
+		</Class>
+		<Class name='TapNoteResult'>
+			<Function name='GetTapNoteScore'/>
+			<Function name='GetTapNoteOffset'/>
+			<Function name='GetHidden'/>
+		</Class>
+		<Class name='HoldNoteResult'>
+			<Function name='GetHoldNoteScore'/>
+			<Function name='GetLife'/>
+			<Function name='GetOverlappedTime'/>
+			<Function name='GetLastHeldBeat'/>
+			<Function name='GetCheckpointsHit'/>
+			<Function name='GetCheckpointsMissed'/>
+			<Function name='GetHeld'/>
+			<Function name='GetActive'/>
+		</Class>
+		<Class base='ActorFrame' name='TextBanner'>
+			<Function name='Load'/>
+			<Function name='SetFromSong'/>
+			<Function name='SetFromString'/>
+		</Class>
+		<Class name='ThemeManager'>
+			<Function name='DoesLanguageExist'/>
+			<Function name='DoesThemeExist'/>
+			<Function name='GetAbsolutePath'/>
+			<Function name='GetCurLanguage'/>
+			<Function name='GetCurThemeName'/>
+			<Function name='GetCurrentThemeDirectory'/>
+			<Function name='GetMetric'/>
+			<Function name='GetMetricNamesInGroup'/>
+			<Function name='GetNumSelectableThemes'/>
+			<Function name='GetPathB'/>
+			<Function name='GetPathF'/>
+			<Function name='GetPathG'/>
+			<Function name='GetPathInfoB'/>
+			<Function name='GetPathO'/>
+			<Function name='GetPathS'/>
+			<Function name='GetSelectableThemeNames'/>
+			<Function name='GetString'/>
+			<Function name='GetStringNamesInGroup'/>
+			<Function name='GetThemeAuthor'/>
+			<Function name='GetThemeDisplayName'/>
+			<Function name='HasMetric'/>
+			<Function name='HasString'/>
+			<Function name='IsThemeSelectable'/>
+			<Function name='ReloadMetrics'/>
+			<Function name='RunLuaScripts'/>
+			<Function name='SetTheme'/>
+		</Class>
+		<Class name='TimingData'>
+			<Function name='GetActualBPM'/>
+			<Function name='GetBPMAtBeat'/>
+			<Function name='GetBPMs'/>
+			<Function name='GetBPMsAndTimes'/>
+			<Function name='GetBeatFromElapsedTime'/>
+			<Function name='GetCombos'/>
+			<Function name='GetDelays'/>
+			<Function name='GetElapsedTimeFromBeat'/>
+			<Function name='GetFakes'/>
+			<Function name='GetLabels'/>
+			<Function name='GetScrolls'/>
+			<Function name='GetSpeeds'/>
+			<Function name='GetStops'/>
+			<Function name='GetTickcounts'/>
+			<Function name='GetTimeSignatures'/>
+			<Function name='GetWarps'/>
+			<Function name='HasBPMChanges'/>
+			<Function name='HasDelays'/>
+			<Function name='HasFakes'/>
+			<Function name='HasNegativeBPMs'/>
+			<Function name='HasScrollChanges'/>
+			<Function name='HasSpeedChanges'/>
+			<Function name='HasStops'/>
+			<Function name='HasWarps'/>
+		</Class>
+		<Class name='Trail'>
+			<Function name='ContainsSong'/>
+			<Function name='GetArtists'/>
+			<Function name='GetDifficulty'/>
+			<Function name='GetLengthSeconds'/>
+			<Function name='GetMeter'/>
+			<Function name='GetRadarValues'/>
+			<Function name='GetStepsType'/>
+			<Function name='GetTotalMeter'/>
+			<Function name='GetTrailEntries'/>
+			<Function name='GetTrailEntry'/>
+			<Function name='IsSecret'/>
+		</Class>
+		<Class name='TrailEntry'>
+			<Function name='GetNormalModifiers'/>
+			<Function name='GetSong'/>
+			<Function name='GetSteps'/>
+			<Function name='IsSecret'/>
+		</Class>
+		<Class name='UnlockEntry'>
+			<Function name='GetCode'/>
+			<Function name='GetCourse'/>
+			<Function name='GetDescription'/>
+			<Function name='GetRequirePassChallengeSteps'/>
+			<Function name='GetRequirePassHardSteps'/>
+			<Function name='GetRequirement'/>
+			<Function name='GetSong'/>
+			<Function name='GetStepByStepsType'/>
+			<Function name='GetStepOfAllTypes'/>
+			<Function name='GetUnlockRewardType'/>
+			<Function name='IsLocked'/>
+			<Function name='code'/>
+			<Function name='course'/>
+			<Function name='mod'/>
+			<Function name='require'/>
+			<Function name='requirepasschallengesteps'/>
+			<Function name='requirepasshardsteps'/>
+			<Function name='roulette'/>
+			<Function name='song'/>
+			<Function name='steps'/>
+			<Function name='steps_type'/>
+		</Class>
+		<Class name='UnlockManager'>
+			<Function name='AnyUnlocksToCelebrate'/>
+			<Function name='FindEntryID'/>
+			<Function name='GetNumUnlocked'/>
+			<Function name='GetNumUnlocks'/>
+			<Function name='GetPoints'/>
+			<Function name='GetPointsForProfile'/>
+			<Function name='GetPointsUntilNextUnlock'/>
+			<Function name='GetSongsUnlockedByEntryID'/>
+			<Function name='GetStepsUnlockedByEntryID'/>
+			<Function name='GetUnlockEntry'/>
+			<Function name='GetUnlockEntryIndexToCelebrate'/>
+			<Function name='IsSongLocked'/>
+			<Function name='LockEntryID'/>
+			<Function name='LockEntryIndex'/>
+			<Function name='PreferUnlockEntryID'/>
+			<Function name='UnlockEntryID'/>
+			<Function name='UnlockEntryIndex'/>
+		</Class>
+		<Class base='ActorFrame' name='WheelBase'>
+			<Function name='GetCurrentIndex'/>
+			<Function name='GetNumItems'/>
+			<Function name='GetSelectedType'/>
+			<Function name='GetWheelItem'/>
+			<Function name='IsLocked'/>
+			<Function name='IsSettled'/>
+			<Function name='Move'/>
+			<Function name='SetOpenSection'/>
+		</Class>
+		<Class base='ActorFrame' name='WheelItemBase'>
+			<Function name='GetColor'/>
+			<Function name='GetText'/>
+			<Function name='GetType'/>
+			<Function name='IsLoaded'/>
+		</Class>
+		<Class base='ActorFrame' name='WorkoutGraph'>
+			<Function name='SetFromCurrentWorkout'/>
+			<Function name='SetFromGameStateAndHighlightSong'/>
+		</Class>
+	</Classes>
+	<Namespaces>
+		<Namespace name='ActorUtil'>
+			<Function name='GetFileType'/>
+			<Function name='IsRegisteredClass'/>
+			<Function name='LoadAllCommands'/>
+			<Function name='LoadAllCommandsAndSetXY'/>
+			<Function name='LoadAllCommandsFromName'/>
+			<Function name='ResolvePath'/>
+		</Namespace>
+		<Namespace name='ArrowEffects'>
+			<Function name='GetAlpha'/>
+			<Function name='GetBrightness'/>
+			<Function name='GetFrameWidthScale'/>
+			<Function name='GetGlow'/>
+			<Function name='GetRotationX'/>
+			<Function name='GetRotationY'/>
+			<Function name='GetRotationZ'/>
+			<Function name='GetYOffset'/>
+			<Function name='GetYOffsetFromYPos'/>
+			<Function name='GetYPos'/>
+			<Function name='GetXPos'/>
+			<Function name='GetZoom'/>
+			<Function name='GetZPos'/>
+			<Function name='NeedZBuffer'/>
+			<Function name='ReceptorGetRotationZ'/>
+			<Function name='Update'/>
+		</Namespace>
+		<Namespace name='Enum'>
+			<Function name='Compare'/>
+			<Function name='GetName'/>
+			<Function name='Reverse'/>
+		</Namespace>
+		<Namespace name='MersenneTwister'>
+			<Function name='Random'/>
+			<Function name='Seed'/>
+		</Namespace>
+		<Namespace name='RageFileUtil'>
+			<Function name='CreateRageFile'/>
+		</Namespace>
+		<Namespace name='ScreenSystemLayerHelpers'>
+			<Function name='GetCreditsMessage'/>
+		</Namespace>
+		<Namespace name='SongUtil'>
+			<Function name='GetPlayableSteps'/>
+			<Function name='IsStepsPlayable'/>
+			<Function name='IsStepsTypePlayable'/>
+		</Namespace>
+		<Namespace name='TrailUtil'>
+			<Function name='GetNumSongs'/>
+			<Function name='GetTotalSeconds'/>
+		</Namespace>
+		<Namespace name='lua'>
+			<Function name='CheckType'/>
+			<Function name='Flush'/>
+			<Function name='GetThreadVariable'/>
+			<Function name='ReadFile'/>
+			<Function name='ReportScriptError'/>
+			<Function name='RunWithThreadVariables'/>
+			<Function name='Trace'/>
+			<Function name='Warn'/>
+		</Namespace>
+	</Namespaces>
+	<Singletons>
+		<Singleton class='AnnouncerManager' name='ANNOUNCER'/>
+		<Singleton class='CharacterManager' name='CHARMAN'/>
+		<Singleton class='CryptManager' name='CRYPTMAN'/>
+		<Singleton class='RageDisplay' name='DISPLAY'/>
+		<Singleton class='RageFileManager' name='FILEMAN'/>
+		<Singleton class='GameManager' name='GAMEMAN'/>
+		<Singleton class='GameState' name='GAMESTATE'/>
+		<Singleton class='ArchHooks' name='HOOKS'/>
+		<Singleton class='InputFilter' name='INPUTFILTER'/>
+		<Singleton class='RageInput' name='INPUTMAN'/>
+		<Singleton class='MemoryCardManager' name='MEMCARDMAN'/>
+		<Singleton class='MessageManager' name='MESSAGEMAN'/>
+		<Singleton class='NoteSkinManager' name='NOTESKIN'/>
+		<Singleton class='PrefsManager' name='PREFSMAN'/>
+		<Singleton class='ProfileManager' name='PROFILEMAN'/>
+		<Singleton class='ScreenManager' name='SCREENMAN'/>
+		<Singleton class='SongManager' name='SONGMAN'/>
+		<Singleton class='GameSoundManager' name='SOUND'/>
+		<Singleton class='StatsManager' name='STATSMAN'/>
+		<Singleton class='ThemeManager' name='THEME'/>
+		<Singleton class='UnlockManager' name='UNLOCKMAN'/>
+	</Singletons>
+	<Enums>
+		<Enum name='AllowW1'>
+			<EnumValue name='&apos;AllowW1_Never&apos;' value='0'/>
+			<EnumValue name='&apos;AllowW1_CoursesOnly&apos;' value='1'/>
+			<EnumValue name='&apos;AllowW1_Everywhere&apos;' value='2'/>
+		</Enum>
+		<Enum name='AttractSoundFrequency'>
+			<EnumValue name='&apos;AttractSoundFrequency_Never&apos;' value='0'/>
+			<EnumValue name='&apos;AttractSoundFrequency_EveryTime&apos;' value='1'/>
+			<EnumValue name='&apos;AttractSoundFrequency_Every2Times&apos;' value='2'/>
+			<EnumValue name='&apos;AttractSoundFrequency_Every3Times&apos;' value='3'/>
+			<EnumValue name='&apos;AttractSoundFrequency_Every4Times&apos;' value='4'/>
+			<EnumValue name='&apos;AttractSoundFrequency_Every5Times&apos;' value='5'/>
+		</Enum>
+		<Enum name='AutosyncType'>
+			<EnumValue name='&apos;AutosyncType_Off&apos;' value='0'/>
+			<EnumValue name='&apos;AutosyncType_Song&apos;' value='1'/>
+			<EnumValue name='&apos;AutosyncType_Machine&apos;' value='2'/>
+			<EnumValue name='&apos;AutosyncType_Tempo&apos;' value='3'/>
+		</Enum>
+		<Enum name='BannerCacheMode'>
+			<EnumValue name='&apos;BannerCacheMode_Off&apos;' value='0'/>
+			<EnumValue name='&apos;BannerCacheMode_LowResPreload&apos;' value='1'/>
+			<EnumValue name='&apos;BannerCacheMode_LowResLoadOnDemand&apos;' value='2'/>
+			<EnumValue name='&apos;BannerCacheMode_Full&apos;' value='3'/>
+		</Enum>
+		<Enum name='BlendMode'>
+			<EnumValue name='&apos;BlendMode_Normal&apos;' value='0'/>
+			<EnumValue name='&apos;BlendMode_Add&apos;' value='1'/>
+			<EnumValue name='&apos;BlendMode_Subtract&apos;' value='2'/>
+			<EnumValue name='&apos;BlendMode_Modulate&apos;' value='3'/>
+			<EnumValue name='&apos;BlendMode_CopySrc&apos;' value='4'/>
+			<EnumValue name='&apos;BlendMode_AlphaMask&apos;' value='5'/>
+			<EnumValue name='&apos;BlendMode_AlphaKnockOut&apos;' value='6'/>
+			<EnumValue name='&apos;BlendMode_AlphaMultiply&apos;' value='7'/>
+			<EnumValue name='&apos;BlendMode_WeightedMultiply&apos;' value='8'/>
+			<EnumValue name='&apos;BlendMode_InvertDest&apos;' value='9'/>
+			<EnumValue name='&apos;BlendMode_NoEffect&apos;' value='10'/>
+		</Enum>
+		<Enum name='CoinMode'>
+			<EnumValue name='&apos;CoinMode_Home&apos;' value='0'/>
+			<EnumValue name='&apos;CoinMode_Pay&apos;' value='1'/>
+			<EnumValue name='&apos;CoinMode_Free&apos;' value='2'/>
+		</Enum>
+		<Enum name='CourseSortOrders'>
+			<EnumValue name='&apos;CourseSortOrders_Preferred&apos;' value='0'/>
+			<EnumValue name='&apos;CourseSortOrders_Songs&apos;' value='1'/>
+			<EnumValue name='&apos;CourseSortOrders_Meter&apos;' value='2'/>
+			<EnumValue name='&apos;CourseSortOrders_MeterSum&apos;' value='3'/>
+			<EnumValue name='&apos;CourseSortOrders_MeterRank&apos;' value='4'/>
+		</Enum>
+		<Enum name='CourseType'>
+			<EnumValue name='&apos;CourseType_Nonstop&apos;' value='0'/>
+			<EnumValue name='&apos;CourseType_Oni&apos;' value='1'/>
+			<EnumValue name='&apos;CourseType_Endless&apos;' value='2'/>
+			<EnumValue name='&apos;CourseType_Survival&apos;' value='3'/>
+		</Enum>
+		<Enum name='CullMode'>
+			<EnumValue name='&apos;CullMode_Back&apos;' value='0'/>
+			<EnumValue name='&apos;CullMode_Front&apos;' value='1'/>
+			<EnumValue name='&apos;CullMode_None&apos;' value='2'/>
+		</Enum>
+		<Enum name='Difficulty'>
+			<EnumValue name='&apos;Difficulty_Beginner&apos;' value='0'/>
+			<EnumValue name='&apos;Difficulty_Easy&apos;' value='1'/>
+			<EnumValue name='&apos;Difficulty_Medium&apos;' value='2'/>
+			<EnumValue name='&apos;Difficulty_Hard&apos;' value='3'/>
+			<EnumValue name='&apos;Difficulty_Challenge&apos;' value='4'/>
+			<EnumValue name='&apos;Difficulty_Edit&apos;' value='5'/>
+		</Enum>
+		<Enum name='DisplayBPM'>
+			<EnumValue name='&apos;DisplayBPM_Actual&apos;' value='0'/>
+			<EnumValue name='&apos;DisplayBPM_Specified&apos;' value='1'/>
+			<EnumValue name='&apos;DisplayBPM_Random&apos;' value='2'/>
+		</Enum>
+		<Enum name='DrainType'>
+			<EnumValue name='&apos;DrainType_Normal&apos;' value='0'/>
+			<EnumValue name='&apos;DrainType_NoRecover&apos;' value='1'/>
+			<EnumValue name='&apos;DrainType_SuddenDeath&apos;' value='2'/>
+		</Enum>
+		<Enum name='DrawMode'>
+			<EnumValue name='&apos;DrawMode_Quads&apos;' value='0'/>
+			<EnumValue name='&apos;DrawMode_QuadStrip&apos;' value='1'/>
+			<EnumValue name='&apos;DrawMode_Fan&apos;' value='2'/>
+			<EnumValue name='&apos;DrawMode_Strip&apos;' value='3'/>
+			<EnumValue name='&apos;DrawMode_Triangles&apos;' value='4'/>
+			<EnumValue name='&apos;DrawMode_LineStrip&apos;' value='5'/>
+			<EnumValue name='&apos;DrawMode_SymmetricQuadStrip&apos;' value='6'/>
+		</Enum>
+		<Enum name='EarnedExtraStage'>
+			<EnumValue name='&apos;EarnedExtraStage_No&apos;' value='0'/>
+			<EnumValue name='&apos;EarnedExtraStage_Extra1&apos;' value='1'/>
+			<EnumValue name='&apos;EarnedExtraStage_Extra2&apos;' value='2'/>
+		</Enum>
+		<Enum name='EditMode'>
+			<EnumValue name='&apos;EditMode_Practice&apos;' value='0'/>
+			<EnumValue name='&apos;EditMode_CourseMods&apos;' value='1'/>
+			<EnumValue name='&apos;EditMode_Home&apos;' value='2'/>
+			<EnumValue name='&apos;EditMode_Full&apos;' value='3'/>
+		</Enum>
+		<Enum name='EditState'>
+			<EnumValue name='&apos;EditState_Edit&apos;' value='0'/>
+			<EnumValue name='&apos;EditState_Record&apos;' value='1'/>
+			<EnumValue name='&apos;EditState_RecordPaused&apos;' value='2'/>
+			<EnumValue name='&apos;EditState_Playing&apos;' value='3'/>
+		</Enum>
+		<Enum name='FailType'>
+			<EnumValue name='&apos;FailType_Immediate&apos;' value='0'/>
+			<EnumValue name='&apos;FailType_ImmediateContinue&apos;' value='1'/>
+			<EnumValue name='&apos;FailType_EndOfSong&apos;' value='2'/>
+			<EnumValue name='&apos;FailType_Off&apos;' value='3'/>
+		</Enum>
+		<Enum name='FileType'>
+			<EnumValue name='&apos;FileType_Bitmap&apos;' value='0'/>
+			<EnumValue name='&apos;FileType_Sprite&apos;' value='1'/>
+			<EnumValue name='&apos;FileType_Sound&apos;' value='2'/>
+			<EnumValue name='&apos;FileType_Movie&apos;' value='3'/>
+			<EnumValue name='&apos;FileType_Directory&apos;' value='4'/>
+			<EnumValue name='&apos;FileType_Xml&apos;' value='5'/>
+			<EnumValue name='&apos;FileType_Model&apos;' value='6'/>
+			<EnumValue name='&apos;FileType_Lua&apos;' value='7'/>
+		</Enum>
+		<Enum name='GameController'>
+			<EnumValue name='&apos;GameController_1&apos;' value='0'/>
+			<EnumValue name='&apos;GameController_2&apos;' value='1'/>
+		</Enum>
+		<Enum name='GetRankingName'>
+			<EnumValue name='&apos;GetRankingName_Off&apos;' value='0'/>
+			<EnumValue name='&apos;GetRankingName_On&apos;' value='1'/>
+			<EnumValue name='&apos;GetRankingName_List&apos;' value='2'/>
+		</Enum>
+		<Enum name='GoalType'>
+			<EnumValue name='&apos;GoalType_Calories&apos;' value='0'/>
+			<EnumValue name='&apos;GoalType_Time&apos;' value='1'/>
+			<EnumValue name='&apos;GoalType_None&apos;' value='2'/>
+		</Enum>
+		<Enum name='Grade'>
+			<EnumValue name='&apos;Grade_Tier01&apos;' value='0'/>
+			<EnumValue name='&apos;Grade_Tier02&apos;' value='1'/>
+			<EnumValue name='&apos;Grade_Tier03&apos;' value='2'/>
+			<EnumValue name='&apos;Grade_Tier04&apos;' value='3'/>
+			<EnumValue name='&apos;Grade_Tier05&apos;' value='4'/>
+			<EnumValue name='&apos;Grade_Tier06&apos;' value='5'/>
+			<EnumValue name='&apos;Grade_Tier07&apos;' value='6'/>
+			<EnumValue name='&apos;Grade_Tier08&apos;' value='7'/>
+			<EnumValue name='&apos;Grade_Tier09&apos;' value='8'/>
+			<EnumValue name='&apos;Grade_Tier10&apos;' value='9'/>
+			<EnumValue name='&apos;Grade_Tier11&apos;' value='10'/>
+			<EnumValue name='&apos;Grade_Tier12&apos;' value='11'/>
+			<EnumValue name='&apos;Grade_Tier13&apos;' value='12'/>
+			<EnumValue name='&apos;Grade_Tier14&apos;' value='13'/>
+			<EnumValue name='&apos;Grade_Tier15&apos;' value='14'/>
+			<EnumValue name='&apos;Grade_Tier16&apos;' value='15'/>
+			<EnumValue name='&apos;Grade_Tier17&apos;' value='16'/>
+			<EnumValue name='&apos;Grade_Tier18&apos;' value='17'/>
+			<EnumValue name='&apos;Grade_Tier19&apos;' value='18'/>
+			<EnumValue name='&apos;Grade_Tier20&apos;' value='19'/>
+			<EnumValue name='&apos;Grade_Failed&apos;' value='20'/>
+		</Enum>
+		<Enum name='HealthState'>
+			<EnumValue name='&apos;HealthState_Hot&apos;' value='0'/>
+			<EnumValue name='&apos;HealthState_Alive&apos;' value='1'/>
+			<EnumValue name='&apos;HealthState_Danger&apos;' value='2'/>
+			<EnumValue name='&apos;HealthState_Dead&apos;' value='3'/>
+		</Enum>
+		<Enum name='HighResolutionTextures'>
+			<EnumValue name='&apos;HighResolutionTextures_Auto&apos;' value='0'/>
+			<EnumValue name='&apos;HighResolutionTextures_ForceOff&apos;' value='1'/>
+			<EnumValue name='&apos;HighResolutionTextures_ForceOn&apos;' value='2'/>
+		</Enum>
+		<Enum name='HighScoresType'>
+			<EnumValue name='&apos;HighScoresType_AllSteps&apos;' value='0'/>
+			<EnumValue name='&apos;HighScoresType_NonstopCourses&apos;' value='1'/>
+			<EnumValue name='&apos;HighScoresType_OniCourses&apos;' value='2'/>
+			<EnumValue name='&apos;HighScoresType_SurvivalCourses&apos;' value='3'/>
+			<EnumValue name='&apos;HighScoresType_AllCourses&apos;' value='4'/>
+		</Enum>
+		<Enum name='HoldNoteScore'>
+			<EnumValue name='&apos;HoldNoteScore_None&apos;' value='0'/>
+			<EnumValue name='&apos;HoldNoteScore_LetGo&apos;' value='1'/>
+			<EnumValue name='&apos;HoldNoteScore_Held&apos;' value='2'/>
+			<EnumValue name='&apos;HoldNoteScore_MissedHold&apos;' value='3'/>
+		</Enum>
+		<Enum name='HorizAlign'>
+			<EnumValue name='&apos;HorizAlign_Left&apos;' value='0'/>
+			<EnumValue name='&apos;HorizAlign_Center&apos;' value='1'/>
+			<EnumValue name='&apos;HorizAlign_Right&apos;' value='2'/>
+		</Enum>
+		<Enum name='InputEventType'>
+			<EnumValue name='&apos;InputEventType_FirstPress&apos;' value= '0'/>
+			<EnumValue name='&apos;InputEventType_Repeat&apos;' value= '1'/>
+			<EnumValue name='&apos;InputEventType_Release&apos;' value= '2'/>
+		</Enum>
+		<Enum name='JudgmentLine'>
+			<EnumValue name='&apos;JudgmentLine_W1&apos;' value='0'/>
+			<EnumValue name='&apos;JudgmentLine_W2&apos;' value='1'/>
+			<EnumValue name='&apos;JudgmentLine_W3&apos;' value='2'/>
+			<EnumValue name='&apos;JudgmentLine_W4&apos;' value='3'/>
+			<EnumValue name='&apos;JudgmentLine_W5&apos;' value='4'/>
+			<EnumValue name='&apos;JudgmentLine_Miss&apos;' value='5'/>
+			<EnumValue name='&apos;JudgmentLine_Held&apos;' value='6'/>
+			<EnumValue name='&apos;JudgmentLine_MaxCombo&apos;' value='7'/>
+		</Enum>
+		<Enum name='LayoutType'>
+			<EnumValue name='&apos;LayoutType_ShowAllInRow&apos;' value='0'/>
+			<EnumValue name='&apos;LayoutType_ShowOneInRow&apos;' value='1'/>
+		</Enum>
+		<Enum name='LifeType'>
+			<EnumValue name='&apos;LifeType_Bar&apos;' value='0'/>
+			<EnumValue name='&apos;LifeType_Battery&apos;' value='1'/>
+			<EnumValue name='&apos;LifeType_Time&apos;' value='2'/>
+		</Enum>
+		<Enum name='LightsMode'>
+			<EnumValue name='&apos;LightsMode_Attract&apos;' value='0'/>
+			<EnumValue name='&apos;LightsMode_Joining&apos;' value='1'/>
+			<EnumValue name='&apos;LightsMode_MenuStartOnly&apos;' value='2'/>
+			<EnumValue name='&apos;LightsMode_MenuStartAndDirections&apos;' value='3'/>
+			<EnumValue name='&apos;LightsMode_Demonstration&apos;' value='4'/>
+			<EnumValue name='&apos;LightsMode_Gameplay&apos;' value='5'/>
+			<EnumValue name='&apos;LightsMode_Stage&apos;' value='6'/>
+			<EnumValue name='&apos;LightsMode_Cleared&apos;' value='7'/>
+			<EnumValue name='&apos;LightsMode_TestAutoCycle&apos;' value='8'/>
+			<EnumValue name='&apos;LightsMode_TestManualCycle&apos;' value='9'/>
+		</Enum>
+		<Enum name='Maybe'>
+			<EnumValue name='&apos;Maybe_Ask&apos;' value='0'/>
+			<EnumValue name='&apos;Maybe_No&apos;' value='1'/>
+			<EnumValue name='&apos;Maybe_Yes&apos;' value='2'/>
+		</Enum>
+		<Enum name='MemoryCardState'>
+			<EnumValue name='&apos;MemoryCardState_ready&apos;' value='0'/>
+			<EnumValue name='&apos;MemoryCardState_checking&apos;' value='1'/>
+			<EnumValue name='&apos;MemoryCardState_late&apos;' value='2'/>
+			<EnumValue name='&apos;MemoryCardState_error&apos;' value='3'/>
+			<EnumValue name='&apos;MemoryCardState_removed&apos;' value='4'/>
+			<EnumValue name='&apos;MemoryCardState_none&apos;' value='5'/>
+		</Enum>
+		<Enum name='ModsLevel'>
+			<EnumValue name='&apos;ModsLevel_Preferred&apos;' value='0'/>
+			<EnumValue name='&apos;ModsLevel_Stage&apos;' value='1'/>
+			<EnumValue name='&apos;ModsLevel_Song&apos;' value='2'/>
+			<EnumValue name='&apos;ModsLevel_Current&apos;' value='3'/>
+		</Enum>
+		<Enum name='ModTimerType'>
+			<EnumValue name='&apos;ModTimerType_Game&apos;' value='0'/>
+			<EnumValue name='&apos;ModTimerType_Beat&apos;' value='1'/>
+			<EnumValue name='&apos;ModTimerType_Song&apos;' value='2'/>
+			<EnumValue name='&apos;ModTimerType_Default&apos;' value='3'/>
+		</Enum>
+		<Enum name='Month'>
+			<EnumValue name='&apos;Month_January&apos;' value='0'/>
+			<EnumValue name='&apos;Month_February&apos;' value='1'/>
+			<EnumValue name='&apos;Month_March&apos;' value='2'/>
+			<EnumValue name='&apos;Month_April&apos;' value='3'/>
+			<EnumValue name='&apos;Month_May&apos;' value='4'/>
+			<EnumValue name='&apos;Month_June&apos;' value='5'/>
+			<EnumValue name='&apos;Month_July&apos;' value='6'/>
+			<EnumValue name='&apos;Month_August&apos;' value='7'/>
+			<EnumValue name='&apos;Month_September&apos;' value='8'/>
+			<EnumValue name='&apos;Month_October&apos;' value='9'/>
+			<EnumValue name='&apos;Month_November&apos;' value='10'/>
+			<EnumValue name='&apos;Month_December&apos;' value='11'/>
+		</Enum>
+		<Enum name='MultiPlayer'>
+			<EnumValue name='&apos;MultiPlayer_P1&apos;' value='0'/>
+			<EnumValue name='&apos;MultiPlayer_P2&apos;' value='1'/>
+			<EnumValue name='&apos;MultiPlayer_P3&apos;' value='2'/>
+			<EnumValue name='&apos;MultiPlayer_P4&apos;' value='3'/>
+			<EnumValue name='&apos;MultiPlayer_P5&apos;' value='4'/>
+			<EnumValue name='&apos;MultiPlayer_P6&apos;' value='5'/>
+			<EnumValue name='&apos;MultiPlayer_P7&apos;' value='6'/>
+			<EnumValue name='&apos;MultiPlayer_P8&apos;' value='7'/>
+			<EnumValue name='&apos;MultiPlayer_P9&apos;' value='8'/>
+			<EnumValue name='&apos;MultiPlayer_P10&apos;' value='9'/>
+			<EnumValue name='&apos;MultiPlayer_P11&apos;' value='10'/>
+			<EnumValue name='&apos;MultiPlayer_P12&apos;' value='11'/>
+			<EnumValue name='&apos;MultiPlayer_P13&apos;' value='12'/>
+			<EnumValue name='&apos;MultiPlayer_P14&apos;' value='13'/>
+			<EnumValue name='&apos;MultiPlayer_P15&apos;' value='14'/>
+			<EnumValue name='&apos;MultiPlayer_P16&apos;' value='15'/>
+			<EnumValue name='&apos;MultiPlayer_P17&apos;' value='16'/>
+			<EnumValue name='&apos;MultiPlayer_P18&apos;' value='17'/>
+			<EnumValue name='&apos;MultiPlayer_P19&apos;' value='18'/>
+			<EnumValue name='&apos;MultiPlayer_P20&apos;' value='19'/>
+			<EnumValue name='&apos;MultiPlayer_P21&apos;' value='20'/>
+			<EnumValue name='&apos;MultiPlayer_P22&apos;' value='21'/>
+			<EnumValue name='&apos;MultiPlayer_P23&apos;' value='22'/>
+			<EnumValue name='&apos;MultiPlayer_P24&apos;' value='23'/>
+			<EnumValue name='&apos;MultiPlayer_P25&apos;' value='24'/>
+			<EnumValue name='&apos;MultiPlayer_P26&apos;' value='25'/>
+			<EnumValue name='&apos;MultiPlayer_P27&apos;' value='26'/>
+			<EnumValue name='&apos;MultiPlayer_P28&apos;' value='27'/>
+			<EnumValue name='&apos;MultiPlayer_P29&apos;' value='28'/>
+			<EnumValue name='&apos;MultiPlayer_P30&apos;' value='29'/>
+			<EnumValue name='&apos;MultiPlayer_P31&apos;' value='30'/>
+			<EnumValue name='&apos;MultiPlayer_P32&apos;' value='31'/>
+		</Enum>
+		<Enum name='MusicWheelUsesSections'>
+			<EnumValue name='&apos;MusicWheelUsesSections_Never&apos;' value='0'/>
+			<EnumValue name='&apos;MusicWheelUsesSections_Always&apos;' value='1'/>
+			<EnumValue name='&apos;MusicWheelUsesSections_ABCOnly&apos;' value='2'/>
+		</Enum>
+		<Enum name='NoteColumnSplineMode'>
+			<EnumValue name='&apos;NoteColumnSplineMode_Disabled&apos;' value='0'/>
+			<EnumValue name='&apos;NoteColumnSplineMode_Offset&apos;' value='1'/>
+			<EnumValue name='&apos;NoteColumnSplineMode_Position&apos;' value='2'/>
+		</Enum>
+		<Enum name='NotePart'>
+			<EnumValue name='&apos;NotePart_TapNote&apos;' value='0'/>
+			<EnumValue name='&apos;NotePart_TapMine&apos;' value='1'/>
+			<EnumValue name='&apos;NotePart_TapLift&apos;' value='2'/>
+			<EnumValue name='&apos;NotePart_TapFake&apos;' value='3'/>
+			<EnumValue name='&apos;NotePart_HoldHead&apos;' value='4'/>
+			<EnumValue name='&apos;NotePart_HoldTail&apos;' value='5'/>
+			<EnumValue name='&apos;NotePart_HoldTopCap&apos;' value='6'/>
+			<EnumValue name='&apos;NotePart_HoldBody&apos;' value='7'/>
+			<EnumValue name='&apos;NotePart_HoldBottomCap&apos;' value='8'/>
+		</Enum>
+		<Enum name='NoteType'>
+			<EnumValue name='&apos;NoteType_4th&apos;' value='0'/>
+			<EnumValue name='&apos;NoteType_8th&apos;' value='1'/>
+			<EnumValue name='&apos;NoteType_12th&apos;' value='2'/>
+			<EnumValue name='&apos;NoteType_16th&apos;' value='3'/>
+			<EnumValue name='&apos;NoteType_24th&apos;' value='4'/>
+			<EnumValue name='&apos;NoteType_32nd&apos;' value='5'/>
+			<EnumValue name='&apos;NoteType_48th&apos;' value='6'/>
+			<EnumValue name='&apos;NoteType_64th&apos;' value='7'/>
+			<EnumValue name='&apos;NoteType_192nd&apos;' value='8'/>
+		</Enum>
+		<Enum name='OptEffect'>
+			<EnumValue name='&apos;OptEffect_SavePreferences&apos;' value='1'/>
+			<EnumValue name='&apos;OptEffect_ApplyGraphics&apos;' value='2'/>
+			<EnumValue name='&apos;OptEffect_ApplyTheme&apos;' value='4'/>
+			<EnumValue name='&apos;OptEffect_ChangeGame&apos;' value='8'/>
+			<EnumValue name='&apos;OptEffect_ApplySound&apos;' value='16'/>
+			<EnumValue name='&apos;OptEffect_ApplySong&apos;' value='32'/>
+			<EnumValue name='&apos;OptEffect_ApplyAspectRatio&apos;' value='64'/>
+		</Enum>
+		<Enum name='PaneCategory'>
+			<EnumValue name='&apos;PaneCategory_NumSteps&apos;' value='0'/>
+			<EnumValue name='&apos;PaneCategory_Jumps&apos;' value='1'/>
+			<EnumValue name='&apos;PaneCategory_Holds&apos;' value='2'/>
+			<EnumValue name='&apos;PaneCategory_Rolls&apos;' value='3'/>
+			<EnumValue name='&apos;PaneCategory_Mines&apos;' value='4'/>
+			<EnumValue name='&apos;PaneCategory_Hands&apos;' value='5'/>
+			<EnumValue name='&apos;PaneCategory_Lifts&apos;' value='6'/>
+			<EnumValue name='&apos;PaneCategory_Fakes&apos;' value='7'/>
+			<EnumValue name='&apos;PaneCategory_MachineHighScore&apos;' value='8'/>
+			<EnumValue name='&apos;PaneCategory_MachineHighName&apos;' value='9'/>
+			<EnumValue name='&apos;PaneCategory_ProfileHighScore&apos;' value='10'/>
+		</Enum>
+		<Enum name='PeakComboAward'>
+			<EnumValue name='&apos;PeakComboAward_1000&apos;' value='0'/>
+			<EnumValue name='&apos;PeakComboAward_2000&apos;' value='1'/>
+			<EnumValue name='&apos;PeakComboAward_3000&apos;' value='2'/>
+			<EnumValue name='&apos;PeakComboAward_4000&apos;' value='3'/>
+			<EnumValue name='&apos;PeakComboAward_5000&apos;' value='4'/>
+			<EnumValue name='&apos;PeakComboAward_6000&apos;' value='5'/>
+			<EnumValue name='&apos;PeakComboAward_7000&apos;' value='6'/>
+			<EnumValue name='&apos;PeakComboAward_8000&apos;' value='7'/>
+			<EnumValue name='&apos;PeakComboAward_9000&apos;' value='8'/>
+			<EnumValue name='&apos;PeakComboAward_10000&apos;' value='9'/>
+		</Enum>
+		<Enum name='PlayMode'>
+			<EnumValue name='&apos;PlayMode_Regular&apos;' value='0'/>
+			<EnumValue name='&apos;PlayMode_Nonstop&apos;' value='1'/>
+			<EnumValue name='&apos;PlayMode_Oni&apos;' value='2'/>
+			<EnumValue name='&apos;PlayMode_Endless&apos;' value='3'/>
+			<EnumValue name='&apos;PlayMode_Battle&apos;' value='4'/>
+			<EnumValue name='&apos;PlayMode_Rave&apos;' value='5'/>
+		</Enum>
+		<Enum name='PlayerController'>
+			<EnumValue name='&apos;PlayerController_Human&apos;' value='0'/>
+			<EnumValue name='&apos;PlayerController_Autoplay&apos;' value='1'/>
+			<EnumValue name='&apos;PlayerController_Cpu&apos;' value='2'/>
+		</Enum>
+		<Enum name='PlayerNumber'>
+			<EnumValue name='&apos;PlayerNumber_P1&apos;' value='0'/>
+			<EnumValue name='&apos;PlayerNumber_P2&apos;' value='1'/>
+		</Enum>
+		<Enum name='Premium'>
+			<EnumValue name='&apos;Premium_Off&apos;' value='0'/>
+			<EnumValue name='&apos;Premium_DoubleFor1Credit&apos;' value='1'/>
+			<EnumValue name='&apos;Premium_2PlayersFor1Credit&apos;' value='2'/>
+		</Enum>
+		<Enum name='ProfileSlot'>
+			<EnumValue name='&apos;ProfileSlot_Player1&apos;' value='0'/>
+			<EnumValue name='&apos;ProfileSlot_Player2&apos;' value='1'/>
+			<EnumValue name='&apos;ProfileSlot_Machine&apos;' value='2'/>
+		</Enum>
+		<Enum name='ProfileType'>
+			<EnumValue name='&apos;ProfileType_Guest&apos;' value='0'/>
+			<EnumValue name='&apos;ProfileType_Normal&apos;' value='1'/>
+			<EnumValue name='&apos;ProfileType_Test&apos;' value='2'/>
+		</Enum>
+		<Enum name='RadarCategory'>
+			<EnumValue name='&apos;RadarCategory_Stream&apos;' value='0'/>
+			<EnumValue name='&apos;RadarCategory_Voltage&apos;' value='1'/>
+			<EnumValue name='&apos;RadarCategory_Air&apos;' value='2'/>
+			<EnumValue name='&apos;RadarCategory_Freeze&apos;' value='3'/>
+			<EnumValue name='&apos;RadarCategory_Chaos&apos;' value='4'/>
+			<EnumValue name='&apos;RadarCategory_TapsAndHolds&apos;' value='5'/>
+			<EnumValue name='&apos;RadarCategory_Jumps&apos;' value='6'/>
+			<EnumValue name='&apos;RadarCategory_Holds&apos;' value='7'/>
+			<EnumValue name='&apos;RadarCategory_Mines&apos;' value='8'/>
+			<EnumValue name='&apos;RadarCategory_Hands&apos;' value='9'/>
+			<EnumValue name='&apos;RadarCategory_Rolls&apos;' value='10'/>
+			<EnumValue name='&apos;RadarCategory_Lifts&apos;' value='11'/>
+			<EnumValue name='&apos;RadarCategory_Fakes&apos;' value='12'/>
+		</Enum>
+		<Enum name='RandomBackgroundMode'>
+			<EnumValue name='&apos;RandomBackgroundMode_Off&apos;' value='0'/>
+			<EnumValue name='&apos;RandomBackgroundMode_Animations&apos;' value='1'/>
+			<EnumValue name='&apos;RandomBackgroundMode_RandomMovies&apos;' value='2'/>
+		</Enum>
+		<Enum name='RankingCategory'>
+			<EnumValue name='&apos;RankingCategory_a&apos;' value='0'/>
+			<EnumValue name='&apos;RankingCategory_b&apos;' value='1'/>
+			<EnumValue name='&apos;RankingCategory_c&apos;' value='2'/>
+			<EnumValue name='&apos;RankingCategory_d&apos;' value='3'/>
+		</Enum>
+		<Enum name='RankingType'>
+			<EnumValue name='&apos;RankingType_Category&apos;' value='0'/>
+			<EnumValue name='&apos;RankingType_Course&apos;' value='1'/>
+		</Enum>
+		<Enum name='ReloadChanged'>
+			<EnumValue name='&apos;ReloadChanged_None&apos;' value='0'/>
+			<EnumValue name='&apos;ReloadChanged_Enabled&apos;' value='1'/>
+			<EnumValue name='&apos;ReloadChanged_All&apos;' value='2'/>
+		</Enum>
+		<Enum name='SampleMusicPreviewMode'>
+			<EnumValue name='&apos;SampleMusicPreviewMode_Normal&apos;' value='0'/>
+			<EnumValue name='&apos;SampleMusicPreviewMode_StartToPreview&apos;' value='1'/>
+			<EnumValue name='&apos;SampleMusicPreviewMode_ScreenMusic&apos;' value='2'/>
+			<EnumValue name='&apos;SampleMusicPreviewMode_LastSong&apos;' value='3'/>
+		</Enum>
+		<Enum name='ScreenType'>
+			<EnumValue name='&apos;ScreenType_Attract&apos;' value='0'/>
+			<EnumValue name='&apos;ScreenType_GameMenu&apos;' value='1'/>
+			<EnumValue name='&apos;ScreenType_Gameplay&apos;' value='2'/>
+			<EnumValue name='&apos;ScreenType_SystemMenu&apos;' value='3'/>
+		</Enum>
+		<Enum name='SelectType'>
+			<EnumValue name='&apos;SelectType_SelectOne&apos;' value='0'/>
+			<EnumValue name='&apos;SelectType_SelectMultiple&apos;' value='1'/>
+			<EnumValue name='&apos;SelectType_SelectNone&apos;' value='2'/>
+		</Enum>
+		<Enum name='ShowDancingCharacters'>
+			<EnumValue name='&apos;ShowDancingCharacters_Off&apos;' value='0'/>
+			<EnumValue name='&apos;ShowDancingCharacters_Random&apos;' value='1'/>
+			<EnumValue name='&apos;ShowDancingCharacters_Select&apos;' value='2'/>
+		</Enum>
+		<Enum name='SortOrder'>
+			<EnumValue name='&apos;SortOrder_Preferred&apos;' value='0'/>
+			<EnumValue name='&apos;SortOrder_Group&apos;' value='1'/>
+			<EnumValue name='&apos;SortOrder_Title&apos;' value='2'/>
+			<EnumValue name='&apos;SortOrder_BPM&apos;' value='3'/>
+			<EnumValue name='&apos;SortOrder_Popularity&apos;' value='4'/>
+			<EnumValue name='&apos;SortOrder_TopGrades&apos;' value='5'/>
+			<EnumValue name='&apos;SortOrder_Artist&apos;' value='6'/>
+			<EnumValue name='&apos;SortOrder_Genre&apos;' value='7'/>
+			<EnumValue name='&apos;SortOrder_BeginnerMeter&apos;' value='8'/>
+			<EnumValue name='&apos;SortOrder_EasyMeter&apos;' value='9'/>
+			<EnumValue name='&apos;SortOrder_MediumMeter&apos;' value='10'/>
+			<EnumValue name='&apos;SortOrder_HardMeter&apos;' value='11'/>
+			<EnumValue name='&apos;SortOrder_ChallengeMeter&apos;' value='12'/>
+			<EnumValue name='&apos;SortOrder_DoubleEasyMeter&apos;' value='13'/>
+			<EnumValue name='&apos;SortOrder_DoubleMediumMeter&apos;' value='14'/>
+			<EnumValue name='&apos;SortOrder_DoubleHardMeter&apos;' value='15'/>
+			<EnumValue name='&apos;SortOrder_DoubleChallengeMeter&apos;' value='16'/>
+			<EnumValue name='&apos;SortOrder_ModeMenu&apos;' value='17'/>
+			<EnumValue name='&apos;SortOrder_AllCourses&apos;' value='18'/>
+			<EnumValue name='&apos;SortOrder_Nonstop&apos;' value='19'/>
+			<EnumValue name='&apos;SortOrder_Oni&apos;' value='20'/>
+			<EnumValue name='&apos;SortOrder_Endless&apos;' value='21'/>
+			<EnumValue name='&apos;SortOrder_Length&apos;' value='22'/>
+			<EnumValue name='&apos;SortOrder_Roulette&apos;' value='23'/>
+			<EnumValue name='&apos;SortOrder_Recent&apos;' value='24'/>
+		</Enum>
+		<Enum name='SoundEffectType'>
+			<EnumValue name='&apos;SoundEffectType_Off&apos;' value='0'/>
+			<EnumValue name='&apos;SoundEffectType_Speed&apos;' value='1'/>
+			<EnumValue name='&apos;SoundEffectType_Pitch&apos;' value='2'/>
+		</Enum>
+		<Enum name='Stage'>
+			<EnumValue name='&apos;Stage_1st&apos;' value='0'/>
+			<EnumValue name='&apos;Stage_2nd&apos;' value='1'/>
+			<EnumValue name='&apos;Stage_3rd&apos;' value='2'/>
+			<EnumValue name='&apos;Stage_4th&apos;' value='3'/>
+			<EnumValue name='&apos;Stage_5th&apos;' value='4'/>
+			<EnumValue name='&apos;Stage_6th&apos;' value='5'/>
+			<EnumValue name='&apos;Stage_Next&apos;' value='6'/>
+			<EnumValue name='&apos;Stage_Final&apos;' value='7'/>
+			<EnumValue name='&apos;Stage_Extra1&apos;' value='8'/>
+			<EnumValue name='&apos;Stage_Extra2&apos;' value='9'/>
+			<EnumValue name='&apos;Stage_Nonstop&apos;' value='10'/>
+			<EnumValue name='&apos;Stage_Oni&apos;' value='11'/>
+			<EnumValue name='&apos;Stage_Endless&apos;' value='12'/>
+			<EnumValue name='&apos;Stage_Event&apos;' value='13'/>
+			<EnumValue name='&apos;Stage_Demo&apos;' value='14'/>
+		</Enum>
+		<Enum name='StageAward'>
+			<EnumValue name='&apos;StageAward_FullComboW3&apos;' value='0'/>
+			<EnumValue name='&apos;StageAward_SingleDigitW3&apos;' value='1'/>
+			<EnumValue name='&apos;StageAward_OneW3&apos;' value='2'/>
+			<EnumValue name='&apos;StageAward_FullComboW2&apos;' value='3'/>
+			<EnumValue name='&apos;StageAward_SingleDigitW2&apos;' value='4'/>
+			<EnumValue name='&apos;StageAward_OneW2&apos;' value='5'/>
+			<EnumValue name='&apos;StageAward_FullComboW1&apos;' value='6'/>
+			<EnumValue name='&apos;StageAward_80PercentW3&apos;' value='7'/>
+			<EnumValue name='&apos;StageAward_90PercentW3&apos;' value='8'/>
+			<EnumValue name='&apos;StageAward_100PercentW3&apos;' value='9'/>
+		</Enum>
+		<Enum name='StageResult'>
+			<EnumValue name='&apos;StageResult_Win&apos;' value='0'/>
+			<EnumValue name='&apos;StageResult_Lose&apos;' value='1'/>
+			<EnumValue name='&apos;StageResult_Draw&apos;' value='2'/>
+		</Enum>
+		<Enum name='StepsType'>
+			<EnumValue name='&apos;StepsType_Dance_Single&apos;' value='0'/>
+			<EnumValue name='&apos;StepsType_Dance_Double&apos;' value='1'/>
+			<EnumValue name='&apos;StepsType_Dance_Couple&apos;' value='2'/>
+			<EnumValue name='&apos;StepsType_Dance_Solo&apos;' value='3'/>
+			<EnumValue name='&apos;StepsType_Dance_Threepanel&apos;' value='4'/>
+			<EnumValue name='&apos;StepsType_Dance_Routine&apos;' value='5'/>
+			<EnumValue name='&apos;StepsType_Pump_Single&apos;' value='6'/>
+			<EnumValue name='&apos;StepsType_Pump_Halfdouble&apos;' value='7'/>
+			<EnumValue name='&apos;StepsType_Pump_Double&apos;' value='8'/>
+			<EnumValue name='&apos;StepsType_Pump_Couple&apos;' value='9'/>
+			<EnumValue name='&apos;StepsType_Pump_Routine&apos;' value='10'/>
+			<EnumValue name='&apos;StepsType_Kb7_Single&apos;' value='11'/>
+			<EnumValue name='&apos;StepsType_Ez2_Single&apos;' value='12'/>
+			<EnumValue name='&apos;StepsType_Ez2_Double&apos;' value='13'/>
+			<EnumValue name='&apos;StepsType_Ez2_Real&apos;' value='14'/>
+			<EnumValue name='&apos;StepsType_Para_Single&apos;' value='15'/>
+			<EnumValue name='&apos;StepsType_Ds3ddx_Single&apos;' value='16'/>
+			<EnumValue name='&apos;StepsType_Bm_Single5&apos;' value='17'/>
+			<EnumValue name='&apos;StepsType_Bm_Versus5&apos;' value='18'/>
+			<EnumValue name='&apos;StepsType_Bm_Double5&apos;' value='19'/>
+			<EnumValue name='&apos;StepsType_Bm_Single7&apos;' value='20'/>
+			<EnumValue name='&apos;StepsType_Bm_Versus7&apos;' value='21'/>
+			<EnumValue name='&apos;StepsType_Bm_Double7&apos;' value='22'/>
+			<EnumValue name='&apos;StepsType_Maniax_Single&apos;' value='23'/>
+			<EnumValue name='&apos;StepsType_Maniax_Double&apos;' value='24'/>
+			<EnumValue name='&apos;StepsType_Techno_Single4&apos;' value='25'/>
+			<EnumValue name='&apos;StepsType_Techno_Single5&apos;' value='26'/>
+			<EnumValue name='&apos;StepsType_Techno_Single8&apos;' value='27'/>
+			<EnumValue name='&apos;StepsType_Techno_Double4&apos;' value='28'/>
+			<EnumValue name='&apos;StepsType_Techno_Double5&apos;' value='29'/>
+			<EnumValue name='&apos;StepsType_Techno_Double8&apos;' value='30'/>
+			<EnumValue name='&apos;StepsType_Pnm_Five&apos;' value='31'/>
+			<EnumValue name='&apos;StepsType_Pnm_Nine&apos;' value='32'/>
+			<EnumValue name='&apos;StepsType_Lights_Cabinet&apos;' value='33'/>
+		</Enum>
+		<Enum name='StyleType'>
+			<EnumValue name='&apos;StyleType_OnePlayerOneSide&apos;' value='0'/>
+			<EnumValue name='&apos;StyleType_TwoPlayersTwoSides&apos;' value='1'/>
+			<EnumValue name='&apos;StyleType_OnePlayerTwoSides&apos;' value='2'/>
+			<EnumValue name='&apos;StyleType_TwoPlayersSharedSides&apos;' value='3'/>
+		</Enum>
+		<Enum name='TapNoteScore'>
+			<EnumValue name='&apos;TapNoteScore_None&apos;' value='0'/>
+			<EnumValue name='&apos;TapNoteScore_HitMine&apos;' value='1'/>
+			<EnumValue name='&apos;TapNoteScore_AvoidMine&apos;' value='2'/>
+			<EnumValue name='&apos;TapNoteScore_CheckpointMiss&apos;' value='3'/>
+			<EnumValue name='&apos;TapNoteScore_Miss&apos;' value='4'/>
+			<EnumValue name='&apos;TapNoteScore_W5&apos;' value='5'/>
+			<EnumValue name='&apos;TapNoteScore_W4&apos;' value='6'/>
+			<EnumValue name='&apos;TapNoteScore_W3&apos;' value='7'/>
+			<EnumValue name='&apos;TapNoteScore_W2&apos;' value='8'/>
+			<EnumValue name='&apos;TapNoteScore_W1&apos;' value='9'/>
+			<EnumValue name='&apos;TapNoteScore_CheckpointHit&apos;' value='10'/>
+		</Enum>
+		<Enum name='TapNoteScoreJudgeType'>
+			<EnumValue name='&apos;TapNoteScoreJudgeType_MinimumScore&apos;' value='0'/>
+			<EnumValue name='&apos;TapNoteScoreJudgeType_LastScore&apos;' value='1'/>
+		</Enum>
+		<Enum name='TapNoteType'>
+			<EnumValue name='&apos;TapNoteType_Empty&apos;' value='0'/>
+			<EnumValue name='&apos;TapNoteType_Tap&apos;' value='1'/>
+			<EnumValue name='&apos;TapNoteType_HoldHead&apos;' value='2'/>
+			<EnumValue name='&apos;TapNoteType_HoldTail&apos;' value='3'/>
+			<EnumValue name='&apos;TapNoteType_Mine&apos;' value='4'/>
+			<EnumValue name='&apos;TapNoteType_Lift&apos;' value='5'/>
+			<EnumValue name='&apos;TapNoteType_Attack&apos;' value='6'/>
+			<EnumValue name='&apos;TapNoteType_AutoKeysound&apos;' value='7'/>
+			<EnumValue name='&apos;TapNoteType_Fake&apos;' value='8'/>
+		</Enum>
+		<Enum name='TapNoteSubType'>
+			<EnumValue name='&apos;TapNoteSubType_Hold&apos;' value='0'/>
+			<EnumValue name='&apos;TapNoteSubType_Roll&apos;' value='1'/>
+		</Enum>
+		<Enum name='TapNoteSource'>
+			<EnumValue name='&apos;TapNoteSource_Original&apos;' value='0'/>
+			<EnumValue name='&apos;TapNoteSource_Addition&apos;' value='1'/>
+		</Enum>
+		<Enum name='TextGlowMode'>
+			<EnumValue name='&apos;TextGlowMode_Inner&apos;' value='0'/>
+			<EnumValue name='&apos;TextGlowMode_Stroke&apos;' value='1'/>
+			<EnumValue name='&apos;TextGlowMode_Both&apos;' value='2'/>
+		</Enum>
+		<Enum name='TextureMode'>
+			<EnumValue name='&apos;TextureMode_Modulate&apos;' value='0'/>
+			<EnumValue name='&apos;TextureMode_Glow&apos;' value='1'/>
+			<EnumValue name='&apos;TextureMode_Add&apos;' value='2'/>
+		</Enum>
+		<Enum name='TweenType'>
+			<EnumValue name='&apos;TweenType_Linear&apos;' value='0'/>
+			<EnumValue name='&apos;TweenType_Accelerate&apos;' value='1'/>
+			<EnumValue name='&apos;TweenType_Decelerate&apos;' value='2'/>
+			<EnumValue name='&apos;TweenType_Spring&apos;' value='3'/>
+			<EnumValue name='&apos;TweenType_Bezier&apos;' value='4'/>
+		</Enum>
+		<Enum name='UnlockRequirement'>
+			<EnumValue name='&apos;UnlockRequirement_ArcadePoints&apos;' value='0'/>
+			<EnumValue name='&apos;UnlockRequirement_DancePoints&apos;' value='1'/>
+			<EnumValue name='&apos;UnlockRequirement_SongPoints&apos;' value='2'/>
+			<EnumValue name='&apos;UnlockRequirement_ExtraCleared&apos;' value='3'/>
+			<EnumValue name='&apos;UnlockRequirement_ExtraFailed&apos;' value='4'/>
+			<EnumValue name='&apos;UnlockRequirement_Toasties&apos;' value='5'/>
+			<EnumValue name='&apos;UnlockRequirement_StagesCleared&apos;' value='6'/>
+			<EnumValue name='&apos;UnlockRequirement_NumberUnlocked&apos;' value='7'/>
+		</Enum>
+		<Enum name='UnlockRewardType'>
+			<EnumValue name='&apos;UnlockRewardType_Song&apos;' value='0'/>
+			<EnumValue name='&apos;UnlockRewardType_Steps&apos;' value='1'/>
+			<EnumValue name='&apos;UnlockRewardType_StepsType&apos;' value='2'/>
+			<EnumValue name='&apos;UnlockRewardType_Course&apos;' value='3'/>
+			<EnumValue name='&apos;UnlockRewardType_Modifier&apos;' value='4'/>
+		</Enum>
+		<Enum name='VertAlign'>
+			<EnumValue name='&apos;VertAlign_Top&apos;' value='0'/>
+			<EnumValue name='&apos;VertAlign_Middle&apos;' value='1'/>
+			<EnumValue name='&apos;VertAlign_Bottom&apos;' value='2'/>
+		</Enum>
+		<Enum name='WheelItemDataType'>
+			<EnumValue name='&apos;WheelItemDataType_Generic&apos;' value='0'/>
+			<EnumValue name='&apos;WheelItemDataType_Section&apos;' value='1'/>
+			<EnumValue name='&apos;WheelItemDataType_Song&apos;' value='2'/>
+			<EnumValue name='&apos;WheelItemDataType_Roulette&apos;' value='3'/>
+			<EnumValue name='&apos;WheelItemDataType_Random&apos;' value='4'/>
+			<EnumValue name='&apos;WheelItemDataType_Portal&apos;' value='5'/>
+			<EnumValue name='&apos;WheelItemDataType_Course&apos;' value='6'/>
+			<EnumValue name='&apos;WheelItemDataType_Sort&apos;' value='7'/>
+			<EnumValue name='&apos;WheelItemDataType_Custom&apos;' value='8'/>
+		</Enum>
+		<Enum name='WheelState'>
+			<EnumValue name='&apos;WheelState_Selecting&apos;' value='0'/>
+			<EnumValue name='&apos;WheelState_FlyingOffBeforeNextSort&apos;' value='1'/>
+			<EnumValue name='&apos;WheelState_FlyingOnAfterNextSort&apos;' value='2'/>
+			<EnumValue name='&apos;WheelState_RouletteSpinning&apos;' value='3'/>
+			<EnumValue name='&apos;WheelState_RouletteSlowingDown&apos;' value='4'/>
+			<EnumValue name='&apos;WheelState_RandomSpinning&apos;' value='5'/>
+			<EnumValue name='&apos;WheelState_Locked&apos;' value='6'/>
+		</Enum>
+		<Enum name='ZTestMode'>
+			<EnumValue name='&apos;ZTestMode_Off&apos;' value='0'/>
+			<EnumValue name='&apos;ZTestMode_WriteOnPass&apos;' value='1'/>
+			<EnumValue name='&apos;ZTestMode_WriteOnFail&apos;' value='2'/>
+		</Enum>
+	</Enums>
+	<Constants>
+		<Constant name='ASPECT_SCALE_FACTOR' value='854'/>
+		<Constant name='NUM_PLAYERS' value='2'/>
+		<Constant name='REFRESH_DEFAULT'/>
+		<Constant name='SAFE_HEIGHT' value='36'/>
+		<Constant name='SAFE_WIDTH' value='64'/>
+		<Constant name='SCREEN_BOTTOM' value='480'/>
+		<Constant name='SCREEN_CENTER_X' value='427'/>
+		<Constant name='SCREEN_CENTER_Y' value='240'/>
+		<Constant name='SCREEN_HEIGHT' value='480'/>
+		<Constant name='SCREEN_LEFT' value='0'/>
+		<Constant name='SCREEN_RIGHT' value='854'/>
+		<Constant name='SCREEN_TOP' value='0'/>
+		<Constant name='SCREEN_WIDTH' value='854'/>
+		<Constant name='PLAYER_1' value='&apos;PlayerNumber_P1&apos;'/>
+		<Constant name='PLAYER_2' value='&apos;PlayerNumber_P2&apos;'/>
+		<Constant name='_VERSION' value='&apos;Lua 5.1&apos;'/>
+		<Constant name='bottom' value='&apos;VertAlign_Bottom&apos;'/>
+		<Constant name='center' value='&apos;HorizAlign_Center&apos;'/>
+		<Constant name='left' value='&apos;HorizAlign_Left&apos;'/>
+		<Constant name='middle' value='&apos;VertAlign_Middle&apos;'/>
+		<Constant name='right' value='&apos;HorizAlign_Right&apos;'/>
+		<Constant name='top' value='&apos;VertAlign_Top&apos;'/>
+	</Constants>
+	<Version>StepMania v5.0 beta 3</Version>
+	<Date>2014-09-15</Date>
+</Lua>

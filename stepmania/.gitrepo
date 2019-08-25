@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/stepmania/stepmania
+	branch = 5_1-new
+	commit = 8ab7c7fab937acc684392b909b6b30b47d9a8c7b
+	parent = 46ac5f17a1942a25efefbe348c52a6872cc85586
+	method = merge
+	cmdver = 0.4.0

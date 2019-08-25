@@ -1,0 +1,2224 @@
+sm-ssc Changelog
+________________________________________________________________________________
+The sm-ssc changelog mostly deals with source code-related changes,
+as theme changes happen at a faster pace.
+
+Changes are grouped by date.
+Not all changes are documented, for various reasons.
+(Some changes were later reverted, other changes relate to things that aren't
+supported but exist anyways.)
+_____________________________________________________________________________
+
+================================================================================
+sm-ssc v1.2.5 | 20110501
+--------------------------------------------------------------------------------
+
+20110430
+--------
+* [ScreenOptions] Renamed "ScreenOptions LineHighlight" to "ScreenOptions
+  LineHighlight P#", making it load per-player. [AJ]
+* [OptionRow] Added Text param to RefreshMessageCommand. [AJ]
+* [ScreenOptions] Added SelectMultipleMessageCommand, ChangeValueMessageCommand. [AJ]
+* [UnlockEntry] Added GetCourse, GetCode Lua bindings. [AJ]
+* [UnlockManager] Added UnlockRequirement_NumUnlocked enum. [AJ]
+* [Song] Added Origin (#ORIGIN tag in .ssc) [AJ]
+* [UnlockManager] Added GetPoints(UnlockRequirement),
+  GetPointsForProfile(Profile,UnlockRequirement) Lua bindings. [AJ]
+* [Course] Added #SCRIPTER tag and GetScripter Lua binding. [AJ]
+
+20110428
+--------
+* [BeginnerHelper] Various changes: [AJ]
+ * Changed Player_#X/Y metrics to Player#X/Y metrics for consistency.
+ * Converted the background to an AutoActor.
+* [BPMDisplay] Added SetFromSong Lua binding. [AJ]
+
+20110423
+--------
+* [CourseLoaderCRS] Fixed loading of Player's Best/Most Played courses,
+  probably others too. [AJ]
+* [ScreenGameplaySyncMachine] Fixed a crash when entering
+  ScreenGameplaySyncMachine as Player 2. (Fixes issue 127) [AJ]
+* [ScreenOptionsEditCourse] Fixed a crash when going to the first row.
+  (Fixes issue 235) [AJ]
+* [SongManager] Added GetCourseGroupNames Lua binding. [AJ]
+
+20110422
+--------
+* [Banner] Added ScrollSpeedDivisor metric; controls the scroll speed of
+  Random/Roulette banners. [AJ]
+* [FadingBanner] Added BannerRoulette, BannerRandom, and Banner(Custom Item Name) commands. [AJ]
+
+20110421
+--------
+* [ScreenSelectMusic] Changed "Percent Frame p1" to "PercentFrame P1" for consistency. [AJ]
+* [LifeMeterBattery] Convert Frame to an AutoActor. [AJ]
+* [ScreenEvaluation] Added RollingNumbersClass metric, allowing for the ability
+  to change which RollingNumbers class is loaded. [AJ]
+* [ScreenGameplay] Added SongNumberFormat metric. [AJ]
+
+20110420
+--------
+* [CourseContentsList] Fix a crash. [AJ]
+
+20110416
+--------
+* [PlayerOptions] Added UsingReverse() Lua binding (automatically tests GetReverse() == 1) [AJ]
+* [PlayerState] Added GetCurrentPlayerOptions() Lua binding [AJ]
+
+20110413
+--------
+* [ScreenSelectMusic] Made score frame into an AutoActor, changed the filename
+  from "score frame p1" to "ScoreFrame P1" for consistency with other elements. [AJ]
+
+20110405
+--------
+* [ScreenEdit] Allow modifying the #DISPLAYBPM traits in the editor. Look in
+  Edit Song Info to find it. [Wolfman2000]
+
+20110402
+--------
+* Fix a crash (issue 247) when exiting Practice mode from dance-solo,
+  dance-threepanel, and popn-nine (all of which can only have one player).
+  If you find any other modes this crashes on, let us know. [AJ]
+
+20110329
+--------
+* [ScreenEdit] Changed sample playback button to L. [AJ]
+* [ScreenGameplay] Announcers say combo messages again. [AJ]
+
+================================================================================
+sm-ssc v1.2.4 | 20110327
+--------------------------------------------------------------------------------
+
+20110327
+--------
+* Fix Gameplay Footer not showing up over arrows. [AJ]
+
+20110326
+--------
+* [NotesLoaderSM, NotesWriterSSC] Officially add the #WARPS tag. The negative
+  tricks of the past are now officially standardized. Please tell us about
+  files which have broken sync or are otherwise unplayable/incorrect.
+  [AJ, theDtTvB, Wolfman2000]
+
+20110320
+--------
+* [PlayerOptions] Added SetNoteSkin(string) Lua binding. [AJ]
+* [PlayerOptions] Tons of new Lua bindings. See the Lua documentation for all
+  of them, there's too many to print here. [AJ]
+
+20110317
+--------
+* [ScreenEdit] Fix bug number 222, where Steps disappeared if they weren't
+  saved. [AJ, Wolfman2000]
+* [ScreenOptionsEdit] Fix bug number 186, where people could try to edit or
+  share songs when they didn't have any. [Wolfman2000]
+* [ScreenEdit] Add a metric to switch Ctrl+Up and Ctrl+Down. This is for
+  easier compatibility with prior versions of SM. It defaults to false.
+  [Wolfman2000]
+* [ScreenEdit] Fix bug number 65, where Steps disappeared if they were
+  involved with the Compress or Expand options. [Wolfman2000]
+
+20110316
+--------
+* [NotesLoaderSMA] Allow for preliminary support of loading SMA files. This
+  will become better once Split Timing is in place. [Wolfman2000]
+* [NotesLoaderBMS] Improve BMS loading: [theDtTvB]
+    * Ignore time signatures before the notes for the steps to be more
+      synchronized.
+    * Load BPM changes properly. Many songs with BPM changes no longer freeze.
+* [Player] Stop playing the keysound when letting go of hold notes. [theDtTvB]
+* [NoteDataUtil] Make keysounded notes that can't be inserted when reducing
+  number of tracks autokeysound, means less missing sounds when playing
+  7-key BMS on dance-single. [theDtTvB]
+
+20110313
+--------
+* [NotesWriterSM] Allow for either the #DESCRIPTION or #CREDIT tags to be used
+  for the .sm format's description token. [Wolfman2000]
+* [ScreenEdit] Add Tap Note Cycling to allow inputting all of the taps. Use the
+  n and m keys to switch between taps, mines, lifts, and fakes. The way to make
+  holds and rolls are still the same as before; hold 1-0 (plus shift for rolls)
+  and then drag up or down as needed. [Wolfman2000]
+
+================================================================================
+sm-ssc v1.2.3 | 20110323
+--------------------------------------------------------------------------------
+
+20110309
+--------
+* [MusicWheelItem] Added Label param, renamed SongGroup param to Text. [AJ]
+
+20110308
+--------
+* [WheelBase] Add GetCurrentIndex and GetNumItems Lua bindings. [AJ]
+* [ScreenSelectMusic] Add GetMusicWheel Lua binding. [AJ]
+* Added custom MusicWheel items. [AJ]
+* [MeterDisplay] Add Lua binding. "Allow setting and changing the width
+  dynamically. Phase out the "StreamWidth" node property; set it with
+  SetStreamWidth instead." [Glenn Maynard]
+
+20110305
+--------
+* Added #COMBOS tag to the .ssc format. [Wolfman2000]
+
+20110302
+--------
+* [ScreenGameplaySyncMachine] Allow themers to use either .ssc or .sm files. [AJ]
+* [ScreenHowToPlay] Allow themers to use either .ssc or .sm files. [AJ]
+* [ScreenGameplay] Footer to prevent 'arrow overflow' [Midiman]
+
+20110301
+--------
+* Allow Tickcount Segments to have a value of 0 to better replicate some
+  charts in the Pump series. [Wolfman2000]
+
+20110228
+--------
+* Add Fakes to the RadarCategories. [Wolfman2000]
+* [ScreenEdit] Display the number of Lifts and Fakes in a stepchart in the
+  editor. These use metrics, so the lines can be made empty in themes that
+  require them. [Wolfman2000]
+* [ArrowEffects] Allow for dizzy hold heads. Again, enable at your own risk.
+  [Wolfman2000]
+* [StepsDisplay] Allow for displaying the chart artist in a separate field.
+  This defaults to false for the moment. [Wolfman2000]
+* [PlayerOptions, NoteDataUtil] Add transform mods for removing lifts and
+  fakes from the Notedata. This mods can disqualify of course. [Wolfman2000]
+
+20110227
+--------
+* [PlayerState] The old GetPlayerOptions() binding is now GetPlayerOptionsString().
+  There is a new GetPlayerOptions() binding that gets the PlayerOptions object,
+  which has a GetNoteSkin() binding (and hopefully more in the future). [AJ]
+
+20110226
+--------
+* [ScreenOptionsToggleSongs] The structure of this screen has now changed.
+  Before, it contained the entire list of songs. Now, the main page
+  (ScreenOptionsToggleSongs) holds the groups, and a sub-page
+  (ScreenOptionsToggleSongsSubPage) holds the songs in each group. [AJ]
+
+20110225
+--------
+* Add lifts and fakes to all Pump noteskins. [Daisuke Master, Wolfman2000]
+
+20110224
+--------
+* [NotesLoaderSSC] Allowed reading of #NOTES2 again. [AJ]
+
+20110223
+--------
+* [Steps] Added GetChartStyle() Lua binding. [AJ]
+
+20110222
+--------
+* [ScreenEdit] Display the Player Number for Routine mode. [Wolfman2000]
+* [ScreenEdit] Add format string metrics for the right hand side of the editor.
+  [Wolfman2000]
+
+20110221
+--------
+* Reverted ArrowSpacing back to 64 (which was the previous value).
+  Please re-adjust your speed mods accordingly. [AJ]
+* [OptionRow] Added GetLayoutType() and GetSelectType() Lua bindings. [AJ]
+* Fix .sm-style edits not being loaded. [AJ]
+* [Common] Added OperatorMenuScreen metric. [AJ]
+
+================================================================================
+sm-ssc v1.2.2 | 20110220
+--------------------------------------------------------------------------------
+
+20110219
+--------
+* [BPMDisplay] Added FormatString metric. [AJ]
+* [GrooveRadar] Changed "Label#OffsetX/Y" metrics to "Label#X/Y". [AJ]
+* [GrooveRadar] Fixed RadarFrame from not running commands on RadarFrame base. [AJ]
+* [GrooveRadar] Removed RadarFrameTweenOnScreen and RadarFrameTweenOffScreen metrics. (Themers: Use RadarFrameOnCommand and RadarFrameOffCommand instead) [AJ]
+* [GrooveRadar] Removed non-working PreDelayOnCommand, PostDelayOnCommand. (Themers: Use Label#OnCommand and Label#OffCommand instead.) [AJ]
+* [ScreenOptions] Renamed "GetCurrentRow" Lua binding to "GetCurrentRowIndex". [AJ]
+* [OptionRow] Added FirstItemGoesDown(), GetChoiceInRowWithFocus(PlayerNumber),
+  GetName(), GetNumChoices(), GetRowTitle(), HasFocus(PlayerNumber),
+  and OneChoiceForAllPlayers() Lua bindings. [AJ]
+* [ScreenOptions] Added Change message (params: RowIndex, ChangedToExit). [AJ]
+* [ScreenOptions] Added FocusedItemEndsScreen(PlayerNumber) and GetOptionRow(int)
+  Lua bindings. [AJ]
+* [ScreenPlayerOptions] now derives from ScreenOptions, allowing it to get the
+  new ScreenOptions bindings. [AJ]
+
+20110218
+--------
+* [WheelBase] Added SetOpenSection Lua binding. [AJ]
+
+20110217
+--------
+* Allowed refreshing of Fonts again. [AJ]
+
+20110214
+--------
+* Added #CHARTSTYLE to .ssc format, mainly meant for Pad/Keyboard distinctions. [AJ]
+
+20110213
+--------
+* Life Difficulty 4 is now as difficult as Life 6 was. [AJ]
+  Change name of the life difficulty options:
+  Old: 1,   2,   3,   4,   5,   6,    7
+  New: 1.2, 1.0, 0.8, 0.6, 0.4, 0.33, 0.25
+
+20110212
+--------
+* [PlayerOptions] Added metrics to allow changing how often random modifiers 
+  activate in the proper setting. At this time, the mods to be activated have 
+  NOT been changed. [Wolfman2000]
+* [ArrowEffects] Allow the Boomerang, Expand, Tipsy, Drunk, Tornado, Beat, and
+  Mini modifiers to be customized by metrics. As usual, change at your own
+  risk here. [Wolfman2000]
+* Started the process of doxygen'ing the code. Goodness knows we need more
+  documentation on here. For the most part, don't expect comments on
+  particular files, though this may change. [Wolfman2000]
+* [TimingData] Fix getting a Stop or Delay at a row if one of each occupies
+  the same row. This may need some extra testing. [Wolfman2000]
+
+20110211
+--------
+* Introduced the .ssc file format for future features and expansion. All .sm
+  files will still work, and will still be generated when saved in the editor.
+  At this point, saving to the DWI format is being deprecated. [Wolfman2000]
+
+================================================================================
+sm-ssc v1.2.1 | 20110210
+--------------------------------------------------------------------------------
+
+20110210
+--------
+* Had to go back on the ScreenNetSelectMusic controls commit. My apologies. [AJ]
+
+20110209
+--------
+* [ScreenOptionsMemoryCard] Added three strings: "(no label)", "size ???", and
+  "%dMB". [AJ]
+* [ScreenSelectMusic] Added RouletteTimerSeconds metric. [AJ]
+* [ArrowEffects] Added QuantizeArrowYPosition metric. [AJ]
+
+20110208
+--------
+* [ScreenNetSelectMusic] Added MusicWheelType metric. [AJ]
+
+20110201
+--------
+* [Song] Added IsDisplayBpmRandom Lua binding. [AJ]
+
+20110130
+--------
+* [ScreenSelectMaster] Only run cursor commands on players if they exist. [AJ]
+
+20110118
+--------
+* [ScreenEdit] Move editing Timing Data to their own mini menu. [Wolfman2000]
+* Implement #TICKCOUNTS tag for better checkpoint behavior.
+  This officially deprecates the CheckpointsUseTimeSignatures metric for
+  the CheckpointsUseTickcounts metric. [Wolfman2000]
+* [NoteField] Add metrics for more flexible TimingData labels. [Wolfman2000]
+
+20110116
+--------
+* [ScreenEdit] Allow editing TimeSignatureSegments one fractional half at
+  a time. [Wolfman2000]
+
+20110115
+--------
+* [ArrowEffects] Allow modifying modifier characteristics in the metrics.
+  At present, Blink, Boost, Brake, and Wave can have modifications.
+  [Wolfman2000]
+* [Player] Allow Combo Stopped message to be flexible via metrics. The
+  default is 50, as it was before. [Wolfman2000]
+* [Player] Allow the default attack times for both random and mine attacks
+  to be changed. [Wolfman2000]
+* [NoteField] Allow for adjustable fade fail time (for AJ). [Wolfman2000]
+* [MenuTimer] Allow the hurry up transition to be adjusted. [Wolfman2000]
+* [MusicWheel] Added RouletteColor, RandomColor, and PortalColor metrics. [freem]
+* Fix a bug with VisualDelaySeconds where choosing -1 would lead to it being +1. [freem]
+
+20110112
+--------
+* [PlayerStageStats] Change score to an unsigned long from a signed int. [FSX]
+* Noteskin changes. [Daisuke Master]
+* [SpecialScoring] MIGS scoring, improved SN and SN2 scoring. [FSX]
+* [RageFile] Added ReadBytes() Lua binding. [FSX]
+* [NetworkSyncManager] Added CloseConnection() Lua binding. [freem]
+* [ScreenTextEntry] Added Load(TextEntrySettings) Lua binding. [freem]
+  TextEntrySettings is implemented similar to the Attributes in BitmapText.
+local teSettings = {
+	SendOnPop = "",		-- ScreenMessage to send on pop (optional, "SM_None" if omitted)
+	Question = "",		-- The question to display
+	InitialAnswer = "",	-- Initial answer text
+	MaxInputLength = 0,	-- Maximum amount of characters
+	Password = false,	-- Mask character input (optional)
+	Validate = nil,		-- Validation function; function(answer, errorOut), must return boolean, string.
+	OnOK = nil,			-- On OK; function(answer)
+	OnCancel = nil,		-- On Cancel; function()
+	ValidateAppend = nil,	-- Validate appending a character; function(answer,append), must return boolean
+	FormatAnswerForDisplay = nil,	-- Format answer for display; function(answer), must return string
+};
+
+20110111
+--------
+* [ScreenManager] Added ReloadOverlayScreens() Lua binding. [freem]
+
+20110110
+--------
+* [Character] Added GetDisplayName Lua binding. [freem]
+* Make sure that DELAYS come first if STOPS share the same beat. [Wolfman2000]
+
+20110109
+--------
+* Add the semicolon and apostrophe keys as alternatives to the Page Up and Page
+  Down keys in the editor, mainly for laptop users. [Wolfman2000]
+* Removed Song sample length limitations. [freem]
+* Removed hard-coded values from the Step Editor. Now TimeSignatures are used
+  in place of these former constants. [Wolfman2000]
+* [RoomWheel] Various metrics changes: [freem]
+  * Removed TextWidth/DescWidth metrics.
+  * "Desc" is now "Description". (DescX -> DescriptionX)
+  * Removed hardcoded commands (shadowlength,0;maxwidth,[max width metric];halign,0).
+
+================================================================================
+sm-ssc v1.2 | 20110107
+--------------------------------------------------------------------------------
+
+20110107
+--------
+* Fix PrefsManager init list not being in order [vyhd]
+* Add hack to ThemeManager to make GetThemeName() work intuitively for Scripts dirs [vyhd]
+* [SongManager] Check the root Songs/ folder for extra stage course files. [freem]
+* Make routine mode use ScreenGameplayShared instead of ScreenGameplay. [freem]
+* Make pump-routine spacing the same as pump-double spacing. [FSX] 
+
+20110106
+--------
+* [SpecialScoring] Fix some minor issues [FSX]
+* New pump routine noteskins [cesarmades]
+
+20110102
+--------
+* Fix routine mode saving in the editor. [Wolfman2000]
+
+20110101
+--------
+* [Screen] Added HandleBackButton metric; useful for custom menus that need to
+  use the Back button for more user-friendly canceling. [freem]
+
+20101230
+--------
+* [StepsDisplay] Make the StepsType react to SetMessage as well. [freem]
+
+20101229
+--------
+* [ScreenHowToPlay] Replaced LOAD_ALL_COMMANDS_AND_SET_XY_AND_ON_COMMAND macro
+  calls with ActorUtil::LoadAllCommandsAndSetXY(). Fixes an odd bug I ran into
+  during the porting of DDR 5th Mix. [freem]
+* [ScreenInstallOverlay] Added bare DownloadFinished message. [freem]
+
+20101228
+--------
+* [ScreenHowToPlay] Have Character ignore the Miss steps instead of trying to
+  hit them. [freem]
+
+20101227
+--------
+* [ScreenHowToPlay] Added CharacterName metric, which will force the Character
+  that shows up. [freem]
+
+20101226
+--------
+* [ScreenEdit] Added GetEditState Lua binding. [freem]
+* [ScreenNetSelectMusic] StepsDisplay changed to load from StepsDisplayNet. [freem]
+* [RoomWheelItem] Added OverPart (just like in MusicWheelItem). [freem]
+* [SongManager] Added GetSongRank(Song) Lua binding. [freem]
+* Changed Steps picking logic in ScreenGameplaySyncMachine; now playable Steps
+  are chosen, instead of whatever NoteData happens to be first.
+  Also added pump-single data to ScreenGameplaySyncMachine music.sm. [freem]
+* [Banner, FadingBanner] Various changes: [freem]
+  * Removed (now unused) All Music banner.
+  * Fixed swapped ScrollRandom and ScrollRoulette metrics.
+* [Banner] Added GetScrolling(), GetPercentScrolling() and
+  SetScrolling(bool,float) Lua bindings.
+* [FadingBanner] Added GetLatestIndex() Lua binding. [freem]
+
+20101225
+--------
+* Fixed Life difficulty scale being 0. [Daisuke Master]
+
+20101223
+--------
+* Added Banners for most SortOrders. (Group is excluded (song group banners
+  still work), as is Recent (which has no sections).) [freem]
+
+20101222
+--------
+* Added Shift+Ctrl+F2 shortcut for reloading overlay screens (and metrics) [freem]
+
+20101221
+--------
+* SM5SVN r28586: Only unload fonts if not used by the next screen. [shakesoda]
+* [ScreenSelectMaster] Fix DoSwitchAnyways to actually work again.
+* [ScreenInstallOverlay] Installs won't jump to SelMusic on Gameplay or System
+  Menus (e.g. Edit Mode) anymore on download completion. [freem]
+
+20101220
+--------
+* [Actor] Add bezier. (_fallback/02 Actor.lua) [FSX]
+* [MessageManager] Added MenuStartP1 and MenuStartP2 messages. [freem]
+* [ScreenSelectMaster] Broadcast MenuStartP# messages; allow themers to handle
+  the MenuStartP# messageitems. [freem]
+
+20101219
+--------
+* [WheelNotifyIcon] add BlinkPlayersBest metric. [freem]
+* [GameCommand] Add GetScreen, GetSteps, GetCourse, GetTrail, and GetCharacter
+  Lua bindings. [freem]
+* [StreamDisplay] Remove UseThreePartMethod.
+* [Style] Add ColumnsPerPlayer and NeedsZoomOutWith2Players bindings. [freem]
+* [Profile] Add GetLastUsedHighScoreName Lua binding. [freem]
+
+20101218
+--------
+* [MusicWheelItem] Add OverPart. [freem]
+* [Profile] SetCharacter(sCharID) Lua binding added. [freem]
+* [GameState] GetCharacter(PlayerNumber) and SetCharacter(PlayerNumber,sCharID)
+  Lua bindings added. [freem]
+
+20101217
+--------
+* [Sprite] Added SetAllStateDelays(fDelay) Lua binding. [freem]
+* [MusicWheelItem] Added metric commands to NormalPart/ColorPart. [freem]
+
+20101215
+--------
+* Transplanted file download code from SM4 into sm-ssc.
+  sm-ssc can now handle the stepmania:// url protocol. [Chris Danford, freem]
+
+20101214
+--------
+* [RollingNumbers] Added Load(sMetricsGroup) Lua binding. [freem]
+* Modifications to pump mode spacing. [Daisuke Master]
+* Add eval song data for songs with no banner. [Midiman]
+
+20101213
+--------
+* [EditMenu] Enable the EditMenu to be themed more extensively. [freem]
+  Splits out the rows into Label and Value.
+
+20101212
+--------
+* [MusicWheelItem] Gave NormalPart/ColorPart names, so metrics can be used to
+  manipulate them. [freem]
+* [MusicWheelItem] add Color param to SetMessage. [freem]
+* Added --with-sse2 configure flag for SSE2 heuristic optimizations. [vyhd]
+* Added 03 IniFile to start building new userprefs/themeprefs API. [vyhd]
+* [EditMenu] Converted old non-specific metrics to more specific metrics. [freem]
+  {Metric Changes}
+  SongBannerWidth,SongBannerHeight -> SongBannerOnCommand
+  GroupBannerWidth,GroupBannerHeight -> GroupBannerOnCommand
+  RowLabelsX -> Label#X
+  RowLabelOnCommand -> Label#OnCommand
+  RowValue#X -> Value#X
+  RowValueOnCommand -> Row#OnCommand
+  {Metric Additions}
+  SongBannerChangeCommand/GroupBannerChangeCommand - runs when song/group
+  banner is changed.
+  Label#GainFocus/LoseFocusCommand and Value#GainFocus/LoseFocusCommand - runs
+  when the Label and Value gain/lose focus.
+
+20101128
+--------
+* Increased default scrolling speed. Modifies how the speed mods work. [shakesoda]
+
+================================================================================
+sm-ssc v1.1 | 20101120
+--------------------------------------------------------------------------------
+
+20100929
+--------
+* Fix issues with RequireStepOnHoldHeads not working properly if the W5
+  window is zero. [FSX]
+
+20100925
+--------
+* Add SetScore Lua binding to PlayerStageStats. [FSX]
+* Don't increase combo on AvoidMine if AvoidMineIncrementsCombo is false. [FSX]
+* Change build.sh to use ffmpeg 0.6 under Linux. [FSX]
+
+20100913
+--------
+* Attempt to fix issues with full combos occuring when checkpoints
+  have been missed. [FSX]
+* Fix NotesLoaderKSF. [Daisuke Master]
+
+20100912
+--------
+* Add a hack allowing all courses to play, regardless of missing noteskins [wolfman2000]
+* Restore ITG behavior, allow survivals to be won. [wolfman2000]
+
+================================================================================
+sm-ssc v1.0 "final" | 20100910
+--------------------------------------------------------------------------------
+
+20100910
+--------
+* [ScreenNetSelectBase] Metric name changes: UsersDX -> UserSpacingX,
+  UsersAY -> UsersLine2Y
+* [ScoreKeeperNormal] add MineHitIncrementsMissCombo and
+  AvoidMineIncrementsCombo metrics. [FSX]
+
+20100907
+--------
+* [StepsDisplay] Make everything else (that isn't the frame) react to the
+  Set message.
+
+20100829
+--------
+* [SongManager] Added SetPreferredSongs(string) and SetPreferredCourses(string)
+  Lua bindings. The files have to be named "SongManager <name>.txt"
+  Example: SONGMAN:SetPreferredSongs("mysongs.txt") calls the file
+  "SongManager mysongs.txt". [cerbo]
+
+20100826
+--------
+* Make Ctrl+[letter] work as expected in Artist sort. [Midiman, AJ]
+
+20100822
+--------
+* Add [ArrowEffects] DrawHiddenNotesAfterReceptor metric [Daisuke Master]
+
+================================================================================
+sm-ssc v1.0 Release Candidate 2 | 20100822
+--------------------------------------------------------------------------------
+
+20100821
+--------
+* Add roll and twirl from OpenITG [vyhd]
+* Ignore invalid notes in KSF files [Daisuke Master]
+
+20100817
+--------
+* [GraphDisplay] Allow Line to be themed via metrics.
+
+20100815
+--------
+* [GameCommand] Remove pushscreen command
+* [ScreenOptionsMasterPrefs] Reset Judge and Life values to the ones used in SM4
+* [ScreenNetEvaluation] add Score, Grade, PlayerOptions params to
+  UpdateNetEvalStats message
+* [PlayerState] add GetHealthState Lua binding
+* [Player] fix a warning [shakesoda]
+* [Player] Change combo coloring logic in course mode:
+  "PERCENT_UNTIL_COLOR_COMBO refers to how long through the course the combo
+  color should appear (scaling to the number of songs). (This may not be
+  desired behavior, however.)" Let me know if I should add an alternate way to
+  specify course combo color logic.  -aj
+* [ScreenRanking] Cleanup and un-hardcode shadowlength
+* [ThemeManager] add GetSelectableThemeNames Lua binding; returns a table of
+  themes as strings.
+
+20100814
+--------
+sm4.0:
+ * r28482: number measures starting with 0 (makes the mental conversion
+   between the .SM and the editor much easier) [Chris Danford]
+
+20100811
+--------
+sm-ssc:
+ * [Player] Implement a hack for miniholds until a proper solution can be found.
+ * [ActorSound] Fix Play() so that stop and pause are usable. [Daisuke Master]
+
+sm4.0:
+ * r28455: fix EFFECT_BOUNCE, give particles a start position uniformly
+   distributed across the screen [Chris Danford]
+ * r28456: change flip effects to use degrees, not radians [Chris Danford]
+
+20100810
+--------
+[ScreenNetEvaluation]
+ * Replace hardcoded rainbow effect with UserTier02OrBetterCommand.
+ * Added Difficulty and Steps param to UpdateNetEvalStats message. The
+   beginning of custom-themable online stuff begins.
+
+[ScreenNetSelectMusic]
+ * Started to port SampleMusicPreviewMode from ScreenSelectMusic.
+ * Changed MusicWheel metrics to read from OnlineMusicWheel instead.
+ * Added section, roulette, and random music (not used yet).
+ * Stop the music when reaching a section.
+
+20100808
+--------
+* [ScreenDebugOverlay] force sm-ssc to read the OnCommand for ButtonText,
+  FunctionText and PageText.
+
+20100807
+--------
+* [ScreenManager] add AddNewScreenToTop Lua binding.
+
+20100804
+--------
+* [ScreenDebugOverlay] add PageStartX and PageSpacingX metrics.
+
+20100801
+--------
+* sm5svn r28402: Fix compile on some systems. [Steve Checkoway]
+
+20100731
+--------
+* Add "package" to StepMania's Lua. [shakesoda]
+
+20100727
+--------
+* Allow editing of a Song's #GENRE tag within the editor.
+
+20100726
+--------
+* Fix |D| tag handling in Direct Move KSFs [Daisuke Master]
+* Fix up alternate mappings for kb7 [shakesoda]
+* [MusicWheel] Add RemindWheelPositions metric. [Daisuke Master]
+
+20100725
+--------
+* [MusicWheel] JumpToNext/PrevGroup functions tweaked [juanelote]
+* [MusicWheel] Added OnlyShowActiveSection metric. Only shows one group at
+  time. Use the Next/Previous Group codes to switch groups. [Daisuke Master]
+* Allowed group changing via GameButtons as well. [Daisuke Master]
+* [SongManager] Added GetSongGroupByIndex function. [juanelote]
+  (to-do: Give this a Lua binding. -aj)
+
+================================================================================
+sm-ssc v1.0 Release Candidate 1.5 | 20100723
+--------------------------------------------------------------------------------
+
+20100721
+--------
+* Major tweaks to notesloaderksf, |E| Tags are working as they should now
+  [Daisuke Master]
+* More column spacing values edited for Pump [Daisuke Master]
+
+20100719
+--------
+* Allow noteskins to use animation based on beats or seconds via a new noteskin
+  metric: AnimationIsBeatBased. [Daisuke Master]
+* Widen the lane for the middle note in kb7. [shakesoda]
+
+20100718
+--------
+* Change screenshot naming format from "screen#####" to "YYYY-MM-DD_HHMMSS".
+  This should solve an issue where screen00000 was getting written multiple
+  times for unknown reasons.
+* Make EnteredPrevSteps/EnteredNextSteps codes only trigger if
+  CHANGE_STEPS_WITH_GAME_BUTTONS = true. [Daisuke Master]
+* [ScreenGameplay] Added UnpauseWithStart metric. [Daisuke Master]
+
+20100717
+--------
+sm4svn:
+* r28385: Fix memory card port handling on newer kernels. There's got to be a
+  better way to parse out a USB device's connection path. [Glenn Maynard]
+* r28386: Fix partitioned USB devices not always being seen correctly due to
+  race condition with the kernel partition scan. The sleep was a hack to work
+  around this issue which doesn't work in all cases. [Glenn Maynard]
+
+sm-ssc:
+* Added Menu(Left/Right/Up/Down)(P1/P2) messages to ScreenOptions.
+* [ScreenSelectMusic] Add ChangeStepsWithGameButtons, PreviousDifficultyButton,
+  and NextDifficultyButton metrics, allowing the themer to not have to use
+  CodeDetector. [Daisuke Master]
+
+
+20100715
+--------
+* Fix spacing of various pump modes. [Daisuke Master]
+
+20100710
+--------
+sm4svn:
+ * r28376: use GetProcessImageFileName instead of GetModuleFileNameEx;
+   it works in more cases, eg. when losing focus to the taskbar [Glenn Maynard]
+
+20100709
+--------
+* Modify Autoplay/AutoplayCPU's tap note offset code to generate proper offsets
+  (as opposed to offsets between -0.1f and 0.1f, which makes Selling Out Made
+  Simple 2's protiming look weird).
+
+20100708
+--------
+* [ScreenSelectProfile] Transplant menu input functions from ScreenSelectMaster.
+  Now you no longer have to rely on stuffing the directions into the Codeset.
+  (Of course, you still have to handle Start and Back yourself.)
+
+20100706
+--------
+* [ScreenSelectMusic] add a code for closing the current folder from any
+  location (a la DDR X2).
+
+20100705
+--------
+* [Player] add RequireStepOnMines metric. This allows DDR's Shock Arrows to
+  be emulated. (currently incomplete) [FSX]
+
+20100703
+--------
+sm4svn:
+ * r28374: add GetBestFullComboTapNoteScore [Chris Danford]
+   (This replaces the IsFullComboW* bindings, which we never fully took in. -aj)
+
+sm-ssc:
+ * [Course] add GetCourseEntries() Lua binding.
+ * [Trail] add GetEntries() Lua binding.
+ * [ScreenTextEntry] replace hardcoded underscore and double space with
+   AnswerCaret and AnswerBlank strings.
+
+20100702
+--------
+sm4svn:
+ * r28372: use MercifulDrain logic for MercifulBeginner [Chris Danford]
+ * r28373: don't override user scroll in courses [Chris Danford]
+
+20100630
+--------
+sm4svn commits:
+ * r28367: fix resampler noise [Glenn Maynard]
+ * r28368: fix get_readable_ranges error handling [Glenn Maynard]
+ * r28369: don't use fprintf from the crash handler [Glenn Maynard]
+ * r28370: work around not all recursive crashes being caught [Glenn Maynard]
+ * r28371: use /proc weirdness to make the crash handler work even after
+   the binary has been deleted or replaced [Glenn Maynard]
+
+sm-ssc:
+* [ScreenDebugOverlay] add new metrics: LineStartY, LineSpacing,
+  LineButtonX, LineFunctionX.
+* Fix an odd mapping issue in dance mode where keypad 7 and 9 would control
+  up/down as well as upleft/upright. (Numpad 8 is now up and numpad 2 is now
+  down.)
+* Step editor can now process meters from 0-25.
+* MAX_METER upped to 35.
+
+20100629
+--------
+* Fix an issue involving setting a group via GameCommand and a metric ([MusicWheel]
+  UseSectionsWithPreferredGroup=false). Previously, this situation would ignore
+  the group and show all songs. Instead, it has been fixed to work as intended,
+  only showing the songs in that group. (A DDR 4th Mix theme is feasible again.)
+* If [MusicWheel] UseSectionsWithPreferredGroup=true and a song group is set
+  via GameCommand, the wheel will now scroll to the first song in the desired
+  group, instead of the very first wheel item.
+* [CourseUtil] make the "All Songs" course use the current theme's
+  Graphics/Banner all music file.
+
+================================================================================
+sm-ssc v1.0 Release Candidate 1 | 20100627
+--------------------------------------------------------------------------------
+
+20100627
+--------
+* [NotesLoaderKSF] Support reading of #PLAYER and #MUSICINTRO/#INTRO tags in
+  KSF files. [based on code by Aldo_MX]
+* Adjust KB7 draw order which still seems wrong, change noteskin.
+  Use default-p2 and join as player 2 to play with original spacing. [shakesoda]
+
+20100626
+--------
+* Fixed a bug with urlnoexit GameCommand always returning the "Could not
+  launch web browser" message.
+* Removed some untested/non-working Model Lua bindings.
+* Only autogen Medium difficulty steps for Routine modes.
+* Added PlayerState:GetPlayerOptionsArray() Lua binding.
+* Revert a commit from 20091219 regarding profile loading on ScreenSelectMusic.
+
+20100623
+--------
+* Implement the last remaining SampleMusicPreviewMode: StartToPreview.
+  This one requires [ScreenSelectMusic] TwoPartConfirmsOnly=true in the
+  metrics to work correctly.
+* Added Actor:Real(), which makes graphics their true size at
+  any resolution. [shakesoda]
+
+20100619
+--------
+* [HighScore] add GetGrade() Lua binding.
+
+20100618
+--------
+* Allow RShift+Print Screen to take uncompressed screenshots.
+
+20100614
+--------
+* <del>Attempt to fix screenshot numbering bug. Seems to work, if testing is
+  any indication.</del> (Did not work.)
+
+20100612
+--------
+* sm4svn r28359-r28364. [Chris Danford]
+  Notable commit logs:
+  * r28359: "fix BackgroundChange color values being written with commas.
+    Commas are a reserved character that seprate values in a tag.
+    Caret was used to separate RGBA values in a color in this case and
+    NotesLoaderSM already handles that."
+  * r28361: "normalize colors in BGCHANGES to HTML colors, to fix weird escaping"
+
+20100610
+--------
+* Fix Rave/Battle crashes, allowing it to work again.
+* Chris Danford changed galopin's code for detecting pump mats.
+* [Actor] add basezoom, basezoomz, GetBaseZoomY(), GetBaseZoomZ(), and
+  GetGlow() Lua bindings
+* [Screen] add GetScreenType() Lua binding.
+* howl's patch for fixing LowLevelWindow
+  (stepmania4-fullscreen-focus-lost-and-restore-resolution2.patch)
+  http://old.stepmania.com/forums/showthread.php?t=23693
+
+20100608
+--------
+* sm4svn r28359: fix BackgroundChange color values being written with commas.
+  Commas are a reserved character that seprate values in a tag. Caret was
+  used to separate RGBA values in a color in this case and NotesLoaderSM
+  already handles that. [Chris Danford]
+
+20100605
+--------
+* Add Windows 7 and Windows Vista as identified OS versions in DebugInfoHunt.
+
+20100603
+--------
+* [MusicWheel] If AutoSetStyle is on and Autogen is off, some songs with valid
+  steps may be missing from the wheel. Re-add them by checking for every
+  playable StepsType when AutoSetStyle is on.
+  Fixes issue 147: http://ssc.ajworld.net/sm-ssc/bugtracker/view.php?id=147
+* Fix a crash that occured when changing themes that had differing numbers
+  of song/course group colors. (Yes, finally.)
+
+20100602
+--------
+* [Actor] add addrotationx, addrotationy, addrotationz bindings/commands
+* [GameCommand] Don't allow battle/rave with Routine
+  (StyleType_TwoPlayersSharedSides).
+* Reordered ScreenEdit's main menu (escape) slightly.
+* Expand various floats from 3 decimal places to 6 (experimental) [Midiman]
+* [BPMDisplay] add RandomText metric for theming the "..." that appears when
+  BPMs don't cycle and MinBPM == -1.
+
+20100601
+--------
+* [MusicWheel] added UseSectionsWithPreferredGroup metric
+  (allows sm-ssc to display all song groups if you use the songgroup
+  GameCommand, instead of no groups.)
+* [Character] add GetCharacterDir() and GetCharacterID() Lua bindings.
+
+================================================================================
+sm-ssc v1.0 Public Beta 4 | 20100531
+--------------------------------------------------------------------------------
+The letter grade tiers have been reset to the old SM4CVS/3.9 values. You
+should probably reset your scores to maintain consistency. (Though if you
+used themes with their own scoring system, you never had consistency in the
+first place. :s)
+
+20100531
+--------
+* [Trail] Add GetTrailEntry() Lua binding.
+* [TrailEntry] Allow TrailEntry to push itself, making Lua bindings possible.
+  TrailEntry's Lua bindings include GetSong(), GetSteps(), IsSecret() and
+  GetNormalModifiers().
+
+20100527
+--------
+* Add Direction param to ChangeStepsMessage.
+
+20100526
+--------
+* Enable upper diagonal keys for Positive Gaming Impact dance mat [corec]
+
+20100525
+--------
+* [ScreenSelectProfile] Actually load player's last used settings.
+* [ScreenNetEvaluation] Don't assume every theme has a Grade display and/or
+  Points display; This fixes crashes in themes which don't have them when
+  people go to view another player's stats.
+* [ScoreKeeperNormal] add [Gameplay] MaxScoreToIncrementMissCombo metric.
+* [Course] add GetCourseDir(), HasBackground(), IsAnEdit() Lua bindings.
+* [GameManager] rework how the IsGameEnabled() Lua binding works:
+  it now takes a string as a parameter.
+* [ScoreKeeper] allow ScoreKeeperRave to be used as a ScoreKeeper.
+* [ThemeManager] add GetCurLanguage() Lua binding.
+
+20100522
+--------
+* [CourseLoaderCRS] up the maximum size of an edit course from 30KB to 32KB;
+  allow the #BACKGROUND tag to be read from .crs files.
+* [HelpDisplay] new TipSwitchTime metric
+* [PrefsManager] add PreferenceExists(sPrefName) Lua binding;
+  removed now-unused ShowSelectGroup preference.
+* [ScreenSelectMusic] make the ScoreDisplay 0 out if nothing is selected.
+
+20100518
+--------
+* The great Lua binding addition begins...
+ * [Actor] GetHAlign(), GetVAlign()
+ * [LifeMeterBattery] GetLivesLeft()
+ * [MemoryCardManager] GetCardLocked(pn), IsNameAvailable(pn)
+ * [MenuTimer] GetSeconds()
+ * [PlayerStageStats] GetRadarPossible(), GetRadarActual()
+ * [ProfileManager] LastLoadWasFromLastGood(pn), LastLoadWasTamperedOrCorrupt(pn)
+
+20100515
+--------
+* [AnnouncerManager] Lua bindings get added to AnnouncerManager, which now
+  exists as ANNOUNCER. New bindings:
+  ANNOUNCER:DoesAnnouncerExist(sAnnouncer)	- returns a bool
+  ANNOUNCER:GetAnnouncerNames()				- returns a table of strings
+  ANNOUNCER:GetCurrentAnnouncer()			- returns a string
+  ANNOUNCER:SetCurrentAnnouncer(sAnnouncer)	- Sets the announcer if it exists.
+
+20100513
+--------
+* [ScreenEvalation] Graphic "time label" renamed to "TimeLabel" for the sake
+  of naming consistency.
+* Add GetOSName() binding. Returns a string representing the current OS.
+* Allow Negative stops to "work" again in Quirks Mode.
+* [ScreenSelectMaster] Fix "THE" cursor crash by testing if the cursor object
+  is actually there (a.k.a. not null). It should be noted that cursors can
+  still crash, however. (yay bugs)
+
+20100512
+--------
+* [NotesLoaderSM] Only apply the old .sm format difficulty hacks if
+  difficulty == Difficulty_Hard.
+* [TimingData] add HasNegativeBpms() Lua binding.
+
+20100507
+--------
+* [PaneDisplay] Show fallback values when Song/Course is null.
+
+20100506
+--------
+* [ScreenSelectMusic] Make it so changing difficulty also cancels
+  TwoPartSelection if TwoPartConfirmsOnly.
+
+20100504
+--------
+* [ScreenGameplay] Un-hardcoded the diffuse command on CourseSongNumber.
+
+20100502
+--------
+* Add dance-threepanel StepsType. Thanks to kurisu for the original 3.9 code.
+* XMode mod added, thanks to v1toko/StepNXA.
+* [Song] add GetDisplayBpms() [a table of two floats], IsDisplayBpmSecret(),
+  IsDisplayBpmConstant() [both bools] Lua bindings
+
+20100501
+--------
+* Fixed an issue with StepsDisplayList crashing if more than 21 difficulties are
+  playable. This allows Technomotion to work with AutoSetStyle and Autogen on.
+
+================================================================================
+sm-ssc v1.0 Public Beta 3 | 20100430
+--------------------------------------------------------------------------------
+There's an important change for themers that needs to be noted:
+We have renamed two screens in _fallback to match StepMania's names.
+
+ScreenSelectPlayMode (previously the select style screen)
+has been renamed to ScreenSelectStyle.
+
+ScreenSelectPlayStyle (previously select play mode) has been renamed
+to ScreenSelectPlayMode.
+
+This change effects branches (_fallback/02 Branches.lua) and metrics, so if
+you're not handling the two screens yourself, you will probably have to change
+some things around in your theme.
+
+20100430
+--------
+* [GameState] added DisablePremiumInEventMode metric.
+
+20100426
+--------
+* [Course.cpp] add a few Lua bindings to CourseEntry:
+ * IsSecret - bool
+ * IsFixedSong - bool
+ * GetGainSeconds - float
+ * GetGainLives - int
+ * GetNormalModifiers - string
+ * GetNumModChanges - int
+ * GetTextDescription - string
+* Re-add ScreenGameplaySyncMachine to project files that were missing it.
+
+20100422
+--------
+* libpng upgraded from 1.2.7 to 1.4.1 (Windows, Mac, BSD)
+  (libpng upgrade was not carried out for Xbox, but that version does
+  not run anyways, so it is no operational loss.)
+
+20100420
+--------
+* Convert |T| values in KSF files to TimeSignatures for [Player]
+  CheckpointsUseTimeSignatures metric.
+
+20100419
+--------
+* Add SampleMusicPreviewMode_LastSong, which gives similar behavior to
+  DDR Extreme. There is a hack for the random music based on Takuya's
+  DDR Extreme theme; I am unsure if this is accurate behavior or not. [AJ]
+* Allow MusicWheelItem Random and Portal to have different graphics
+  from Roulette.
+* Added Song:HasAttacks() Lua binding.
+
+20100417
+--------
+* Finally get rid of PLAYER_COLOR. ColorP1Command and ColorP2Command no
+  longer exist. The last things that were being diffused with player color
+  in the code included text in the Oni score display and ScreenSelectMusic score.
+  I'm sure you can diffuse ScoreDisplayOni Numbers, but I can't seem to find any
+  references to them in the metrics of any released theme. [AJ]
+
+20100404
+--------
+* [SongManager] Added GetSongGroupNames(), GetSongsInGroup(string) Lua bindings
+
+20100403
+--------
+* Fixed an issue where course banners were always cached, regardless of setting.
+
+20100401
+--------
+(Not jokes)
+* NextSong/PrevSong now work when TwoPartSelection=true and
+  TwoPartConfirmsOnly=true on ScreenSelectMusic. A new message
+  ("TwoPartConfirmCanceled") was added to catch when this happens.
+
+20100331
+--------
+* Added Lifts to PaneDisplay. (StepMania 3.9+/Plus Redux had them)
+
+================================================================================
+sm-ssc v1.0 Public Beta 2 | 20100331
+--------------------------------------------------------------------------------
+
+20100329
+--------
+* Added SONGMAN:ShortenGroupName(string) Lua binding
+
+20100328
+--------
+* sm4svn r28340: Don't call GetFirstCompatibleStyle if numSidesJoined == 0
+  (ScreenContinue) [Chris Danford]
+* [ScreenSelectMusic] TwoPartTimerSeconds metric added
+
+20100326
+--------
+* [BPMDisplay] make the "Various" text a theme-able string.
+* Allow ';' to start a comment in .ini files
+* [MenuTimer] Attempt to fix dialogs that come up when changing themes
+  (where one theme's warning timer starts higher than another).
+* [Player] PercentUntilColorCombo metric added. [Wolfman]
+  (float value in the range of 0..1)
+
+20100325
+--------
+* Fixed a crash caused by switching themes in StepMania. This crash was related
+  to the song group colors, which weren't getting reloaded on theme switch.
+  Since themes use different numbers of group colors... crashes! Not anymore.
+
+20100321
+--------
+* Fix a rounding bug that causes resolutions like 639x480 (4/3) and 853x480
+  (16/9); now they should be 640x480 and 854x480 as expected. Applies to
+  screenshots as well.
+  (Also, this fixes Midiman's pet peeve of having to add +1 to SCREEN_WIDTH)
+  * [RageDisplay.cpp] modified screenshot function
+  * [ScreenDimensions] modified SCREEN_WIDTH and SCREEN_HEIGHT algorithms
+  * [StepMania.cpp] modified windowed mode width calculation
+
+20100315
+--------
+* Make steps labeled as "freestyle" in .ksfs use doubles
+
+20100313
+--------
+* ScoreKeeperNormal double shot.
+ 1) convert toasty trigger from a single number to a Lua table. Only problem
+	is, the toasty only triggers on the first one. Since this makes it
+	equivalent to how it was set up before, I'm okay with this. [AJ]
+ 2) FSX submitted a patch that supposedly fixes the broken combo problem.
+	I can't fully test this, so I'm committing it in the hopes that someone
+	else tests it too.
+
+20100312
+--------
+* sm4svn r28332: if a BGCHANGE file can't be resolved, don't use the specified
+  effect because it may require 2 files and all random BGs specify only 1 file
+  [Chris Danford]
+* SM4SVN r28328, "draw glow using stroke texture" forces the BitmapText to glow
+  both the inner and stroke elements. This makes BitmapText elements with an
+  invisible stroke have a glowing stroke instead. Not good.
+  To combat this, I have developed the BitmapText::textglowmode command, along
+  with the TextGlowMode enum. Valid values include 'TextGlowMode_Inner',
+  'TextGlowMode_Stroke', 'TextGlowMode_Both'. [AJ]
+
+20100311
+--------
+* [Player.cpp] Don't add checkpoints to the combo if Autoplay is on.
+* Re-add the ability to reload a theme's Lua scripts, this time using Ctrl+F2.
+* Convert GrooveRadar base into an AutoActor. (Now it can use a Lua BGAnim.)
+
+20100309
+--------
+* [ScreenSelectMaster] Add GetSelectionIndex(pn) Lua binding. (You'll have to
+  call this one using SCREENMAN:GetTopScreen():GetSelectionIndex(PLAYER_1) or
+  something like that.)
+
+20100308
+--------
+* [PlayerStageStats] add GetPercentageOfTaps(TapNoteScore) Lua binding
+* [PlayerState] add GetMultiPlayerNumber() Lua binding (untested)
+
+sm4svn catch up, all by Chris Danford:
+* r28326: fix handling of noteskins with an uppercase letter
+* r28327: track W4 full combo
+* r28328: draw glow using stroke texture
+
+20100306
+--------
+* [ScreenEvaluation] New metric DetailLineFormat. Must contain two integer flags
+  (%d or %i should work.)
+
+20100305
+--------
+* [ScreenNetEvaluation] add GetNumActivePlayers() binding and UpdateNetEvalStats
+  message (one param, ActivePlayerIndex). This is currently untested.
+
+20100301
+--------
+* Re-add SM4SVN r28063 "Allow for 'confirmation only' double press mechanisms
+as a choice for two part selection on ScreenSelectMusic" since
+  1) It actually did have a use
+  2) [AJ] was thinking of adding it anyways and forgot it was already made.
+
+================================================================================
+sm-ssc v1.0 Public Beta 1 | 20100301
+--------------------------------------------------------------------------------
+This represents the first public version of sm-ssc. The previously publicly
+available release was not the official public beta version, but was released
+for more people to get their hands on it for testing.
+
+sm-ssc v1.0 Public Beta 1 has 111 Lua bindings that you currently can't find in
+StepMania 4 alpha versions as of 2010/02/28. That doesn't include the various
+helper functions available to you in scripts via the fallback theme, either. :)
+
+20100228
+--------
+* Applied stutter fix hack by Henke37
+  (src: http://www.pasteall.org/11353/diff)
+* [ScreenPackages] Some strings that were once hardcoded are now not:
+  "VisitURL", "DL @ %d KB/s", "Failed.", "Invalid URL.", "File Already Exists",
+  "Failed to connect.", "Header Sent.", "Waiting for header."
+* Allow multiple random modifiers to be listed in RandomModifiers.txt.
+  The random number generation for RandomModifiers has also changed.
+
+20100227
+--------
+* [GameState] add GetCurMusicSeconds binding. Values can be negative,
+  so watch out when using.
+
+20100226
+--------
+* rework some bindings to match SM4:
+  GetBPMAtBeat, GetBeatFromElapsedTime, and GetElapsedTimeFromBeat have
+  moved from Song to TimingData.
+  If you were using these against the Song, they will fail in your theme.
+
+* [TimingData] GetStops only returns Stops now (and not Delays).
+  If you want Delays, there is a new GetDelays() binding, which works
+  like GetStops.
+
+20100225
+--------
+* Added ToastyDropped message. [Midiman]
+
+20100223
+--------
+* [Player] CheckpointsFlashOnHold metric added. Fixes issue 16.
+
+20100222
+--------
+* [CodeDetector] NextBannerGroup and NextBannerGroup2 were previously used
+  for MusicBannerWheel, which is currently not used in sm-ssc. These codes
+  have been changed to NextGroup and PrevGroup. The codes switch between
+  groups as you would expect.
+
+20100219
+--------
+* sm4svn r28313: don't filter NoteSkins at a PrefsManager/NoteSkinManager level.
+  Leave the NoteSkin sorting and filtering up to the theme. [Chris Danford]
+* load lighting from ActorFrame xnodes (in addition to Lua commands)
+* add Cancel command on ScreenWithMenuElements, so other things can react
+  to Screen cancel.
+
+20100218
+--------
+* Added Fonts/ScreenReloadSongs LoadingText, making the text on
+  ScreenReloadSongs themeable.
+* Added Fonts/NoteField MeasureNumber, ScreenGameplay debug,
+  ScreenGameplaySyncMachine SyncInfo.
+
+20100216
+--------
+sm4svn r28309: Fix crash in course mode, another (and, from the looks of it,
+  the last) dumb bug this block o' hack caused [vyhd]
+
+20100215
+--------
+Some more sm4svn commits:
+* r28304: read-ahead tweaks; support os read cache flushing [Glenn Maynard]
+* r28306: experimental code for storing Lua data in Profiles and
+  converting between XML and Lua data. [vyhd]
+
+20100214
+--------
+sm4svn catchup... Noticing a pattern?
+* r28293: add RageFile::GetFD for specialized file handling [Glenn Maynard]
+  (FD meaning File Descriptor -aj)
+* r28294: "remove absolutely pointless revision tags that cause [aclocal.m4 and
+  ltmain.sh in libmad] to constantly show up as modified" [Glenn Maynard]
+* r28295: [fix] copy and paste error [Glenn Maynard]
+* r28296: Experimental: hint the OS caching to avoid skips when starting/looping
+  movies [Glenn Maynard]
+* r28297: fix a bug, then disable the whole thing for now due to dup()
+  braindamage; Linux version works fine (posix_fadvise) [Glenn Maynard]
+* r28299: fix m_iFilePos updating on seek [Glenn Maynard]
+* r28300: Added theme metric for Routine noteskins (to enforce separate noteskins
+  per player, or at least conscious thought toward that issue), added fix for
+  ScreenEdit only handling switching players on dance-routine [vyhd]
+ (editor's note: the new metrics are RoutineNoteSkinP1 and RoutineNoteSkinP2 -aj)
+* r28303: make sure routine always writes as two charts, even if only one has
+  steps; DEBUG_ASSERT -> ASSERT [Glenn Maynard]
+
+20100213
+--------
+Even more sm4svn catchup:
+* r28277: remove preferred group filtering (leaving the setting in for later use) [Glenn Maynard]
+* r28279: simplify SongUtil::GetStepsTypeAndDifficultyFromSortOrder [Glenn Maynard]
+* r28281: fix SSM crashes when selecting a song with only one
+  player enabled [Glenn Maynard]
+* r28284: add Style::GetUsesCenteredArrows (doubles + routine)
+* r28285: sanity check (on ScreenGameplay) [Glenn Maynard]
+* various commits related to routine mode [Glenn Maynard]
+  (specifically, r28282,r28286,r28287,r28289,r28290)
+* r28291: fix pump routine right side DownLeft not drawn [Chris Danford]
+* r28292: easier debug stepping [Chris Danford]
+
+20100211
+--------
+sm-ssc:
+* Fix a crash with AutoKeysounds.
+
+Playing catch-up with sm4svn. This happens a lot.
+* r28273: "Added more logical handling of Routine mode selection
+  (see source code comments); hopefully, we can write up a more standard
+  solution to this later, since this is kind of a hack" [vyhd]
+* r28274: course type param to GetCustomDifficulty is optional [Glenn Maynard]
+* r28276: Lua binding for MeterDisplay. Allow setting and changing the
+  width dynamically. Phase out the "StreamWidth" node property; set it with
+  SetStreamWidth instead. [Glenn Maynard]
+
+20100210
+--------
+* Possible fix for handling of delays in autoplay. May also fix things
+  elsewhere (editor?), but that is untested. Autoplay seemed to work well
+  with Uprock (the song), so I have no complaints. -aj
+* Glenn started to revert some of Frieza's code in sm4:
+ * "Personally, there is an assert for checking if the noteskin is not empty.
+   Based on other code, it seems like the noteskin would have to be set
+   somewhere else. If this is a problem somewhere else, find where it's a
+   problem and don't patch this function." -aj re: NoteSkinManager.cpp r2098
+ * r28076 "Adds metric options to flash the lifebar when a note is hit"
+   My comment on why I did this: "Any competent themer can make a lifebar
+   flash when a note is hit. Just hook something up to a JudgmentMesageCommand,
+   read the params, and go from there. If it doesn't work on
+   StreamDisplay/LifeMeterBar, then GO CODE YOUR OWN LIFE METER IN LUA!!
+   Seriously there are enough publicly available references (moonlight,
+   optical, NCEvo if you want to go back in time to see a different type
+   of life meter) that claiming 'oh I don't know how to' isn't an excuse.
+   Please actually put in effort and seek examples when you try stuff
+   kthx i told you this would be ranty" -aj
+
+20100209
+--------
+* sm4svn r28266: Fix GAMESTATE:GetCurrentSteps() only returns single-player
+  steps for any difficulty [vyhd]
+
+20100207
+--------
+* sm4svn r28264: subtractive blend (OpenGL only for now) [Glenn Maynard]
+  (D3D version untested, I'm unsure of the behavior -aj)
+
+20100204
+--------
+* [MusicWheel] add RecentSongsToShow metric.
+
+20100203
+--------
+* "First pass of toasty message, hopefully this doesn't break!" [Midiman]
+
+20100202
+--------
+* [Course.cpp] HasTimedMods() now actually checks for timed mods
+  (technically non-global) instead of being a clone of HasMods().
+* [Player.cpp] add MAX_HOLD_LIFE/[Player] MaxHoldLife metric
+
+20100130
+--------
+* "various commits from wolfman from the hg repo; mostly cleanup aside from
+  rev. 79071b3442, which adds a new metric. (that change is forthcoming)"
+
+20100128
+--------
+* Add DELAYS to list of known .sm tags [Wolfman; sm-ssc hg ebb2bda5b4]
+* fix Windows icons for compiling on VS2003 and VS2005
+* add ScoreKeeperShared.cpp/.h to VS2k3 project
+
+20100127
+--------
+* sm4svn r28259: Change OptionsList behavior to pop menu on Select and
+  default to Exit only on SELECT_ONE [vyhd]
+
+20100126
+--------
+* Add ScreenGameplayShared, ScoreKeeperShared to Makefile.am
+
+================================================================================
+sm-ssc Private Beta Wave 1.4 | 20100125
+--------------------------------------------------------------------------------
+
+20100125
+--------
+* Catching up with StepMania 4 SVN. All code by Glenn Maynard.
+ * r28254 (GameConstantsAndTypes.h GameManager.cpp): routine style for pump
+ * r28255 Steps.cpp: fix routine special case so it works in all styles
+ * r28256 ScoreKeeper.cpp: support ScoreKeeperShared in
+   ScoreKeeper::MakeScoreKeeper
+ * r28257 ScreenGameplayShared.cpp: update old ScreenGameplayShared code
+   to mostly use PlayerInfo::Load; fixes some stuff but still not right
+
+20100124
+--------
+* [Player] new ScoreMissedHoldsAndRolls metric (FSX)
+* [Song] add GetFirstBeat and GetLastBeat Lua bindings
+* Make RandomBackgroundMode use BGMODE_RANDOMMOVIES by default
+
+20100122
+--------
+* Add support for Pump It Up delays with #DELAYS tag in .sm files & treating all
+  stops in .KSF files as delays.
+* Use RollingNumbers methods in ScreenNetEvaluation now that ScreenEvaluation
+  uses them, as opposed to settext (which caused a few visual issues).
+* [ScreenEvaluation] add SongOptions as a metric-able item.
+
+20100119
+--------
+* Make FGAnimations (#FGCHANGES:) work again. (hopefully; it semeed to work
+  using a test file.)
+
+20100118
+--------
+mostly [ScreenNetSelectBase] related changes:
+* remove some now-unused metrics (namely ChatInputBoxWidth/Height and
+  ChatOutputBoxWidth/Height).
+* Rename "Meter" to "StepsDisplay"
+* RoomWheel now uses a MusicWheel-like setup for items (NormalPart/ColorPart)
+  instead of a single bar graphic.
+
+20100117
+--------
+* [ScreenNetSelectBase] Sprite -> AutoActor for chat boxes, un-hardcode some
+  commands on items to allow for better theming.
+* Disable Control+Letter "sort by title" shortcut in course mode.
+
+20100116
+--------
+* Pump-Doubles has better (more accurate?) spacing between the two sides
+* Enable saving replays. The replay data format will likely change over time,
+  and there is currently no mechanism to replay the data back as another player.
+
+20100114
+--------
+* add GAMESTATE:GetHardestStepsDifficulty() Lua binding
+* Don't complain about #SELECTABLE:Roulette; even though it's not implemented
+  for some reason.
+
+20100112
+--------
+* Added more milestones (25, 50, 250)
+* {issue 73} If the wheel is locked, don't accept Ctrl+Letter to sort
+* [NotesLoaderKSF] implement DirectMove |E| type (DelayBeat)
+
+20100111
+--------
+* [CourseLoaderCRS.cpp] add GRADEBEST and GRADEWORST to possible values.
+
+20100107
+--------
+* [GameConstantsAndTypes.h] bump MAX_METER from 13 to 20.
+* [MemoryCardManager] add GetName(pn) Lua binding. Returns the name of the device.
+
+================================================================================
+sm-ssc Private Beta Wave 1.3 | 20100106
+--------------------------------------------------------------------------------
+
+20100105
+--------
+* [LifeMeterBattery] Instead of using various hardcoded values, make them metrics.
+  BatteryBlinkTime (float), BatteryP*X/Y and NumLivesP*X/Y metrics added.
+* [GameSoundManager] use the sound's fade in and out times instead of the
+  hardcoded fade in (1.5sec) and out (0.3sec) times.
+
+20100101
+--------
+* [GrooveRadar] run commands on RadarValueMapP* so we can color it again
+* [Song.cpp] Make AutoGen on Pump a bit more bearable by only AutoGenerating
+  Medium difficulty for HalfDoubles steps.
+
+20091229
+--------
+* [GameState] new Lua bindings: JoinPlayer(pn), UnjoinPlayer(pn), and
+  GetSongPercent(fBeat)
+
+20091227
+--------
+* [ScreenSelectMusic] Allow un-selecting the song if two part selection is
+  enabled (press back). Only works if all human players have not chosen steps
+  yet. (If a player has chosen steps and the other wants to change the song,
+  the other player has to cancel his step selection.)
+* [NoteSkinManager] New Lua binding NOTESKIN:DoesNoteSkinExist(sName) for
+  finding if the specified noteskin exists in the current gametype.
+
+20091226
+--------
+* New Lua binding: NOTESKIN:GetNoteSkinNames(), which returns a table of all
+  noteskins for the current gametype.
+
+20091225
+--------
+* New Lua bindings for Profile: GetTotalSessions(), GetTotalSessionSeconds(),
+  GetTotalGameplaySeconds()
+
+20091221
+--------
+* Support "converge" as an alias for "centered" since some courses use it.
+
+20091220
+--------
+* [EditMenu] new metric TextBannerType
+* Fixed issue 38 (Servers line in ScreenNetworkOptions)
+
+20091219
+--------
+* Make it possible to change the alpha of the center of the groove radar [shakesoda]
+* [ScreenSelectMusic] make profile load with late join on. [AJ]
+* Fix OS hotkey issues by invalidating input on ScreenEdit while meta keys
+  (cmd or winkey) are being held. [shakesoda]
+
+================================================================================
+sm-ssc Private Beta Wave 1.2 | 20091219
+--------------------------------------------------------------------------------
+Theme-related additions/bugfixes aren't listed here, usually.
+
+20091218
+--------
+* Fix bug in GAMESTATE:GetCurrentSteps(pn) where it didn't bother trying to
+  return the player's actual steps before trying to do:
+  (1) SongUtil::GetOneSteps( p->m_pCurSong.Get(), GAMESTATE->GetCurrentStyle()->m_StepsType, GAMESTATE->m_PreferredDifficulty[pn] );
+  (2) SongUtil::GetOneSteps( p->m_pCurSong.Get(), GAMESTATE->GetCurrentStyle()->m_StepsType, GAMESTATE->GetClosestShownDifficulty(pn) );
+  And with AutoSetStyle on, how the hell is it going to know the style with
+  those two SongUtil things in the way? By moving the player's steps to the
+  top, that fixes the problem. -aj
+
+20091217
+--------
+* Make DeviceList on ScreenTestInput metricable
+  (commands only, X and Y are elusive for some reason.)
+
+20091215
+--------
+* Fix option underlines diffusing color when they should just be diffusing alpha.
+* [ScreenOptions] new Lua binding: AllAreOnLastRow()
+* [ScreenSelectMaster] add DoSwitchAnyways [shakesoda]
+
+20091214
+--------
+* new Course Lua bindings: IsNonstop(), IsOni(), HasBanner()
+
+20091213
+--------
+* Support Pump it Up Exceed PS2 USB mat [galopin]
+ (see stepmania-devs mailing list 20091213 11:27 -0800 [Pacific Standard Time])
+
+20091212
+--------
+* (smpackage) sm4svn r28243: "fix for FlushDirCache" [Chris Danford]
+* Fix Beginner Helper rest location [sy567]
+ (see http://old.stepmania.com/forums/showpost.php?p=158721&postcount=12)
+
+20091211
+--------
+Cel shader update [shakesoda]
+
+20091209
+--------
+[StepsDisplay] StepsType is an AutoActor now (was Sprite)
+
+================================================================================
+sm-ssc Private Beta Wave 1.1 | 20091208
+--------------------------------------------------------------------------------
+Theme-related bugfixes aren't listed here, usually.
+See the sm-ssc bugtracker at http://ssc.ajworld.net/sm-ssc/bugtracker/ for more
+information on bugs, feature requests, and the status of both.
+
+In addition to the bugfixes, the following changes have been made:
+
+20091208
+--------
+Refresh the metrics when changing the gametype. Fixes an issue where changing
+the gametype causes the DifficultyList/StepsDisplayList to not show anything.
+
+20091207
+--------
+* [Character.cpp] fix GetModelPath() Lua binding.
+* [Sprite.cpp] add GetState() and GetNumStates() Lua bindings.
+
+20091206
+--------
+Implement a patch to support modern versions of ffmpeg.
+(See http://old.stepmania.com/forums/showthread.php?t=21434 for more info.)
+
+Petr Baudis (3):
+	video.m4: Add libswscale checks.
+	MovieTexture_FFMpeg: Port img_convert to libswscale method.
+	MovieTexture_Theora: Port img_convert to libswscale method.
+
+David Santamaría Rogado (howl) (12):
+	video.m4: Simplify FFMpeg checks.
+	ArchHooks_Unix: Correct ffmpeg include.
+	MovieTexture_FFMpeg: Add and correct ffmpeg necessary includes.
+	MovieTexture_FFMpeg: Replace avcodec_build() with avcodec_version(), avcodec_build() now doesn't exists and avcodec_version() has always return the same value of avcodec_build().
+	MovieTexture_FFMpeg: Replace avcodec::offset_t type with int64_t type to complain the new FFMpeg API .
+	MovieTexture_FFMpeg: Corrected seek component of RageProtocol to complain the new FFMpeg, if not videos with malformed headers fails to play.
+	MovieTexture_FFMpeg: Fix compilation warning of RageProtocol.
+	MovieTexture_FFMpeg: Add destruction conditions for swscale context to avoid possible crashes.
+	MovieTexture_FFMpeg: Add initialization conditions for swscale context to avoid possible unused memory if there is no garbage collector and improve performance.
+	MovieTexture_Theora: Add and correct ffmpeg necessary includes.
+	MovieTexture_Theora: Add destruction conditions for swscale context to avoid possible crashes.
+	MovieTexture_Theora: Add initialization conditions for swscale context to avoid possible unused memory if there is no garbage collector and improve performance.
+
+20091205
+--------
+* [Player.cpp/.h] new metric: ComboUnderField. It should be true by default if
+  you want to match how StepMania 4 does it. [AJ]
+
+20091204
+--------
+* Fix a sm-ssc bug where you couldn't change course difficulties.
+
+20091203
+--------
+* Two new GameCommands:
+ * fademusic,fVolume,fDuration (though I wish fDuration was how long to fade the
+   music for; instead the fade lengths are consts in GameSoundManager.)
+ * pushscreen,sScreenName (though it doesn't push screens like I had thought it
+   would. maybe I'm doing it wrong.) [AJ]
+
+20091202
+--------
+* Profile name max length changed from 12 to 32 characters. [AJ]
+* Modified character camera values. [shakesoda]
+
+20091201
+--------
+* [ScreenSelectMusic] new metric SamplePreviewMusicMode, which has one of two
+  possible values as of r127. 'SamplePreviewMusicMode_Normal' is business as
+  usual (sample music plays), while 'SampleMusicPreviewMode_ScreenMusic'
+  disables song samples, using /{theme}/Sounds/ScreenSelectMusic loop music.*
+  as the file to play. No, this doesn't support Lua music yet. [AJ]
+
+================================================================================
+sm-ssc Private Beta Wave 1 | 20091201
+--------------------------------------------------------------------------------
+The list below comprises sm-ssc Private Beta Wave 1's changes. Some of the
+changes are from baseline StepMania 4 SVN, in order to keep compatibility.
+
+20091130
+--------
+* [StepMania.cpp] (any)Shift+F2 = reload metrics only.
+  F2 = reload metrics and textures.
+* [Course.cpp] GetPlayMode() and GetCourseType() return actual enums now,
+  instead of numbers.
+* Add improved cel shading for people with GLSL support. [shakesoda]
+
+20091129
+--------
+* [TimingData] add GetActualBPM() Lua binding that returns a table holding the
+  min and max BPMs, in that order.
+
+20091127
+--------
+* Disable color keying banners (it's 2009, I don't think anyone is using the
+  old rotated banners anymore. -aj) [shakesoda]
+* Add OptionsListTimeout metric. [shakesoda]
+
+20091126 (SSC turkey day)
+-------------------------
+* [Song] new Lua bindings: NormallyDisplayed(), GetStepsSeconds()
+* Themes will load Lua scripts from subdirectories first now.
+
+20091122
+--------
+* [ArchHooks_Unix] Follow user's system language as default.
+  [David Santamaría Rogado (howl)]
+  See http://old.stepmania.com/forums/showthread.php?t=21471 for more info.
+
+20091120
+--------
+* Fixed a crash with lifemultipliers > 1.0 in debug builds
+
+20091117
+--------
+* F2 reloads metrics again, just like in StepMania 3.9. (This is probably one
+  of those changes that won't get backported to baseline StepMania...)
+* [ScoreKeeperNormal] version 0.5 of ToastyTriggersAt added; only allows for
+  one value, unlike 3.9+ (which used a String with multiple values). The final
+  version will use a Lua table, similar to [MusicWheel] SortOrders.
+
+20091116
+--------
+* [Character] new Lua bindings: GetModelPath(), GetRestAnimationPath(),
+  GetWarmUpAnimationPath(), GetDanceAnimationPath()
+* [CharacterManager] GetRandomCharacter() Lua binding added
+* [RageFileManager] GetDirListing(sPath,bOnlyDirs,bPathToo) Lua binding added
+* [CharacterManager] GetAllCharacters() Lua binding added.
+
+20091115
+--------
+* Prevent focus lost at Fullscreen on X11, fix windowed->fullscreen resolution
+  changes so that they save [David Santamaría Rogado (howl)]
+  (http://old.stepmania.com/forums/showthread.php?t=21430)
+
+20091114
+--------
+* Add support for .oga and .ogv files. [David Santamaría Rogado (howl)]
+  (http://pastie.org/698741)
+
+20091113
+--------
+* sm4svn r28233 [Glenn Maynard]:
+  "Fix ThemeMetric<EnumType> gives the first value of the enum when the theme
+  metric is nil, instead of EnumType_INVALID.
+  This happened because ThemeMetric was setting the value to its default,
+  eg. EnumType(), when LuaHelpers::FromStack returned false.
+  This behavior doesn't make sense in the general case, since EnumType() results
+  in an arbitrary value (the first one) rather than Invalid. Every FromStack
+  function sets a reasonable default on invalid data, anyway, and only RageColor
+  and enums can return false in any case.
+  This fixes CustomDifficulty when CourseType = nil."
+
+* Fix a crash in StepsDisplay that allows Course mode to at least run.
+
+20091111
+--------
+* MusicWheelItem SetMessage has a new param, Type (string that returns the
+  item type).
+* Add sort songs by most recently played. (not feature-complete yet.)
+
+20091103 to 20091109
+--------------------
+* Changes from SM4SVN:
+ * r28211: [HighScore.cpp] "logic fixup" [Glenn Maynard]
+ * r28215: "default to showing backgrounds in editor" [Chris Danford]
+ * r28217: "Fix crash on reload metrics due to faulty FlushDirCache logic."
+ [Steve Checkoway], implemented along with code that was originally submitted
+ as r076 but removed. See this fix log to figure out why we'd bother. :)
+ * r28218: "crash handler is crashing in 2.6.31 in GetBacktrace, causing a
+ recursive crash handler crash that we aren't handling, leading to recursion"
+ [Glenn Maynard]
+ * r28219: "add 'DIRRO' driver for read-only access" [Glenn Maynard]
+ * r28220: "fix confusing comment. Escaping doesn't affect this; commas aren't
+ escaped, since they're split from the value itself, long after MsdFile is
+ loaded." [Glenn Maynard] (We'll be keeping the 1,1,1,1 colors in sm-ssc, and
+ may provide a compatibility script for SM4SVN, so be on the lookout.)
+ * r28221: "allow overriding, like PRODUCT_ID" [Glenn Maynard]
+ * r28222-28223: "adding support for pms files" [GRIM657]
+ * The pulseaudio patch [David Santamaría Rogado (howl), Ondřej Hošek, Damien Thébault]
+   (see http://old.stepmania.com/forums/showthread.php?t=21348)
+ * Greg Nadja's OpenGL/Windows patch
+ * Load Splash.png instead of an .xpm [David Santamaría Rogado (howl)]
+   (http://old.stepmania.com/forums/showpost.php?p=157340&postcount=3)
+
+* sm-ssc Changes:
+ * [ScreenSelectMusic.cpp] Add SelectMenuInputMessage, has params Player and
+ Button. Broadcast messages when holding select and a button other than Select
+ is pushed.
+ * Windowed mode is now the default display mode.
+ * [HighScore.cpp] new Lua bindings:
+  * GetModifiers()
+  * GetTapNoteScore(TapNoteScore)
+  * GetHoldNoteScore(HoldNoteScore)
+  * GetRadarValues()
+ * [ProfileManager.cpp] added IsSongNew(Song) Lua binding
+
+r088 | 20091101 12:19:47
+------------------------
+* SM4SVN r28203-28208, all by Glenn Maynard.
+ * r28203: "skip exporting round data when nothing was played (no taps, no holds)"
+ * r28204: "fix signatures not being written" (we had this already)
+ * r28205: "don't fail if there's no course; just hide"
+ * r28206: "move course rename and delete into Overview"
+ * r28208: "disable rename and delete for courses that havn't been saved yet"
+r28207 was a theme edit.
+
+20091029
+--------
+sm4svn r28202: helper for cycling through an enum [Glenn Maynard]
+
+20091028
+--------
+sm4svn r28201: "refactor RageInput to not call GetDevicesAndDescriptions
+constantly; it can be slightly complex and get called thousands of
+times a second" [Glenn Maynard]
+
+20091027
+--------
+* SM4SVN r28198-28200
+ * r28198: Fix GetFileSizeInBytes to return an int instead of unsigned.
+   "this returns -1 on error (this should actually be 64-bit,
+   but that's a bigger change)" [Glenn Maynard]
+ * r28199: The official log is as follows:
+   "Hack to get the decorations to be deleted. Fixes crashes,
+   but probably not the best way to go about this."
+   [Steve Checkoway]
+ * r28200: The official log is as follows:
+   "Do not use an AutoActor to keep track of the children."
+   However, this also fixes the hack in r28199. [Steve Checkoway]
+
+* Allow for Codes on ScreenGameplay. [shakesoda]
+
+* New Lua bindings for ScreenGameplay:
+ * PauseGame(bool) - Pauses/unpauses the game.
+ * IsPaused() - returns true or false depending on if the game is paused or not.
+
+20091015
+--------
+* Support loading Lua scripts from subdirectories of the Scripts folder,
+  to allow for better organization. The scripts in the root Scripts folder
+  will run first, then any Lua scripts in subdirectories of the Scripts folder
+  will be run. It currently only works with one folder depth, for example:
+  Scripts/subfolder/script.lua.
+
+  This is not likely to be changed. If you can see a possible need for paths
+  like Scripts/subfolder/subfolder2/script.lua, please make a Feature Request
+  ticket on the bugtracker at http://ssc.ajworld.net/sm-ssc/bugtracker/ with
+  an explanation of what you have in mind.
+
+20091012
+--------
+* Change BitmapText defaults to no stroke + no shadow.
+* Added DefaultTheme preference in order to fix crashes.
+  (sm-ssc's fallback theme is _fallback [and therefore normally unselectable].)
+
+20091005
+--------
+* [NotesLoaderSM.cpp] Changes based on SM4SVN r28197 [Archer]
+
+20091002
+--------
+* Event Mode turned on by default, as it should be. :)
+  (sm-ssc is a home mode-based version of StepMania.)
+
+20090925
+--------
+* SM4SVN r28192-28196.
+ * r28192: HexToBinary for RString -> RString. [Glenn Maynard]
+ * r28193: show all songs in EditCourse, not just preferred songs [Chris Danford]
+ * r28194: [ScreenDebugOverlay] Glenn made this themeable in SM4SVN, finally
+   catching up. This means we've had to rename a few things:
+    * DebugMenuHeader -> HeaderText
+    * PageName -> PageText
+   ButtonText and FunctionText were added, as well.
+   The font names remain the same, only the metrics change.
+   (Can you believe they're still using Common normal as the font?)
+ * r28195,28196: fix ComboChanged message sent when m_bSendJudgmentAndComboMessages
+ is false, fix doing unnecessary work in multiplayer [Glenn Maynard]
+
+20090920
+--------
+* [StepsDisplay] Fixed it so it actually shows up again.
+
+20090919
+--------
+Happy talk like k//eternal day!
+* [Font.cpp] Don't show strokes by default.
+* [NoteDisplay] fRotation -> fRotationZ in anticipation of multiple rotation mods.
+* [PaneDisplay] changed one thing that used a goto; doesn't use it anymore. seems to work for me, though I'm not 100% sure.
+* [ThemeManager] don't reload Lua scripts when you reload the metrics.
+  This is a temporary fix, and may be deemed safe at some point in the future.
+
+20090914
+--------
+(SM4SVN r28189)
+
+* SM4SVN r28190,28191 (25 files worth). This was later reverted, as it caused
+reloading the metrics to crash. Since sm-ssc is primarily for themers, this is a
+dealbreaker. A lot of things were unofficially added to sm-ssc at this point:
+
+* [ActorFrame] Added RemoveAllChildren() and RemoveChild(sName) bindings.
+  These are not guaranteed to work. Don't use them. They are very dangerous.
+* [IniFile] added Lua's '--' syntax for commenting (along with '//' and '#',
+  which were already supported).
+* New blend modes Modulate (subject to renaming later) and AlphaMultiply.
+* [RageUtil] Added various bindings for formatting time that were already built
+  into StepMania: SecondsToHHMMSS, SecondsToMMSSMsMs, SecondsToMMSSMsMsMs,
+  SecondsToMSS, SecondsToMMSS. All bindings take in a float (number of seconds).
+* [RageUtil] Added IsHexVal(string) binding.
+* Added groups to sort length (based on BPM ranges), so the songs no longer
+  show up without groups.
+
+20090913
+--------
+(SM4SVN r28180-28185)
+
+20090913
+--------
+* Added WeightedMultiply and InvertDest blend modes to Direct3D.
+
+20090912
+--------
+* Change decorations draw order so it breaks things less.
+
+20090911
+--------
+* "hidden" removed from Actor commands. It was deprecated.
+  A compatibility alias was added to replicate its functionality. However, this
+  will not work with NoteSkins, so be sure to make sure to check them for the
+  use of hidden.
+
+  Handy replacement guide:
+  hidden,true  / hidden,1 = visible,false
+  hidden,false / hidden,0 = visible,true
+
+20090907
+--------
+* Add Sprite:CropTo() function + Lua binding.
+
+20090906
+--------
+* Base theme changed from "default" to "_fallback".
+  As a result, all themes will fallback on _fallback instead of default.
+
+20090905
+--------
+* add URLEncode Lua binding to RageUtil.
+* [ScreenWithMenuElements.cpp, ThemeManager.cpp] Load and parse Lua as music.
+  This makes conditional music possible.
+
+20090904
+--------
+* Change many things on ScreenEdit to go 5 decimal places instead of 3.
+* Beginnings of Xbox controller mappings for edit mode (currently untested)
+
+20090903
+--------
+* Binding naming format changed for BPM bindings. Always uses all caps BPM.
+  Changes in the codebase due to this:
+  * [Song] HasSignificantBpmChangesOrStops -> HasSignificantBPMChangesOrStops
+  * [TimingData] HasBpmChanges -> HasBPMChanges
+* [TimingData] New bindings. (GetStops, GetBPMsAndTimes)
+* [ScreenPackages] attempt to not call MoveLeft by duplicating code.
+  Seemed to work okay.
+
+20090831
+--------
+* ScreenPackages changes:
+ * Backgrounds from Sprites to AutoActors (Lua can be used now).
+ * DefaultUrl metric added.
+* [ActorScroller] Make naming of commands consistent (some were all lowercase,
+  some were CamelCase), all are now CamelCase.
+
+20090828
+--------
+* Added ScreenGameplay:GetPlayerInfo(PlayerNumber) Lua binding
+
+20090827
+--------
+* Added LifeChanged message to LifeMeterBattery, meaning certain hackily-coded
+  custom life meters by a certain SSC member can work in Oni mode again. ;)
+* MAX_EDIT_STEPS_SIZE_BYTES changed from 30KB to 60KB.
+* Added --theme= and --language= command line options.
+
+20090826
+--------
+* SSE2 build configuration added to Visual Studio 2008 project file.
+* new Lua bindings for WheelBase: IsSettled(), IsLocked()
+
+20090822
+--------
+* Add Beginner meter sort.
+* [CommandLineActions] Implement --version command line argument.
+  Prints out the version of sm-ssc. Please build sm-ssc with HAVE_VERSION_TIME
+  if possible for compatibility with all possible sm-ssc themes.
+
+20090821
+--------
+(SM4SVN r28172-28174)
+
+20090810
+--------
+* [GameCommand.cpp] add GetUrl() Lua binding.
+* [GameManager.cpp] add IsGameEnabled(Game) Lua binding.
+* [GrooveRadar] name m_GrooveRadarValueMap "RadarValueMap(P1/P2)"
+  (commands untested); new todo note in header file
+* [ScoreDisplayOni.cpp] give it a name ("ScoreDisplayOni Numbers") and run
+  commands. (untested)
+* removing player color diffuse commands, in the hopes this can be replicated
+  using Lua commands.
+  [GrooveRadar.cpp, ScoreDisplayLifeTime.cpp, ScreenSelectMusic.cpp]
+
+20090810
+--------
+(SM4SVN r28170: vdl's fixes for Xbox building; he says they should be tested.)
+
+20090815
+--------
+* add THEME:GetPathO() Lua binding
+
+20090810
+--------
+(SM4SVN r28140-r28166; code changes only)
+
+20090808
+--------
+(SM4SVN r28135, r28137, r28138)
+* Lossless screenshots now save as PNG.
+* Conversion of decorations to not be children of the screen; they load in
+  a similar fashion to overlay/underlay, but still using LoadB so everything
+  works correctly. (Tested against SM4 default theme for compatibility.)
+
+20090729
+--------
+* add GetRotationX, GetRotationZ commands to Actor
+* add urlnoexit game command, which won't exit upon loading the browser.
+* add OldHealthState to HealthStateChanged message on ScreenGameplay
+
+20090726
+--------
+* (untested) GrooveRadar plays commands on the frame now, allowing for
+customized in and out transitions, using TweenOnScreen/TweenOffScreen Commands.
+* add PlayerController enum binding
+* add PlayerState:GetPlayerController() [untested]
+
+20090725
+--------
+ScreenDebugOverlay changes:
+* add OnCommand, X, Y to Debug Header
+* add GainFocus/LoseFocus commands to page names
+* add LineOnColor/LineOffColor
+
+20090724
+--------
+* Add StartRoulette and StartRandom messages to MusicWheel.
+* Fix default stroke color and shadow length. (BitmapText)
+
+20090719
+--------
+* patch by theDtTvB: http://share11.appspot.com/20421
+  (some parts relating to Player.cpp were later reverted; will be reimplemented)
+* Add SetPref to GameCommands.
+
+20090718
+--------
+* New ThemeManager Lua bindings:
+ * GetCurrentThemeDirectory
+ * ReloadMetrics
+* Added more internal font mappings: auxc, auxd, auxz, auxwhite, auxblack,
+  auxlb, auxrb, auxlt, auxrt
+* Add conf,PercentageScoring.
+
+20090712
+--------
+* ActorScroller: add GetNumItems binding.
+* ThemeManager: add bindings for GetThemeDisplayName() and
+  GetThemeDisplayAuthor() (for the current theme only).
+
+20090711
+--------
+* Fixes songs with only Edit steps from crashing.
+* Lights fix from ???
+* Add GAMESTATE:IsBattleMode() binding.
+
+20090708
+--------
+* (sync with SM4SVN: LightsManager.cpp, ScreenGameplay.cpp)
+
+20090707
+--------
+* Add GetProfileDir() binding to ProfileManager.
+* Added ProfileSlotNames enum.
+* Add broadcasted message "SongChosen" on ScreenSelectMusic.
+
+20090626
+--------
+* Allow meters to go up to 20 in Edit Mode.
+
+20090623
+--------
+* Added io, os, and packages to Lua bindings. They are disabled for now.
+* Fix instance in ScreenSelectMaster where hitting Up wouldn't count as going
+  backwards.
+
+20090617
+--------
+* Add Overlay shader. [AJ]
+
+20090615
+--------
+(sync with SM4SVN)
+
+More Lua bindings:
+* PlayerStageStats:FullComboOfScore(tns)
+
+* RageFileManager is now accessible through FILEMAN with these bindings:
+ * FILEMAN:DoesFileExist(path)
+ * FILEMAN:GetHashForFile(path)
+
+* Add bindings to Song:
+ * GetSongFilePath
+ * GetMusicPath
+ * GetCDTitlePath
+ * GetLyricsPath
+ * IsEnabled
+ * HasStepsType
+ * HasMusic
+ * HasBanner
+ * HasBackground
+ * HasCDTitle
+ * HasBGChanges
+ * HasLyrics
+ * GetBPMAtBeat
+ * GetBeatFromElapsedTime
+ * GetElapsedTimeFromBeat
+ * HasSignificantBpmChangesOrStops
+ * HasEdits
+ * IsEasy
+
+* Add bindings to Steps:
+ * IsAnEdit
+ * IsAPlayerEdit
+ * GetHash
+ * disabled stub for GetSMNoteData (untested)
+
+20090612
+--------
+* Work-in-progress bindings for ActorSound:
+ * pause
+ * stop
+* Work-in-progress bindings for RageSound:
+ * volume
+ * SetStopMode
+
+20090529
+--------
+(sync with SM4SVN: Archer adding 5:4 support)
+
+20090527
+--------
+Add three new Lua bindings to RageFile:
+* GetError
+* ClearError
+* AtEOF
+
+20090525
+--------
+(sync with SM4SVN)
+* [Actor.cpp] add GetDiffuse() Lua binding
+
+20090523
+--------
+* Add glowramp to Actor
+
+20090518
+--------
+* (changes from SM4SVN: Frieza and Wolfman [OnlyPreferredDifficulties])
+
+20090517
+--------
+* New RageFile bindings: Seek, Tell
+* Added more internal font mappings: auxa, auxb, auxy, auxl, auxr
+
+20090513
+--------
+ActorScroller changes:
+* Can now actually set size of the mask with SetMask
+* Add more Lua bindings:
+ * SetNumItemsToDraw
+ * GetFullScrollLengthSeconds
+ * GetCurrentItem
+ * GetDestinationItem
+
+20090509
+--------
+* Add skewy to valid Actor commands.
+
+20090505
+--------
+(SM4SVN: ComboMultiplier by Frieza in ScoreKeeperNormal + r28060, r28061)
+
+20090502
+--------
+(changes from SM4SVN: ScreenSelect* changes by Frieza)
+* Make ScreenDebugOverlay use its own fonts, namely:
+ * ScreenDebugOverlay header
+ * ScreenDebugOverlay page
+ * ScreenDebugOverlay line
+* Add GetServerName() binding to NetworkSyncManager.
+* Add GetText() binding to BPMDisplay.
+* add MD5 String/File and SHA1 String hashing via Lua:
+ * CRYPTMAN:MD5String(str)
+ * CRYPTMAN:MD5File(path)
+ * CRYPTMAN:SHA1String(str)
+* Add more Lua bindings to PlayerStageStats:
+ * GetCurrentMissCombo
+ * GetCurrentPossibleDancePoints
+ * GetAliveSeconds
+* Add GetThemeAuthor() to ThemeManager.
+* Add bindings to Song:
+ * GetDisplaySubTitle
+ * GetTranslitSubTitle
+
+20090501
+--------
+(changes from SM4SVN: tons of changes by Frieza)
+
+20090425
+--------
+(changes from SM4SVN: GameManager.cpp, RollingNumbers.cpp)
+
+20090419
+--------
+* Make some crash explanations more detailed. Changed files include:
+ * Actor.cpp - PercentThroughEffect, PercentBetweenColors, DeltaTime
+ * Attack.cpp
+ * GameManager.cpp
+ * GameState.cpp
+ * InputFilter.cpp
+ * NoteData.cpp
+* Add new Lua bindings to TimingData: HasBpmChanges, GetBpms, GetStops.
+
+20090418 
+--------
+* Project begins.
+* Remove ScreenEz2SelectPlayer, which only the Xbox project still referenced.
+_____________________________________________________________________________
