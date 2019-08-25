@@ -436,7 +436,11 @@ bool ScreenMapControllers::Input( const InputEventPlus &input )
 			m_DeviceIToMap = input.DeviceI;
 		}
 	}
+#if defined(__SWITCH__)
+	else
+#else
 	else if( input.DeviceI.device == DEVICE_KEYBOARD )
+#endif
 	{
 		switch( button )
 		{
@@ -447,7 +451,10 @@ bool ScreenMapControllers::Input( const InputEventPlus &input )
 		 * KEY_SPACE button press every time the JOY_HAT_UP button is pressed.
 		 * Had to put this in to prevent mappings being erased everytime the user
 		 * pressed up on the joypad. */
-
+#if defined(__SWITCH__)
+		case JOY_BUTTON_8:
+		case JOY_BUTTON_7:
+#endif
 		case KEY_DEL:
 		case KEY_SPACE:
 		case KEY_BACK: // Clear the selected input mapping.
@@ -467,6 +474,10 @@ bool ScreenMapControllers::Input( const InputEventPlus &input )
 				bHandled = true;
 			}
 			break;
+#if defined(__SWITCH__)
+		case JOY_BUTTON_13:
+		case JOY_BUTTON_4:
+#endif
 		case KEY_LEFT: // Move the selection left, wrapping up.
 			if(!CursorCanGoLeft())
 			{
@@ -486,6 +497,10 @@ bool ScreenMapControllers::Input( const InputEventPlus &input )
 			m_soundChange.Play(true);
 			bHandled = true;
 			break;
+#if defined(__SWITCH__)
+		case JOY_BUTTON_15:
+		case JOY_BUTTON_1:
+#endif
 		case KEY_RIGHT:	// Move the selection right, wrapping down.
 			if(!CursorCanGoRight())
 			{
@@ -502,6 +517,10 @@ bool ScreenMapControllers::Input( const InputEventPlus &input )
 			m_soundChange.Play(true);
 			bHandled = true;
 			break;
+#if defined(__SWITCH__)
+		case JOY_BUTTON_14:
+		case JOY_BUTTON_3:
+#endif
 		case KEY_UP: // Move the selection up.
 			if(!CursorCanGoUp())
 			{
@@ -513,6 +532,10 @@ bool ScreenMapControllers::Input( const InputEventPlus &input )
 			m_soundChange.Play(true);
 			bHandled = true;
 			break;
+#if defined(__SWITCH__)
+		case JOY_BUTTON_16:
+		case JOY_BUTTON_2:
+#endif
 		case KEY_DOWN: // Move the selection down.
 			if(!CursorCanGoDown())
 			{
@@ -524,6 +547,9 @@ bool ScreenMapControllers::Input( const InputEventPlus &input )
 			m_soundChange.Play(true);
 			bHandled = true;
 			break;
+#if defined(__SWITCH__)
+		case JOY_BUTTON_12:
+#endif
 		case KEY_ESC: // Quit the screen.
 			ExitAction();
 			bHandled = true;
@@ -545,6 +571,12 @@ bool ScreenMapControllers::Input( const InputEventPlus &input )
 				}
 			}
 			break;
+			m_soundChange.Play(true);
+			bHandled = true;
+			break;
+#if defined(__SWITCH__)
+		case JOY_BUTTON_11:
+#endif
 		case KEY_ENTER: // Change the selection.
 		case KEY_KP_ENTER:
 			bHandled = true;
