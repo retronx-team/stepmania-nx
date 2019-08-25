@@ -473,7 +473,7 @@ RString MovieDecoder_FFMpeg::Open( RString sFile )
 	m_pStreamCodec = m_pStream->codec;
 #endif
 
-	if( m_pStreamCodec->codec_id == avcodec::CODEC_ID_NONE )
+	if( m_pStreamCodec->codec_id == avcodec::AV_CODEC_ID_NONE )
 		return ssprintf( "Unsupported codec %08x", m_pStreamCodec->codec_tag );
 
 	RString sError = OpenCodec();
@@ -495,8 +495,10 @@ RString MovieDecoder_FFMpeg::OpenCodec()
 		avcodec::avcodec_close( m_pStreamCodec );
 
 	avcodec::AVCodec *pCodec = avcodec::avcodec_find_decoder( m_pStreamCodec->codec_id );
-	if( pCodec == nullptr )
-		return ssprintf( "Couldn't find decoder %i", m_pStreamCodec->codec_id );
+	if( pCodec == nullptr ) {
+		const avcodec::AVCodecDescriptor* pDesc = avcodec_descriptor_get(m_pStreamCodec->codec_id );
+		return ssprintf( "Couldn't find decoder [%i-%s] %s", m_pStreamCodec->codec_id, pDesc ? pDesc->name : "?", pDesc ? pDesc->long_name : "?" );
+	}
 
 	m_pStreamCodec->workaround_bugs   = 1;
 	m_pStreamCodec->idct_algo         = FF_IDCT_AUTO;

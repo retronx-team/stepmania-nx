@@ -419,10 +419,8 @@ if(NOT SWITCH_LIBNX)
   endif()
 endif()
 
-  if(WITH_FFMPEG AND NOT YASM_FOUND AND NOT NASM_FOUND)
-    message(
-      "Neither NASM nor YASM were found. Please install at least one of them if you wish for ffmpeg support."
-      )
+  if (WITH_FFMPEG AND NOT YASM_FOUND AND NOT NASM_FOUND AND NOT SWITCH_LIBNX)
+    message("Neither NASM nor YASM were found. Please install at least one of them if you wish for ffmpeg support.")
     set(WITH_FFMPEG OFF)
   endif()
 
