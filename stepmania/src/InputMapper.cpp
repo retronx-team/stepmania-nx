@@ -532,6 +532,36 @@ static const AutoMappings g_AutoMappings[] =
 		AutoMappingEntry( 0, JOY_BUTTON_9,      GAME_BUTTON_BACK,       false ),
 		AutoMappingEntry( 0, JOY_BUTTON_10,     GAME_BUTTON_START,      false )
 		),
+
+#if defined(__SWITCH__)
+	AutoMappings(
+		"dance",
+		"Switch Controller",
+		"Switch Controller",
+		AutoMappingEntry(0,JOY_BUTTON_13,		/*dpadL*/	GAME_BUTTON_MENULEFT,		false),
+		AutoMappingEntry(0,JOY_BUTTON_15,		/*dpadR*/	GAME_BUTTON_MENURIGHT,		false),
+		AutoMappingEntry(0,JOY_BUTTON_14,		/*dpadU*/	GAME_BUTTON_MENUUP,			false),
+		AutoMappingEntry(0,JOY_BUTTON_16,		/*dpadD*/	GAME_BUTTON_MENUDOWN,		false),
+		AutoMappingEntry(1,JOY_BUTTON_4,		/*Y*/		GAME_BUTTON_MENULEFT,		false),
+		AutoMappingEntry(1,JOY_BUTTON_1,		/*A*/		GAME_BUTTON_MENURIGHT,		false),
+		AutoMappingEntry(1,JOY_BUTTON_3,		/*X*/		GAME_BUTTON_MENUUP,			false),
+		AutoMappingEntry(1,JOY_BUTTON_2,		/*B*/		GAME_BUTTON_MENUDOWN,		false),
+		AutoMappingEntry(0,JOY_BUTTON_13,		/*dpadL*/	DANCE_BUTTON_LEFT,			false),
+		AutoMappingEntry(0,JOY_BUTTON_15,		/*dpadR*/	DANCE_BUTTON_RIGHT,			false),
+		AutoMappingEntry(0,JOY_BUTTON_14,		/*dpadU*/	DANCE_BUTTON_UP,			false),
+		AutoMappingEntry(0,JOY_BUTTON_16,		/*dpadD*/	DANCE_BUTTON_DOWN,			false),
+		AutoMappingEntry(1,JOY_BUTTON_4,		/*Y*/		DANCE_BUTTON_LEFT,			false),
+		AutoMappingEntry(1,JOY_BUTTON_1,		/*A*/		DANCE_BUTTON_RIGHT,			false),
+		AutoMappingEntry(1,JOY_BUTTON_3,		/*X*/		DANCE_BUTTON_UP,			false),
+		AutoMappingEntry(1,JOY_BUTTON_2,		/*B*/		DANCE_BUTTON_DOWN,			false),
+		AutoMappingEntry(0,JOY_BUTTON_7,		/*L*/		DANCE_BUTTON_UPLEFT,		false),
+		AutoMappingEntry(0,JOY_BUTTON_8,		/*R*/		DANCE_BUTTON_UPRIGHT,		false),
+		AutoMappingEntry(0,JOY_BUTTON_12,		/*Minus*/	GAME_BUTTON_BACK,			false),
+		AutoMappingEntry(0,JOY_BUTTON_11,		/*Plus*/	GAME_BUTTON_START,			false),
+		AutoMappingEntry(0,JOY_BUTTON_10,		/*ZL*/		GAME_BUTTON_SELECT,			false),
+		AutoMappingEntry(0,JOY_BUTTON_9,		/*ZR*/		GAME_BUTTON_COIN,			false)
+	),
+#endif
 };
 
 void InputMapper::Unmap( InputDevice id )
