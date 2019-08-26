@@ -631,6 +631,16 @@ struct VideoCardDefaults
 		2048,
 		false
 	),
+#if defined(__SWITCH__)
+	VideoCardDefaults(
+		"__SWITCH__",
+		"opengl",
+		1280,720,
+		16,16,16,
+		2048,
+		true
+	),
+#endif
 	VideoCardDefaults(
 		"OpenGL",	// This matches all drivers in Mac and Linux. -Chris
 		"opengl",
@@ -654,7 +664,9 @@ struct VideoCardDefaults
 
 static RString GetVideoDriverName()
 {
-#if defined(_WINDOWS)
+#if defined(__SWITCH__)
+	return "__SWITCH__";
+#elif defined(_WINDOWS)
 	return GetPrimaryVideoDriverName();
 #else
 	return "OpenGL";

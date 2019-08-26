@@ -29,7 +29,18 @@ using namespace RageDisplay_Legacy_Helpers;
 #endif
 #include <SDL_syswm.h>
 
-
+#if defined(__SWITCH__)
+static const DisplayMode g_switchAdditionalDisplayModes[] = {
+	{.width = 1920,	.height = 1080,	.refreshRate = 60.0},
+	{.width = 1600,	.height = 900,	.refreshRate = 60.0},
+	{.width = 1366,	.height = 768,	.refreshRate = 60.0},
+	{.width = 1280,	.height = 720,	.refreshRate = 60.0},
+	{.width = 1152,	.height = 648,	.refreshRate = 60.0},
+	{.width = 960,	.height = 540,	.refreshRate = 60.0},
+	{.width = 640,	.height = 480,	.refreshRate = 60.0},
+	{.width = 0, .height = 0, .refreshRate = 0.0},
+};
+#endif
 
 #include "arch/ArchHooks/ArchHooks.h"
 
@@ -206,6 +217,8 @@ void LowLevelWindow_SDL::SwapBuffers()
 	}
 }
 
+
+
 void LowLevelWindow_SDL::GetDisplaySpecs( DisplaySpecs &out ) const
 {
 	int displayCount;
@@ -219,8 +232,6 @@ void LowLevelWindow_SDL::GetDisplaySpecs( DisplaySpecs &out ) const
 		LOG->Warn("SDL_GetNumVideoDisplays failed: %s", displayCount);
 		return;
 	}
-
-
 
 	for ( int i = 0; i < displayCount; i++)
 	{
@@ -236,6 +247,11 @@ void LowLevelWindow_SDL::GetDisplaySpecs( DisplaySpecs &out ) const
 							   static_cast<double> (mode.refresh_rate)};
 			outputSupported.insert( res );
 		}
+#if defined(__SWITCH__)
+		for(int j = 0; g_switchAdditionalDisplayModes[j].width; j++) {
+			outputSupported.insert(g_switchAdditionalDisplayModes[j]);
+		}
+#endif
 		const std::string outId(std::to_string(i));
 		const std::string outName(SDL_GetDisplayName(i));
 		out.insert( DisplaySpec( outId, outName, outputSupported ));
