@@ -727,6 +727,10 @@ bool CheckVideoDefaultSettings()
 		LOG->Trace( "Video card has changed from %s to %s.  Applying new defaults.", PREFSMAN->m_sLastSeenVideoDriver.Get().c_str(), sVideoDriver.c_str() );
 	}
 
+#if defined(__SWITCH__)
+	PREFSMAN->m_sVideoRenderers.Set( defaults.sVideoRenderers );
+#endif
+
 	if( bSetDefaultVideoParams )
 	{
 		PREFSMAN->m_sVideoRenderers.Set( defaults.sVideoRenderers );
