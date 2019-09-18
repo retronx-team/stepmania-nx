@@ -467,7 +467,7 @@ void Model::DrawMesh( int i ) const
 	const msMesh *pMesh = &m_pGeometry->m_Meshes[i];
 
 	// apply mesh-specific bone (if any)
-	if( pMesh->m_iBoneIndex != -1 )
+	if( pMesh->m_iBoneIndex != -1  && pMesh->m_iBoneIndex != 0xFF )
 	{
 		DISPLAY->PushMatrix();
 
@@ -479,7 +479,7 @@ void Model::DrawMesh( int i ) const
 	const RageCompiledGeometry* TempGeometry = m_pTempGeometry ? m_pTempGeometry : m_pGeometry->m_pCompiledGeometry;
 	DISPLAY->DrawCompiledGeometry( TempGeometry, i, m_pGeometry->m_Meshes );
 
-	if( pMesh->m_iBoneIndex != -1 )
+	if( pMesh->m_iBoneIndex != -1 && pMesh->m_iBoneIndex != 0xFF )
 		DISPLAY->PopMatrix();
 }
 
