@@ -7,4 +7,4 @@ STEPMANIA_DIR="$ROOT_DIR/stepmania"
 
 APP_TITLE="StepMania"
 APP_AUTHOR="StepMania team; port by p-sam"
-APP_VERSION_TAG="nx1"
+APP_VERSION_TAG="nx2"
