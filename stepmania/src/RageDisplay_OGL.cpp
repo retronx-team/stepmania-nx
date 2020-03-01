@@ -66,7 +66,7 @@ static const GLenum RageSpriteVertexFormat = GL_T2F_C4F_N3F_V3F;
 /* If we support texture matrix scaling, a handle to the vertex program: */
 static GLhandleARB g_bTextureMatrixShader = 0;
 
-static std::map<unsigned, RenderTarget *> g_mapRenderTargets;
+static std::map<uintptr_t, RenderTarget *> g_mapRenderTargets;
 static RenderTarget *g_pCurrentRenderTarget = nullptr;
 
 static LowLevelWindow *g_pWind;
@@ -799,7 +799,7 @@ RString RageDisplay_Legacy::TryVideoMode( const VideoModeParams &p, bool &bNewDe
 
 		/* Delete all render targets.  They may have associated resources other than
 		 * the texture itself. */
-		for (std::pair<unsigned const, RenderTarget *> &rt : g_mapRenderTargets)
+		for (std::pair<uintptr_t const, RenderTarget *> &rt : g_mapRenderTargets)
 			delete rt.second;
 		g_mapRenderTargets.clear();
 
@@ -926,14 +926,14 @@ RageSurface* RageDisplay_Legacy::CreateScreenshot()
 	return image;
 }
 
-RageSurface *RageDisplay_Legacy::GetTexture( unsigned iTexture )
+RageSurface *RageDisplay_Legacy::GetTexture( uintptr_t iTexture )
 {
 	if (iTexture == 0)
 		return nullptr; // XXX
 
 	FlushGLErrors();
 
-	glBindTexture( GL_TEXTURE_2D, iTexture );
+	glBindTexture( GL_TEXTURE_2D, static_cast<GLuint>(iTexture) );
 	GLint iHeight, iWidth, iAlphaBits;
 	glGetTexLevelParameteriv( GL_TEXTURE_2D, 0, GL_TEXTURE_HEIGHT, &iHeight );
 	glGetTexLevelParameteriv( GL_TEXTURE_2D, 0, GL_TEXTURE_WIDTH, &iWidth );
@@ -1621,6 +1621,7 @@ void RageDisplay_Legacy::DrawLineStripInternal( const RageSpriteVertex v[], int 
 	/* Draw the line loop: */
 	SetupVertices( v, iNumVerts );
 	glDrawArrays( GL_LINE_STRIP, 0, iNumVerts );
+	StatsAddVerts(iNumVerts);
 
 	glDisable( GL_LINE_SMOOTH );
 
@@ -1646,6 +1647,7 @@ void RageDisplay_Legacy::DrawLineStripInternal( const RageSpriteVertex v[], int 
 
 	SetupVertices( v, iNumVerts );
 	glDrawArrays( GL_POINTS, 0, iNumVerts );
+	StatsAddVerts(iNumVerts);
 
 	glDisable( GL_POINT_SMOOTH );
 }
@@ -1681,7 +1683,7 @@ int RageDisplay_Legacy::GetNumTextureUnits()
 		return g_iMaxTextureUnits;
 }
 
-void RageDisplay_Legacy::SetTexture( TextureUnit tu, unsigned iTexture )
+void RageDisplay_Legacy::SetTexture( TextureUnit tu, uintptr_t iTexture )
 {
 	if (!SetTextureUnit( tu ))
 		return;
@@ -1689,7 +1691,7 @@ void RageDisplay_Legacy::SetTexture( TextureUnit tu, unsigned iTexture )
 	if (iTexture)
 	{
 		glEnable( GL_TEXTURE_2D );
-		glBindTexture( GL_TEXTURE_2D, iTexture );
+		glBindTexture( GL_TEXTURE_2D, static_cast<GLuint>(iTexture) );
 	}
 	else
 	{
@@ -2108,7 +2110,7 @@ void RageDisplay_Legacy::EndConcurrentRendering()
 	g_pWind->EndConcurrentRendering();
 }
 
-void RageDisplay_Legacy::DeleteTexture( unsigned iTexture )
+void RageDisplay_Legacy::DeleteTexture( uintptr_t iTexture )
 {
 	if (iTexture == 0)
 		return;
@@ -2193,7 +2195,7 @@ void SetPixelMapForSurface( int glImageFormat, int glTexFormat, const RageSurfac
 	DebugAssertNoGLError();
 }
 
-unsigned RageDisplay_Legacy::CreateTexture( 
+uintptr_t RageDisplay_Legacy::CreateTexture( 
 	RagePixelFormat pixfmt,
 	RageSurface* pImg,
 	bool bGenerateMipMaps )
@@ -2238,11 +2240,11 @@ unsigned RageDisplay_Legacy::CreateTexture(
 	SetTextureUnit( TextureUnit_1 );
 
 	// allocate OpenGL texture resource
-	unsigned int iTexHandle;
+	uintptr_t iTexHandle;
 	glGenTextures( 1, reinterpret_cast<GLuint*>(&iTexHandle) );
 	ASSERT( iTexHandle != 0 );
 	
-	glBindTexture( GL_TEXTURE_2D, iTexHandle );
+	glBindTexture( GL_TEXTURE_2D, static_cast<GLuint>(iTexHandle) );
 
 	if (g_pWind->GetActualVideoModeParams().bAnisotropicFiltering &&
 		GLEW_EXT_texture_filter_anisotropic )
@@ -2354,7 +2356,7 @@ public:
 		m_iTexHandle = 0;
 	}
 
-	void Lock( unsigned iTexHandle, RageSurface *pSurface )
+	void Lock( uintptr_t iTexHandle, RageSurface *pSurface )
 	{
 		ASSERT( m_iTexHandle == 0 );
 		ASSERT( pSurface->pixels == nullptr );
@@ -2400,7 +2402,7 @@ private:
 
 	GLuint m_iBuffer;
 
-	unsigned m_iTexHandle;
+	uintptr_t m_iTexHandle;
 };
 
 RageTextureLock *RageDisplay_Legacy::CreateTextureLock()
@@ -2412,11 +2414,11 @@ RageTextureLock *RageDisplay_Legacy::CreateTextureLock()
 }
 
 void RageDisplay_Legacy::UpdateTexture( 
-	unsigned iTexHandle, 
+	uintptr_t iTexHandle, 
 	RageSurface* pImg,
 	int iXOffset, int iYOffset, int iWidth, int iHeight )
 {
-	glBindTexture( GL_TEXTURE_2D, iTexHandle );
+	glBindTexture( GL_TEXTURE_2D, static_cast<GLuint>(iTexHandle) );
 
 	bool bFreeImg;
 	RagePixelFormat SurfacePixFmt = GetImgPixelFormat( pImg, bFreeImg, iWidth, iHeight, false );
@@ -2454,16 +2456,16 @@ public:
 	RenderTarget_FramebufferObject();
 	~RenderTarget_FramebufferObject();
 	void Create( const RenderTargetParam &param, int &iTextureWidthOut, int &iTextureHeightOut );
-	unsigned GetTexture() const { return m_iTexHandle; }
+	uintptr_t GetTexture() const { return m_iTexHandle; }
 	void StartRenderingTo();
 	void FinishRenderingTo();
 	
 	virtual bool InvertY() const { return true; }
 
 private:
-	unsigned int m_iFrameBufferHandle;
-	unsigned int m_iTexHandle;
-	unsigned int m_iDepthBufferHandle;
+	uintptr_t m_iFrameBufferHandle;
+	uintptr_t m_iTexHandle;
+	uintptr_t m_iDepthBufferHandle;
 };
 
 RenderTarget_FramebufferObject::RenderTarget_FramebufferObject()
@@ -2499,7 +2501,7 @@ void RenderTarget_FramebufferObject::Create( const RenderTargetParam &param, int
 	iTextureWidthOut = iTextureWidth;
 	iTextureHeightOut = iTextureHeight;
 
-	glBindTexture( GL_TEXTURE_2D, m_iTexHandle );
+	glBindTexture( GL_TEXTURE_2D, static_cast<GLuint>(m_iTexHandle) );
 	GLenum internalformat;
 	GLenum type = param.bWithAlpha? GL_RGBA:GL_RGB;
 	if (param.bFloat && GLEW_ARB_texture_float)
@@ -2521,8 +2523,8 @@ void RenderTarget_FramebufferObject::Create( const RenderTargetParam &param, int
 	ASSERT( m_iFrameBufferHandle != 0 );
 
 	/* Attach the texture to it. */
-	glBindFramebufferEXT( GL_FRAMEBUFFER_EXT, m_iFrameBufferHandle );
-        glFramebufferTexture2DEXT( GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT, GL_TEXTURE_2D, m_iTexHandle, 0 );
+	glBindFramebufferEXT( GL_FRAMEBUFFER_EXT, static_cast<GLuint>(m_iFrameBufferHandle) );
+        glFramebufferTexture2DEXT( GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT, GL_TEXTURE_2D, static_cast<GLuint>(m_iTexHandle), 0 );
 	DebugAssertNoGLError();
 
 	/* Attach a depth buffer, if requested. */
@@ -2531,9 +2533,9 @@ void RenderTarget_FramebufferObject::Create( const RenderTargetParam &param, int
 		glGenRenderbuffersEXT( 1, reinterpret_cast<GLuint*>(&m_iDepthBufferHandle) );
 		ASSERT( m_iDepthBufferHandle != 0 );
 
-		glBindRenderbufferEXT( GL_RENDERBUFFER, m_iDepthBufferHandle );
+		glBindRenderbufferEXT( GL_RENDERBUFFER, static_cast<GLuint>(m_iDepthBufferHandle) );
 		glRenderbufferStorageEXT( GL_RENDERBUFFER_EXT, GL_DEPTH_COMPONENT16, iTextureWidth, iTextureHeight );
-		glFramebufferRenderbufferEXT( GL_FRAMEBUFFER_EXT, GL_DEPTH_ATTACHMENT_EXT, GL_RENDERBUFFER_EXT, m_iDepthBufferHandle );
+		glFramebufferRenderbufferEXT( GL_FRAMEBUFFER_EXT, GL_DEPTH_ATTACHMENT_EXT, GL_RENDERBUFFER_EXT, static_cast<GLuint>(m_iDepthBufferHandle) );
 	}
 
 	GLenum status = glCheckFramebufferStatusEXT( GL_FRAMEBUFFER_EXT );
@@ -2559,7 +2561,7 @@ void RenderTarget_FramebufferObject::Create( const RenderTargetParam &param, int
 
 void RenderTarget_FramebufferObject::StartRenderingTo()
 {
-	glBindFramebufferEXT( GL_FRAMEBUFFER_EXT, m_iFrameBufferHandle );
+	glBindFramebufferEXT( GL_FRAMEBUFFER_EXT, static_cast<GLuint>(m_iFrameBufferHandle) );
 }
 
 void RenderTarget_FramebufferObject::FinishRenderingTo()
@@ -2586,7 +2588,7 @@ bool RageDisplay_Legacy::SupportsFullscreenBorderlessWindow() const
  * particularly GeForce 2, but is simpler and faster when available.
  */
 
-unsigned RageDisplay_Legacy::CreateRenderTarget( const RenderTargetParam &param, int &iTextureWidthOut, int &iTextureHeightOut )
+uintptr_t RageDisplay_Legacy::CreateRenderTarget( const RenderTargetParam &param, int &iTextureWidthOut, int &iTextureHeightOut )
 {
 	RenderTarget *pTarget;
 	if (GLEW_EXT_framebuffer_object)
@@ -2596,22 +2598,22 @@ unsigned RageDisplay_Legacy::CreateRenderTarget( const RenderTargetParam &param,
 
 	pTarget->Create( param, iTextureWidthOut, iTextureHeightOut );
 
-	unsigned iTexture = pTarget->GetTexture();
+	uintptr_t iTexture = pTarget->GetTexture();
 
 	ASSERT( g_mapRenderTargets.find(iTexture) == g_mapRenderTargets.end() );
 	g_mapRenderTargets[iTexture] = pTarget;
 	return iTexture;
 }
 
-unsigned RageDisplay_Legacy::GetRenderTarget( )
+uintptr_t RageDisplay_Legacy::GetRenderTarget()
 {
-	for( map<unsigned, RenderTarget*>::const_iterator it = g_mapRenderTargets.begin( ); it != g_mapRenderTargets.end( ); ++it )
+	for( map<uintptr_t, RenderTarget*>::const_iterator it = g_mapRenderTargets.begin(); it != g_mapRenderTargets.end(); ++it )
 	if( it->second == g_pCurrentRenderTarget )
 		return it->first;
 	return 0;
 }
 
-void RageDisplay_Legacy::SetRenderTarget( unsigned iTexture, bool bPreserveTexture )
+void RageDisplay_Legacy::SetRenderTarget( uintptr_t iTexture, bool bPreserveTexture )
 {
 	if (iTexture == 0)
 	{

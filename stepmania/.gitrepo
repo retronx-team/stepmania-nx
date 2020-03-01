@@ -6,7 +6,7 @@
 [subrepo]
 	remote = https://github.com/stepmania/stepmania
 	branch = 5_1-new
-	commit = 8ab7c7fab937acc684392b909b6b30b47d9a8c7b
+	commit = caf2f6522eaafb30a3369717fcf59ec437f71f56
 	parent = 46ac5f17a1942a25efefbe348c52a6872cc85586
 	method = merge
 	cmdver = 0.4.0

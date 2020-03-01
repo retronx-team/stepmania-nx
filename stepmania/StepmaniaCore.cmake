@@ -49,6 +49,9 @@ include("${SM_CMAKE_DIR}/DefineOptions.cmake")
 
 include("${SM_CMAKE_DIR}/SMDefs.cmake")
 
+# Put the predefined targets in separate groups.
+set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+
 # Set up the linker flags for MSVC builds.
 configure_msvc_runtime()
 
@@ -152,6 +155,14 @@ check_type_size(intptr_t SIZEOF_INTPTR_T)
 check_type_size(pid_t SIZEOF_PID_T)
 check_type_size(size_t SIZEOF_SIZE_T)
 check_type_size(ssize_t SIZEOF_SSIZE_T)
+
+if(WIN32)
+  if(SIZEOF_INTPTR_T EQUAL 8)
+    set(SM_WIN32_ARCH "x64")
+  else()
+    set(SM_WIN32_ARCH "x86")
+  endif()
+endif()
 
 include(TestBigEndian)
 test_big_endian(BIGENDIAN)
@@ -273,8 +284,6 @@ else()
 endif()
 
 if(WIN32)
-  find_package(DirectX REQUIRED)
-
   if(MINGW AND WITH_FFMPEG AND NOT WITH_SYSTEM_FFMPEG)
     include("${SM_CMAKE_DIR}/SetupFfmpeg.cmake")
     set(HAS_FFMPEG TRUE)
@@ -282,27 +291,38 @@ if(WIN32)
     # FFMPEG...it can be evil.
     find_library(LIB_SWSCALE
                  NAMES "swscale"
-                 PATHS "${SM_EXTERN_DIR}/ffmpeg/lib"
+                 PATHS "${SM_EXTERN_DIR}/ffmpeg/${SM_WIN32_ARCH}/lib"
                  NO_DEFAULT_PATH)
     get_filename_component(LIB_SWSCALE ${LIB_SWSCALE} NAME)
 
     find_library(LIB_AVCODEC
                  NAMES "avcodec"
-                 PATHS "${SM_EXTERN_DIR}/ffmpeg/lib"
+                 PATHS "${SM_EXTERN_DIR}/ffmpeg/${SM_WIN32_ARCH}/lib"
                  NO_DEFAULT_PATH)
     get_filename_component(LIB_AVCODEC ${LIB_AVCODEC} NAME)
 
     find_library(LIB_AVFORMAT
                  NAMES "avformat"
-                 PATHS "${SM_EXTERN_DIR}/ffmpeg/lib"
+                 PATHS "${SM_EXTERN_DIR}/ffmpeg/${SM_WIN32_ARCH}/lib"
                  NO_DEFAULT_PATH)
     get_filename_component(LIB_AVFORMAT ${LIB_AVFORMAT} NAME)
 
     find_library(LIB_AVUTIL
                  NAMES "avutil"
-                 PATHS "${SM_EXTERN_DIR}/ffmpeg/lib"
+                 PATHS "${SM_EXTERN_DIR}/ffmpeg/${SM_WIN32_ARCH}/lib"
                  NO_DEFAULT_PATH)
     get_filename_component(LIB_AVUTIL ${LIB_AVUTIL} NAME)
+
+    list(APPEND SM_FFMPEG_WIN32_DLLS
+      "avcodec-55.dll"
+      "avformat-55.dll"
+      "avutil-52.dll"
+      "swscale-2.dll"
+    )
+    foreach(dll ${SM_FFMPEG_WIN32_DLLS})
+      file(REMOVE "${SM_PROGRAM_DIR}/${dll}")
+      file(COPY "${SM_EXTERN_DIR}/ffmpeg/${SM_WIN32_ARCH}/bin/${dll}" DESTINATION "${SM_PROGRAM_DIR}/")
+    endforeach()
   endif()
 elseif(MACOSX)
   if(WITH_FFMPEG AND NOT WITH_SYSTEM_FFMPEG)
@@ -376,6 +396,12 @@ if(NOT SWITCH_LIBNX)
     set(HAS_XRANDR TRUE)
   endif()
 
+  set(HAS_LIBXTST FALSE)
+  if(WITH_LIBXTST)
+    find_package(Xtst REQUIRED)
+    set(HAS_LIBXTST TRUE)
+  endif()
+
   set(HAS_XINERAMA FALSE)
   if(WITH_XINERAMA)
     find_package(Xinerama REQUIRED)
@@ -420,7 +446,9 @@ if(NOT SWITCH_LIBNX)
 endif()
 
   if (WITH_FFMPEG AND NOT YASM_FOUND AND NOT NASM_FOUND AND NOT SWITCH_LIBNX)
-    message("Neither NASM nor YASM were found. Please install at least one of them if you wish for ffmpeg support.")
+    message(
+      "Neither NASM nor YASM were found. Please install at least one of them if you wish for ffmpeg support."
+      )
     set(WITH_FFMPEG OFF)
   endif()
 
@@ -450,6 +478,7 @@ endif()
     set(HAS_FFMPEG FALSE)
   endif()
 
+set(OpenGL_GL_PREFERENCE GLVND)
 if(NOT SWITCH_LIBNX)
   find_package(OpenGL REQUIRED)
   find_package(GLEW REQUIRED)

@@ -112,6 +112,9 @@ set_target_properties("${SM_EXE_NAME}"
                                  RELWITHDEBINFO_OUTPUT_NAME
                                  "${SM_NAME_RELWITHDEBINFO}")
 
+# Required for usage of tomcrypt and tommath.
+sm_add_compile_definition("${SM_EXE_NAME}" LTM_DESC)
+
 if(WITH_PORTABLE_TOMCRYPT)
   sm_add_compile_definition("${SM_EXE_NAME}" LTC_NO_ASM)
 endif()
@@ -136,7 +139,9 @@ set(SM_COMPILE_FLAGS "")
 
 if(WITH_SSE2)
   if(MSVC)
-    set(SM_COMPILE_FLAGS "${SM_COMPILE_FLAGS} /arch:SSE2")
+    if(SM_WIN32_ARCH MATCHES "x86")
+      set(SM_COMPILE_FLAGS "${SM_COMPILE_FLAGS} /arch:SSE2")
+    endif()
   else()
     set(SM_COMPILE_FLAGS "${SM_COMPILE_FLAGS} -msse2")
   endif()
@@ -367,6 +372,9 @@ else() # Linux
   if(${HAS_XRANDR})
     sm_add_compile_definition("${SM_EXE_NAME}" HAVE_XRANDR)
   endif()
+  if(${HAS_LIBXTST})
+    sm_add_compile_definition("${SM_EXE_NAME}" HAVE_LIBXTST)
+  endif()
   if(${HAS_XINERAMA})
     sm_add_compile_definition("${SM_EXE_NAME}" HAVE_XINERAMA)
   endif()
@@ -484,12 +492,9 @@ if(WIN32)
               "setupapi.lib"
               "hid.lib")
 
-  get_filename_component(DIRECTX_LIBRARY_DIR "${DIRECTX_LIBRARIES}" DIRECTORY)
-
-  sm_add_link_flag("${SM_EXE_NAME}" "/LIBPATH:\"${DIRECTX_LIBRARY_DIR}\"")
-  sm_add_link_flag("${SM_EXE_NAME}" "/LIBPATH:\"${SM_EXTERN_DIR}/ffmpeg/lib\"")
+  sm_add_link_flag("${SM_EXE_NAME}" "/LIBPATH:\"${SM_EXTERN_DIR}/ffmpeg/${SM_WIN32_ARCH}/lib\"")
   sm_add_link_flag("${SM_EXE_NAME}"
-                   "/LIBPATH:\"${SM_SRC_DIR}/archutils/Win32/ddk\"")
+                   "/LIBPATH:\"${SM_SRC_DIR}/archutils/Win32/ddk/${SM_WIN32_ARCH}\"")
   sm_add_link_flag("${SM_EXE_NAME}" "/ERRORREPORT:SEND")
   sm_add_link_flag("${SM_EXE_NAME}" "/MAPINFO:EXPORTS")
   sm_add_link_flag("${SM_EXE_NAME}" "/SAFESEH:NO")
@@ -607,9 +612,9 @@ else() # Unix / Linux TODO: Remember to find and locate the zip archive files.
     list(APPEND SMDATA_LINK_LIB ${PCRE_LIBRARY})
   endif()
 
-if(NOT SWITCH_LIBNX)
-  list(APPEND SMDATA_LINK_LIB ${XRANDR_LIBRARIES} ${XINERAMA_LIBRARIES})
-endif()
+  if(NOT SWITCH_LIBNX)
+    list(APPEND SMDATA_LINK_LIB ${XRANDR_LIBRARIES} ${LIBXTST_LIBRARY} ${XINERAMA_LIBRARIES})
+  endif()
 
   list(REMOVE_DUPLICATES SMDATA_LINK_LIB)
 endif()
@@ -695,7 +700,8 @@ else()
 endif()
 
 if(WIN32)
-  list(APPEND SM_INCLUDE_DIRS ${DIRECTX_INCLUDE_DIR})
+  # FIXME: This makes no sense...
+  #list(APPEND SM_INCLUDE_DIRS ${DIRECTX_INCLUDE_DIR})
 else()
   list(APPEND SM_INCLUDE_DIRS "${SM_EXTERN_DIR}/libpng/include")
 endif()

@@ -8,12 +8,16 @@ class RageMutex;
 class XNode;
 class LuaReference;
 
+#ifndef _MSC_VER
 extern "C"
 {
+#endif
 #include "../extern/lua-5.1/src/lua.h"
 #include "../extern/lua-5.1/src/lualib.h"
 #include "../extern/lua-5.1/src/lauxlib.h"
+#ifndef _MSC_VER
 }
+#endif
 
 // For Dialog::Result
 #include "arch/Dialog/Dialog.h"
@@ -224,8 +228,7 @@ inline bool MyLua_checkintboolean( lua_State *L, int iArg )
 	int iType = lua_type( L, iArg );
 	if( iType == LUA_TNUMBER )
 	{
-		int iValue = lua_tointeger( L, iArg );
-		return iValue != 0;
+		return lua_tointeger(L, iArg) != 0;
 	}
 
 	return MyLua_checkboolean( L, iArg );
