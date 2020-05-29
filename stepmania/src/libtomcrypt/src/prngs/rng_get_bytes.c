@@ -157,7 +157,7 @@ unsigned long rng_get_bytes(unsigned char *out, unsigned long outlen,
    x = _rng_win32(out, outlen, callback); if (x != 0) { return x; }
 #elif defined (__SWITCH__)
    x = _rng_nx(out, outlen, callback); if (x != 0) { return x; }
-#elif defined(DEVRANDOM)
+#elif defined(LTC_DEVRANDOM)
    x = _rng_nix(out, outlen, callback);   if (x != 0) { return x; }
 #endif
 #ifdef ANSI_RNG

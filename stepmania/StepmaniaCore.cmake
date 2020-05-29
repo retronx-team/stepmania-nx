@@ -20,7 +20,7 @@ set(SM_ROOT_DIR "${CMAKE_CURRENT_LIST_DIR}")
 set(SM_EXE_NAME "StepMania")
 
 # Some OS specific helpers.
-if(CMAKE_SYSTEM_NAME MATCHES "Linux" OR SWITCH_LIBNX)
+if(CMAKE_SYSTEM_NAME MATCHES "Linux")
   set(LINUX TRUE)
   set(SM_CPP_STANDARD "gnu++11")
 else()
@@ -445,7 +445,7 @@ if(NOT SWITCH_LIBNX)
   endif()
 endif()
 
-  if (WITH_FFMPEG AND NOT YASM_FOUND AND NOT NASM_FOUND AND NOT SWITCH_LIBNX)
+  if(WITH_FFMPEG AND NOT YASM_FOUND AND NOT NASM_FOUND AND NOT SWITCH_LIBNX)
     message(
       "Neither NASM nor YASM were found. Please install at least one of them if you wish for ffmpeg support."
       )
@@ -478,7 +478,7 @@ endif()
     set(HAS_FFMPEG FALSE)
   endif()
 
-set(OpenGL_GL_PREFERENCE GLVND)
+  set(OpenGL_GL_PREFERENCE GLVND)
 if(NOT SWITCH_LIBNX)
   find_package(OpenGL REQUIRED)
   find_package(GLEW REQUIRED)
