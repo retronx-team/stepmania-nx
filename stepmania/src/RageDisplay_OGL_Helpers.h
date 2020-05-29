@@ -5,13 +5,7 @@
 #include <windows.h>
 #endif
 
-#if defined(__SWITCH__)
-#include <glsym/switch/nx_gl.h>
-#include <GL/glext.h>
-#else
 #include <GL/glew.h>
-#endif
-
 
 /* Import RageDisplay, for types.  Do not include RageDisplay_Legacy.h. */
 #include "RageDisplay.h"

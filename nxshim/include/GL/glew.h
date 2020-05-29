@@ -18,22 +18,7 @@
 #define GLEW_ARB_shader_objects GL_ARB_shader_objects
 #define GLEW_EXT_blend_equation_separate GL_EXT_blend_equation_separate
 
-#define glColorTableEXT glColorTable
-#define glGetColorTableParameterivEXT glGetColorTableParameteriv
-#define glBlendFuncSeparateEXT glBlendFuncSeparate
-#define glDeleteRenderbuffersEXT glDeleteRenderbuffers
-#define glGenFramebuffersEXT glGenFramebuffers
-#define glBindFramebufferEXT glBindFramebuffer
-#define glFramebufferTexture2DEXT glFramebufferTexture2D
-#define glGenRenderbuffersEXT glGenRenderbuffers
-#define glRenderbufferStorageEXT glRenderbufferStorage
-#define glCheckFramebufferStatusEXT glCheckFramebufferStatus
-#define glDeleteFramebuffersEXT glDeleteFramebuffers
-#define glBindRenderbufferEXT glBindRenderbuffer
-#define glFramebufferRenderbufferEXT glFramebufferRenderbuffer
-
 #define glewIsSupported(...) 1
-
 #define glewInit nxShimResolveGLSyms
 
 extern bool glewExperimental;

@@ -1,7 +1,8 @@
 #pragma once
 
-#include <glsym/glsym.h>
 #include <EGL/egl.h>
+
+#include <glad/gl.h>
 
 #ifdef __cplusplus
 extern "C"
