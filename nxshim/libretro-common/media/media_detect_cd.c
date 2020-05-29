@@ -1,4 +1,4 @@
-/* Copyright  (C) 2010-2019 The RetroArch team
+/* Copyright  (C) 2010-2020 The RetroArch team
 *
 * ---------------------------------------------------------------------------------------
 * The following license statement only applies to this file (media_detect_cd.c).
@@ -101,8 +101,7 @@ bool media_detect_cd_info_cue(const char *path, media_detect_cd_info_t *info)
          continue;
       }
 
-      len = strlen(line);
-
+      len     = strlen(line);
       command = line;
 
       media_skip_spaces(&command, len);
@@ -332,11 +331,14 @@ bool media_detect_cd_info(const char *path, uint64_t pregap_bytes, media_detect_
          sector_size = 2048;
       }
 
-      if (!memcmp(buf + offset, "SEGADISCSYSTEM", strlen("SEGADISCSYSTEM")))
+      if (!memcmp(buf + offset, "SEGADISCSYSTEM",
+               STRLEN_CONST("SEGADISCSYSTEM")))
       {
-         const char *title_pos;
-         const char *serial_pos;
-         bool title_found = false;
+         const char *title_pos  = NULL;
+         const char *serial_pos = NULL;
+#if 0
+         bool title_found       = false;
+#endif
 
          /* All discs currently in Redump for MCD start with SEGADISCSYSTEM. There are other strings mentioned elsewhere online,
           * but I have not seen any real examples of them. */
@@ -364,13 +366,16 @@ bool media_detect_cd_info(const char *path, uint64_t pregap_bytes, media_detect_
          else
             strlcpy(info->serial, "N/A", sizeof(info->serial));
       }
-      else if (!memcmp(buf + offset, "SEGA SEGASATURN", strlen("SEGA SEGASATURN")))
+      else if (!memcmp(buf + offset, "SEGA SEGASATURN",
+               STRLEN_CONST("SEGA SEGASATURN")))
       {
-         const char *title_pos;
-         const char *serial_pos;
-         const char *version_pos;
-         const char *release_date_pos;
-         bool title_found = false;
+         const char *title_pos        = NULL;
+         const char *serial_pos       = NULL;
+         const char *version_pos      = NULL;
+         const char *release_date_pos = NULL;
+#if 0
+         bool title_found             = false;
+#endif
 
          info->system_id = MEDIA_CD_SYSTEM_SATURN;
 
@@ -416,13 +421,15 @@ bool media_detect_cd_info(const char *path, uint64_t pregap_bytes, media_detect_
          else
             strlcpy(info->release_date, "N/A", sizeof(info->release_date));
       }
-      else if (!memcmp(buf + offset, "SEGA SEGAKATANA", strlen("SEGA SEGAKATANA")))
+      else if (!memcmp(buf + offset, "SEGA SEGAKATANA", STRLEN_CONST("SEGA SEGAKATANA")))
       {
-         const char *title_pos;
-         const char *serial_pos;
-         const char *version_pos;
-         const char *release_date_pos;
-         bool title_found = false;
+         const char *title_pos        = NULL;
+         const char *serial_pos       = NULL;
+         const char *version_pos      = NULL;
+         const char *release_date_pos = NULL;
+#if 0
+         bool title_found             = false;
+#endif
 
          info->system_id = MEDIA_CD_SYSTEM_DREAMCAST;
 
@@ -472,7 +479,9 @@ bool media_detect_cd_info(const char *path, uint64_t pregap_bytes, media_detect_
       else if (!memcmp(buf + offset + (16 * sector_size), "\1CD001\1\0PLAYSTATION", 19))
       {
          const char *title_pos = NULL;
+#if 0
          bool title_found      = false;
+#endif
 
          info->system_id = MEDIA_CD_SYSTEM_PSX;
 
