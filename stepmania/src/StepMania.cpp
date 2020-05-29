@@ -82,9 +82,10 @@ static Preference<bool> g_bAllowMultipleInstances( "AllowMultipleInstances", fal
 
 #if defined(__SWITCH__)
 extern "C" {
+	#include <switch/services/applet.h>
+	#include <switch/services/ssl.h>
 	#include <switch/runtime/devices/socket.h>
 	#include <switch/runtime/nxlink.h>
-	#include <switch/services/applet.h>
 
 	void userAppInit(void) {
 		socketInitializeDefault();

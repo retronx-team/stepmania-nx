@@ -110,7 +110,7 @@ void LoadingWindow_NX::Update() {
 }
 
 RString LoadingWindow_NX::Init() {
-	Result rc = plInitialize();
+	Result rc = plInitialize(PlServiceType_User);
 	if(R_FAILED(rc)) {
 		return ssprintf("[%s] plInitialize: %x", __func__, rc);
 	}
