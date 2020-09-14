@@ -20,7 +20,7 @@ set(SM_ROOT_DIR "${CMAKE_CURRENT_LIST_DIR}")
 set(SM_EXE_NAME "StepMania")
 
 # Some OS specific helpers.
-if(CMAKE_SYSTEM_NAME MATCHES "Linux")
+if(CMAKE_SYSTEM_NAME MATCHES "Linux" OR SWITCH_LIBNX)
   set(LINUX TRUE)
   set(SM_CPP_STANDARD "gnu++11")
 else()
