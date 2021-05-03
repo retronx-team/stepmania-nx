@@ -31,8 +31,8 @@ using [hbl](https://github.com/switchbrew/nx-hbloader).
 
 ### Build dependencies
 
-For building, you need the devkitA64 from devkitPro setup, along with switch portlibs and libnx.
-Documentation to setup that can be found [here](https://switchbrew.org/wiki/Setting_up_Development_Environment).
+Build dependencies are Python (2 or 3) with `jinja2`, and the following devkitPro packages/groups: `switch-dev switch-portlibs devkitpro-pkgbuild-helpers switch-pkg-config`
+Documentation to setup devkitPro packages can be found [here](https://switchbrew.org/wiki/Setting_up_Development_Environment).
 
 **Note:** Release uses a customised FFMPEG [build](https://gist.github.com/p-sam/30b4b535f055e1f9b0eab2dd1ce89fd4)
 from the [PPSSPP repo](https://github.com/hrydgard/ppsspp-ffmpeg) to allow a few more commonly used codecs and performance.
